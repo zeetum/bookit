@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <form action="php/ldap_auth.php" method='POST'>
+        <form action="../functions/ldap_auth.php" method='POST'>
             <input type="text" name=username>Username</input>
             <input type="text" name=password>Password</input>
             <input type="submit">Login</input>

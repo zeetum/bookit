@@ -34,7 +34,6 @@ if (isset($_POST['date']) && isset($_POST['r_ids'])) {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 	foreach ($timeslots as $timeslot)
             echo "timeslot: ".$timeslot." user: ".$result[$timeslot];
-	
         
 }
 

@@ -1,13 +1,15 @@
 <?php
 session_start();
 
-if(isset($_POST['username']) && isset($_POST['password'])){
+$adServer = "ldap://e4008s01sv001.indigo.schools.internal";
+$ldap = ldap_connect($adServer);
 
-    $adServer = "ldap://e4008s01sv001.indigo.schools.internal";
-	
-    $ldap = ldap_connect($adServer);
+if(isset($_POST['username']) && isset($_POST['password']) && $_POST['password'] != ''){
+
+
     $username = $_POST['username'];
     $password = $_POST['password'];
+    echo $password == '';
 
     $ldaprdn = 'INDIGO' . "\\" . $username;
 
@@ -19,7 +21,10 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 	$_SESSION['username'] = $_POST['username'];
     }
 
-    header('Location: http://localhost/bookit');
 }
+
+header('Location: http://localhost/bookit');
+@ldap_close($ldap);
+
 
 ?>

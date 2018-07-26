@@ -1,5 +1,5 @@
 <?PHP
 $user = 'bookit';
-$pass = 'Password1';
-$conn = new PDO('mysql:host=localhost;dbname=skills', $user, $pass);
+$pass = 'Holidays2';
+$conn = new PDO('mysql:host=localhost;dbname=bookit', $user, $pass);
 ?>

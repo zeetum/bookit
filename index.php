@@ -15,9 +15,11 @@
     <?PHP
 	session_start();
         if (isset($_SESSION['username'])) {
-            echo "Hello ".$_SESSION['username']; 
+	    include("functions/config.php");
+            echo "Hello ".$_SESSION['username'];	
+            echo "<a href='functions/logout.php'>Logout</a>";
         } else {
-            echo "<a href='login.php'>Please Login</a>";
+            echo "<a href='panels/login.php'>Please Login</a>";
         }
     ?>
     </body>
