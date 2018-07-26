@@ -4,7 +4,6 @@ include(config.php);
 
 echo "<form action='get_resources.php'>";
 
-
 // Select the specific resource
 $stmt = $conn->prepare("SELECT * FROM resources");
 $stmt->execute();
@@ -29,16 +28,4 @@ echo "</select>";
 
 echo "<input type='submit' value='Submit'>";
 echo "</form>";
-
-
-// Get the timetable of the selected week for the selected resource
-if (isset($_POST['r_id']) && isset($_POST['week'])) {
-    $stmt = $conn->prepare("SELECT * FROM resources WHERE r_id = :r_id AND week = :week");
-    $stmt->execute(array(
-        ":r_id" = $_POST['r_id'],
-        ":week" = $_POST['week']
-    ));
-    $resources = $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-}
 

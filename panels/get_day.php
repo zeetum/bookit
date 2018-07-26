@@ -17,24 +17,20 @@ function get_day_timeslots($day) {
         return array("t_21", "t_22", "t_23", "t_24", "t_25");
 }
 
-if (isset($_POST['date']) && isset($_POST['r_ids'])) {
+if (isset($_POST['date']) && isset($_POST['r_id'])) {
     $day = date('w', strtotime($_POST['date']));
     $week = date('m-d-Y', strtotime('-'.$day.' days'));
     $timeslots = get_day_timeslots($day);
 
-    $r_ids = explode(",",$_POST['r_ids']);
-    foreach ($r_ids as $r_id) {
+    $stmt = $conn->prepare("SELECT * FROM resources WHERE r_id = :r_id AND week = :week")
+    $stmt->execute(array(
+        ":week" = $week,
+        ":r_id" = $r_id
+    ));
 
-        $stmt = $conn->prepare("SELECT * FROM resources WHERE r_id = :r_id AND week = :week")
-        $stmt->execute(array(
-            ":week" = $week,
-            ":r_id" = $r_id
-        ));
-
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-	foreach ($timeslots as $timeslot)
-            echo "timeslot: ".$timeslot." user: ".$result[$timeslot];
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    foreach ($timeslots as $timeslot)
+        echo "timeslot: ".$timeslot." user: ".$result[$timeslot];
         
 }
 
-?>
