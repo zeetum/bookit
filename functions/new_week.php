@@ -21,4 +21,5 @@ if (isset($_POST['date']) {
             ":week" = $_POST['date'],
             ":r_id" = $r_id['r_id']
         ));
+    }
 }
