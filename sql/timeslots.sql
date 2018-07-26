@@ -32,5 +32,5 @@ CREATE TABLE timeslots (
 	t_24 VARCHAR(255),
 	t_25 VARCHAR(255),
 
-	PRIMARY_KEY(week, r_id)
+	PRIMARY KEY(week, r_id)
 );
