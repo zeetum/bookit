@@ -22,6 +22,7 @@ if (isset($_POST['date']) && isset($_POST['r_ids'])) {
     $week = date('m-d-Y', strtotime('-'.$day.' days'));
     $timeslots = get_day_timeslots($day);
 
+    $r_ids = explode(",",$_POST['r_ids']);
     foreach ($r_ids as $r_id) {
 
         $stmt = $conn->prepare("SELECT * FROM resources WHERE r_id = :r_id AND week = :week")
