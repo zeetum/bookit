@@ -1,5 +1,5 @@
 <?PHP
-include(config.php);
+include('../functions/config.php');
 
 
 echo "<form action='get_week.php'>";
