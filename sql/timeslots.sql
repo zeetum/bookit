@@ -1,5 +1,5 @@
 CREATE TABLE timeslots (
-	week VARCHAR(255) NOT NULL,
+	week VARCHAR(100) NOT NULL,
         r_id INT NOT NULL, 
 	
 	t_1 VARCHAR(255),
