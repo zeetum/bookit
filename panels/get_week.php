@@ -5,7 +5,7 @@ include(config.php);
     Takes a comma separated string of r_ids to echo
 */
 
-if (isset($_POST['date'])) {
+if (isset($_POST['date']) && isset($_POST['r_ids'])) {
     $day = date('w', strtotime($_POST['date']));
     $week = date('m-d-Y', strtotime('-'.$day.' days'));
 	
