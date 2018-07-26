@@ -5,13 +5,13 @@ include(config.php);
     takes a date and resource to print usernames which have been booked 
 */
 
-if (isset($_POST['date']) && isset($_POST['r_ids'])) {
+if (isset($_POST['date']) && isset($_POST['r_id'])) {
     $day = date('w', strtotime($_POST['date']));
     $week = date('m-d-Y', strtotime('-'.$day.' days'));
 	
     $stmt = $conn->prepare("SELECT * FROM resources WHERE r_id = :r_id AND week = :week")
     $stmt->execute(array(
-        ":r_id" = $r_id,
+        ":r_id" = $_POST['r_id'],
         ":week" = $week
     ));
 
