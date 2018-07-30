@@ -4,6 +4,7 @@
     The correct format should be
         $day = date('w');
         $week = date('m-d-Y', strtotime('-'.$day.' days'));
+        $next_week = $date = strtotime($day." +1 week");
 */
 include('config.php');
 
