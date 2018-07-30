@@ -13,10 +13,20 @@ if (isset($_POST['date']) && isset($_POST['r_id'])) {
     ));
 
     $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+    echo "<table style='width:100%'>";
+    echo "    <tr>";
+    echo "        <th>".$timeslots['t_1']."</th>";
+    echo "    </tr>";
+
+/*
     foreach ($timeslots as $timeslot => $user) {
-        if ($timeslot != 'week') {
+        if ($timeslot != 'week' && $timeslot != 'r_id') {
              echo "timeslot: ".$timeslot." user: ".$user;
         }
     }
+*/
+    echo "</table>";
 }
 
