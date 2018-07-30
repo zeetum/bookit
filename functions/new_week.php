@@ -8,12 +8,16 @@
 */
 include('config.php');
 
+$day = date('w');
+$week = date('m-d-Y', strtotime('-'.$day.' days'));
+$_POST['date'] = $week;
+
 if (isset($_POST['date'])) {
     
     // create a new timeslot week for each resource
     $stmt = $conn->prepare("SELECT r_id FROM resources");
     $stmt->execute();
-    $r_ids = $stmt->fetch(PDO::FETCH_ASSOC);
+    $r_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     foreach ($r_ids as $r_id) {
     
