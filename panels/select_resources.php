@@ -1,8 +1,7 @@
 <?PHP
 include('../functions/config.php');
 
-
-echo "<form action='get_week.php'>";
+echo "<form action='get_week.php' method='POST'>";
 
 // Select the specific resource
 $stmt = $conn->prepare("SELECT * FROM resources");
