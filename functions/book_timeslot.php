@@ -9,22 +9,22 @@
 */
 
 // WARNING: This script stomps on the t_id!
-include(config.php);
+include('config.php');
 
-if (isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id']) {
-    // select the date (if not set, select the current date)
-    if (isset($_POST['date']) {
-        $week = $_POST['date'];
-    } else {
-        $day = date('w');
-        $week = date('m-d-Y', strtotime('-'.$day.' days'));
-    }
-    $stmt = $conn->prepare("UPDATE timeslots SET :t_id = :username
-                            WHERE week = :week AND r_id = :r_id");
+if (isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id'])) {
+    echo "Username: ";
+    echo $_POST['username'];
+    echo " t_id: ".$_POST['t_id'];
+    echo " r_id: ".$_POST['r_id'];
+    echo " week: ".$_POST['date'];
+    
+    $string = "UPDATE timeslots SET ".$_POST['t_id']." = :username
+               WHERE week = :week AND r_id = :r_id";
+    $stmt = $conn->prepare($string);
+    $stmt->execute();
     $stmt->execute(array(
-        ":t_id:" = $_POST['t_id'],
-        ":username" = $_POST['username'],
-        ":week" = $week,
-        ":r_id" = $_POST['r_id']
+        ":username" => $_POST['username'],
+        ":week" => '07-29-2018',
+        ":r_id" => "1"
     ));
 }

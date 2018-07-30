@@ -1,6 +1,6 @@
 <?PHP
 include('../functions/config.php');
-session_start();
+
 /*
     takes a date and resource to print usernames which have been booked 
 */
@@ -21,17 +21,10 @@ if (isset($_POST['date']) && isset($_POST['r_id'])) {
     echo "<table>";
     echo "    <tr>";
     echo "        <td id=t_1>";
-                      if ($timeslots['t_1'] == '') {
-    echo              "<form action='../functions/book_timeslot.php' method='POST'>";
-    echo                  "<input type='hidden' name='r_id' value='".$_POST['r_id']."'>";
-    echo                  "<input type='hidden' name='t_id' value='t_1'>";
-    echo                  "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
-    echo                  "<input type='hidden' name='date' value='".$_POST['date']."'>";
-    echo                  "<input type='submit' value='Book It!'>";
-    echo              "<form>";
-                      } else {
+                      if ($timeslots['t_1'] == '')
+    echo                  "<button type='button' name='t_1' value=".$_SESSION['username'].">Book IT!</button>";
+                      else
     echo                  $timeslots['t_1'];
-                      }
     echo "        </td>";
     echo "        <td id=t_2>".$timeslots['t_2']."</td>";
     echo "        <td id=t_3>".$timeslots['t_3']."</td>";
@@ -76,4 +69,5 @@ if (isset($_POST['date']) && isset($_POST['r_id'])) {
     }
 */
 }
+
 
