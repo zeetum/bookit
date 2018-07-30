@@ -24,7 +24,7 @@ if (isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id']))
     $stmt->execute();
     $stmt->execute(array(
         ":username" => $_POST['username'],
-        ":week" => '07-29-2018',
-        ":r_id" => "1"
+        ":week" => $_POST['date'],
+        ":r_id" => $_POST['r_id']
     ));
 }
