@@ -4,7 +4,7 @@ include('../functions/config.php');
     takes a date and resource to print usernames which have been booked 
 */
 
-include("select_resources.php");
+include("../panels/select_resources.php");
 
 if (isset($_POST['date']) && isset($_POST['r_id'])) {
     $stmt = $conn->prepare("SELECT * FROM timeslots WHERE r_id = :r_id AND week = :week");
