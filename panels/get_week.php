@@ -1,9 +1,10 @@
 <?PHP
 include('../functions/config.php');
-session_start();
 /*
     takes a date and resource to print usernames which have been booked 
 */
+
+include("select_resources.php");
 
 if (isset($_POST['date']) && isset($_POST['r_id'])) {
     $stmt = $conn->prepare("SELECT * FROM timeslots WHERE r_id = :r_id AND week = :week");
@@ -21,6 +22,15 @@ if (isset($_POST['date']) && isset($_POST['r_id'])) {
     <div class="divTable">
         <div class="divTableBody">
             <div class="divTableRow">
+                <div class='divTableCell'></div>
+                <div class='divTableCell'>P1</div>
+                <div class='divTableCell'>P2</div>
+                <div class='divTableCell'>P3</div>
+                <div class='divTableCell'>P4</div>
+                <div class='divTableCell'>P5</div>
+            </div>
+            <div class="divTableRow">
+               <div class='divTableCell'>Monday</div>
 <?PHP          for ($id = 1; $id <= 5; $id++) {
 echo           "<div class='divTableCell'>";
                    if ($timeslots['t_'.$id] == '') {
@@ -38,6 +48,7 @@ echo           "</div>";
                }?>
             </div>
             <div class="divTableRow">
+               <div class='divTableCell'>Tuesday</div>
 <?PHP          for ($id = 6; $id <= 10; $id++) {
 echo           "<div class='divTableCell'>";
                    if ($timeslots['t_'.$id] == '') {
@@ -55,6 +66,7 @@ echo           "</div>";
                }?>
             </div>
             <div class="divTableRow">
+               <div class='divTableCell'>Wednesday</div>
 <?PHP          for ($id = 11; $id <= 15; $id++) {
 echo           "<div class='divTableCell'>";
                    if ($timeslots['t_'.$id] == '') {
@@ -72,6 +84,7 @@ echo           "</div>";
                }?>
             </div>
             <div class="divTableRow">
+               <div class='divTableCell'>Thursday</div>
 <?PHP          for ($id = 16; $id <= 20; $id++) {
 echo           "<div class='divTableCell'>";
                    if ($timeslots['t_'.$id] == '') {
@@ -89,6 +102,7 @@ echo           "</div>";
                }?>
             </div>
             <div class="divTableRow">
+               <div class='divTableCell'>Friday</div>
 <?PHP          for ($id = 21; $id <= 25; $id++) {
 echo           "<div class='divTableCell'>";
                    if ($timeslots['t_'.$id] == '') {
