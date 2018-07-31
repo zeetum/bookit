@@ -12,12 +12,12 @@
 include('config.php');
 
 if (isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id'])) {
-    echo "Username: ";
-    echo $_POST['username'];
-    echo " t_id: ".$_POST['t_id'];
-    echo " r_id: ".$_POST['r_id'];
-    echo " week: ".$_POST['date'];
     
+    // sanitising the input
+    str_replace(";","",$_POST['t_id']);
+    str_replace(",","",$_POST['t_id']);
+
+    echo $_POST['t_id'];
     $string = "UPDATE timeslots SET ".$_POST['t_id']." = :username
                WHERE week = :week AND r_id = :r_id";
     $stmt = $conn->prepare($string);
