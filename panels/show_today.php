@@ -21,6 +21,7 @@ $day = date('w', strtotime($_POST['date']));
 $week = date('m-d-Y', strtotime('-'.$day.' days'));
 $timeslots = get_day_timeslots($day);
 
+
 $stmt = $conn->prepare("SELECT * FROM timeslots WHERE week = :week");
 $stmt->execute(array(
     ":week" => $week
@@ -43,8 +44,17 @@ echo "</style>";
                 <div class='divTableCell'>P5</div>
             </div>
 <?PHP       foreach ($resources as $resource) {
-echo	    "<div class='divTableRow'>".$resource['r_id'];
+            // Echo the resource name
+echo	    "<div class='divTableRow'>";
+
+               $stmt = $conn->prepare("SELECT name FROM resources WHERE r_id = :r_id");
+               $stmt->execute(array(
+                   ":r_id" => $resource['r_id']
+               ));
+echo           $stmt->fetch(PDO::FETCH_ASSOC)['name'];
+
                foreach ($timeslots as $timeslot) {
+               // Echo each user
 echo           "<div class='divTableCell'>";
                    if ($resource[$timeslot] == '') {
 echo               "<form action='../functions/book_timeslot.php' method='POST'>";
