@@ -28,4 +28,4 @@ if (isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id']))
     ));
 }
 
-include("../panels/get_week.php");
+include("../panels/show_today.php");

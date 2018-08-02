@@ -16,7 +16,7 @@ if (isset($_POST['date']) && isset($_POST['r_id'])) {
     $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
 
     echo "<style>";
-    include("get_week.css");
+    include("show_week.css");
     echo "</style>";
 ?>
     <div class="divTable">
