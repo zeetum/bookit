@@ -18,9 +18,16 @@ if (isset($_POST['date']) && isset($_POST['r_id'])) {
     echo "<style>";
     include("show_week.css");
     echo "</style>";
+
+    $stmt = $conn->prepare("SELECT name FROM resources WHERE r_id = :r_id");
+    $stmt->execute(array(
+        ":r_id" => $_POST['r_id']
+    ));
+
+    $resource = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
     <div class="divTable">
-        <div class="divTableBody">
+    <div class="divTableBody"><h1><?PHP echo $resource['name']; ?></h1>
             <div class="divTableRow">
                 <div class='divTableCell'></div>
                 <div class='divTableCell'>P1</div>
