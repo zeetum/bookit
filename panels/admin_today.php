@@ -53,7 +53,7 @@ echo	    "<div class='divTableRow'>";
                    ":r_id" => $resource['r_id']
                ));
                $name = $stmt->fetch(PDO::FETCH_ASSOC)['name'];
-echo           "<form action='../panels/show_week.php' method='POST'>";
+echo           "<form action='../panels/admin_week.php' method='POST'>";
 echo               "<input type='hidden' name='r_id' value='".$resource['r_id']."'>";
 echo               "<input type='hidden' name='date' value='".$week."'>";
 echo               "<input type='submit' value='".$name."'>";
@@ -62,20 +62,19 @@ echo           "</form>";
                foreach ($timeslots as $timeslot) {
                // Echo each user
 echo           "<div class='divTableCell'>";
-                   if ($resource[$timeslot] == '') {
-echo               "<form action='../functions/book_timeslot.php' method='POST'>";
+                   if ($resource[$timeslot] != '') {
+echo               $resource[$timeslot];
+echo               "<form action='../functions/delete_timeslot.php' method='POST'>";
 echo                   "<input type='hidden' name='r_id' value='".$resource['r_id']."'>";
 echo                   "<input type='hidden' name='t_id' value='".$timeslot."'>";
-echo                   "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                   "<input type='hidden' name='date' value='".$week."'>";
-echo                   "<input type='submit' value='Book It!'>";
+echo                   "<input type='submit' value='Delete'>";
 echo               "</form>";
-                   } else {
-echo                   $resource[$timeslot];
-                   }
+		   }
 echo           "</div>";
 	       }
 echo       "</div>";
            }?>
         </div>
     </div>
+

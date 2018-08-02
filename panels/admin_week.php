@@ -4,7 +4,7 @@ include_once('../functions/config.php');
     takes a date and resource to print usernames which have been booked 
 */
 
-include_once("../panels/select_resources.php");
+include_once("../panels/delete_resources.php");
 
 if (isset($_POST['date']) && isset($_POST['r_id'])) {
     $stmt = $conn->prepare("SELECT * FROM timeslots WHERE r_id = :r_id AND week = :week");
@@ -40,13 +40,13 @@ if (isset($_POST['date']) && isset($_POST['r_id'])) {
                <div class='divTableCell'>Monday</div>
 <?PHP          for ($id = 1; $id <= 5; $id++) {
 echo           "<div class='divTableCell'>";
-                   if ($timeslots['t_'.$id] == '') {
-echo               "<form action='../functions/book_timeslot.php' method='POST'>";
+                   if ($timeslots['t_'.$id] != '') {
+echo               $timeslots['t_'.$id];
+echo               "<form action='../functions/delete_timeslot.php' method='POST'>";
 echo                   "<input type='hidden' name='r_id' value='".$_POST['r_id']."'>";
 echo                   "<input type='hidden' name='t_id' value='t_".$id."'>";
-echo                   "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                   "<input type='hidden' name='date' value='".$_POST['date']."'>";
-echo                   "<input type='submit' value='Book It!'>";
+echo                   "<input type='submit' value='Delete'>";
 echo               "</form>";
                    } else {
 echo                    $timeslots['t_'.$id];

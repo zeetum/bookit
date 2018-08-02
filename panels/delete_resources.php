@@ -1,7 +1,7 @@
 <?PHP
 include_once('../functions/config.php');
 
-echo "<form action='../panels/show_week.php' method='POST'>";
+echo "<form action='../panels/admin_week.php' method='POST'>";
 
 // Select the specific resource
 $stmt = $conn->prepare("SELECT * FROM resources");
@@ -27,4 +27,5 @@ echo "</select>";
 
 echo "<input type='submit' value='Submit'>";
 echo "</form>";
+
 
