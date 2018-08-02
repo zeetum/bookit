@@ -18,7 +18,14 @@ if(isset($_POST['username']) && isset($_POST['password']) && $_POST['password'] 
 
     $bind = @ldap_bind($ldap, $ldaprdn, $password);
     if ($bind) {
-	$_SESSION['username'] = $_POST['username'];
+        
+        $BaseDN = 'OU=School Users,DC=indigo,DC=schools,DC=internal';
+        $filter = "(sAMAccountName=".$_POST['username'].")";
+        $attributes = array('displayname');
+        $result = ldap_search($ldap, $BaseDN, $filter, $attributes);
+	$entries = ldap_get_entries($ldap, $result);
+
+	$_SESSION['username'] = $entries[0]['displayname'][0];
     }
 
 }

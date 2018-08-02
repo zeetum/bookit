@@ -18,6 +18,7 @@ function get_day_timeslots($day) {
 }
 
 if (isset($_POST['date']) && isset($_POST['r_id'])) {
+    if (isset($_POST['day'])) 
     $day = date('w', strtotime($_POST['date']));
     $week = date('m-d-Y', strtotime('-'.$day.' days'));
     $timeslots = get_day_timeslots($day);
