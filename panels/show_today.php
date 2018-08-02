@@ -36,13 +36,14 @@ echo "</style>";
     <div class="divTable">
         <div class="divTableBody">
             <div class="divTableRow">
-                <div class='divTableCell'></div>
+                <div class='divTableCell'>Resource</div>
                 <div class='divTableCell'>P1</div>
                 <div class='divTableCell'>P2</div>
                 <div class='divTableCell'>P3</div>
                 <div class='divTableCell'>P4</div>
                 <div class='divTableCell'>P5</div>
             </div>
+
 <?PHP       foreach ($resources as $resource) {
             // Echo the resource name
 echo	    "<div class='divTableRow'>";
@@ -51,7 +52,12 @@ echo	    "<div class='divTableRow'>";
                $stmt->execute(array(
                    ":r_id" => $resource['r_id']
                ));
-echo           $stmt->fetch(PDO::FETCH_ASSOC)['name'];
+               $name = $stmt->fetch(PDO::FETCH_ASSOC)['name'];
+echo           "<form action='../panels/show_week.php' method='POST'>";
+echo               "<input type='hidden' name='r_id' value='".$resource['r_id']."'>";
+echo               "<input type='hidden' name='date' value='".$week."'>";
+echo               "<input type='submit' value='".$name."'>";
+echo           "</form>";
 
                foreach ($timeslots as $timeslot) {
                // Echo each user
