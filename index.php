@@ -15,9 +15,7 @@
     <?PHP
 	session_start();
         if (isset($_SESSION['username'])) {
-	    include("functions/config.php");
-            echo "Hello ".$_SESSION['username'];	
-            echo "<a href='functions/logout.php'>Logout</a>";
+            header("Location: panels/show_today.php",true);
         } else {
             echo "<a href='panels/login.php'>Please Login</a>";
         }
