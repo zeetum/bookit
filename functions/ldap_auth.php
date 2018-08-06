@@ -30,7 +30,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && $_POST['password'] 
 
 }
 
-header('Location: http://localhost/bookit');
+header('Location: ../');
 @ldap_close($ldap);
 
 
