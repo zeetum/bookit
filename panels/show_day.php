@@ -2,17 +2,18 @@
 include_once('../functions/config.php');
 
 // Verify and sanatise input
-if (!isset($_POST['catagory']))
+if (!isset($_GET['catagory']))
 	exit();
 str_replace(";","",$_POST['catagory']);
 str_replace(",","",$_POST['catagory']);
-if (isset($_POST['date']))
-	$day = $_POST['date'];
+if (isset($_GET['date']))
+	$day = $_GET['date'];
 else
-	$day = date("Y-m-d");
+	$day = date("m-d-Y");
 
+$day = "08-05-2018";
 // Prepare and execute the query
-$stmt = $conn->prepare("SELECT * FROM ".$_POST['catagory']." WHERE date = :date");
+$stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE week = :date");
 $stmt->execute(array(
     ":date" => $day,
 ));
@@ -26,16 +27,14 @@ echo "</style>";
     <div class="divTable">
         <div class="divTableBody">
 
-// Echo out the colum names
-<?PHP       foreach ($timeslots as $timeslot) {
-echo            "<div class='divTableRow'>";
-				foreach ($timeslot as $key => $value)
-					if ($key != 'r_id' | $key != 'date')
-echo 	        	    "<div class='divTableCell'>".$key."</div>";
-echo            "</div>";
-            }
+<?PHP       $timeslot = $timeslots[0];
+echo        "<div class='divTableRow'>";
+	        foreach ($timeslot as $key => $value)
+                    if ($key != 'r_id' | $key != 'date')
+echo 	    	        "<div class='divTableCell'>".$key."</div>";
+echo        "</div>";
 
-<?PHP       foreach ($timeslots as $timeslot) {
+            foreach ($timeslots as $timeslot) {
             // Echo the resource column names
 echo	    "<div class='divTableRow'>";
                $stmt = $conn->prepare("SELECT name FROM resources WHERE r_id = :r_id");
