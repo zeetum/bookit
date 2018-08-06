@@ -11,7 +11,7 @@
 // WARNING: This script stomps on the t_id!
 include('config.php');
 
-if (isset($_POST['catagory']) &&isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id'])) {
+if (isset($_POST['catagory']) && isset($_POST['column']) && isset($_POST['r_id']) && isset($_POST['username'])) {
     
     // sanitising the input
     str_replace(";","",$_POST['t_id']);
@@ -19,7 +19,7 @@ if (isset($_POST['catagory']) &&isset($_POST['r_id']) && isset($_POST['username'
     str_replace(";","",$_POST['catagory']);
     str_replace(",","",$_POST['catagory']);
 
-    $string = "UPDATE ".$_POST['catagory']." SET ".$_POST['t_id']." = :username
+    $string = "UPDATE ".$_POST['catagory']." SET ".$_POST['column']." = :username
                WHERE date = :date AND r_id = :r_id";
     $stmt = $conn->prepare($string);
     $stmt->execute();
