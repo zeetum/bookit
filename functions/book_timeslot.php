@@ -11,19 +11,21 @@
 // WARNING: This script stomps on the t_id!
 include('config.php');
 
-if (isset($_POST['catagory') &&isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id'])) {
+if (isset($_POST['catagory']) &&isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id'])) {
     
     // sanitising the input
     str_replace(";","",$_POST['t_id']);
     str_replace(",","",$_POST['t_id']);
+    str_replace(";","",$_POST['catagory']);
+    str_replace(",","",$_POST['catagory']);
 
-    $string = "UPDATE timeslots SET ".$_POST['t_id']." = :username
-               WHERE week = :week AND r_id = :r_id";
+    $string = "UPDATE ".$_POST['catagory']." SET ".$_POST['t_id']." = :username
+               WHERE date = :date AND r_id = :r_id";
     $stmt = $conn->prepare($string);
     $stmt->execute();
     $stmt->execute(array(
         ":username" => $_POST['username'],
-        ":week" => $_POST['date'],
+        ":date" => $_POST['date'],
         ":r_id" => $_POST['r_id']
     ));
 }
