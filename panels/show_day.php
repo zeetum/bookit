@@ -30,7 +30,7 @@ echo "</style>";
 <?PHP       $timeslot = $timeslots[0];
 echo        "<div class='divTableRow'>";
 	        foreach ($timeslot as $key => $value)
-                    if ($key != 'r_id' | $key != 'date')
+                    if ($key !== 'r_id')
 echo 	    	        "<div class='divTableCell'>".$key."</div>";
 echo        "</div>";
 
