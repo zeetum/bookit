@@ -36,34 +36,37 @@ echo            "</div>";
             }
 
 <?PHP       foreach ($timeslots as $timeslot) {
-            // Echo the resource name
+            // Echo the resource column names
 echo	    "<div class='divTableRow'>";
                $stmt = $conn->prepare("SELECT name FROM resources WHERE r_id = :r_id");
                $stmt->execute(array(
-                   ":r_id" => $resource['r_id']
+                   ":r_id" => $timeslot['r_id']
                ));
                $name = $stmt->fetch(PDO::FETCH_ASSOC)['name'];
+	       
+	       // Select buttons for each week for each resource
 echo           "<form action='../panels/show_week.php' method='POST'>";
 echo               "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
-echo               "<input type='hidden' name='r_id' value='".$timeslot['catagory']."'>";
-echo               "<input type='hidden' name='date' value='".$day."'>";
+echo               "<input type='hidden' name='catagory' value='".$timeslot['catagory']."'>";
+echo               "<input type='hidden' name='date' value='".date('Y-m-d', strtotime('-'.date('w').' days'))."'>";
 echo               "<input type='submit' value='".$name."'>";
 echo           "</form>";
 
-               foreach ($timeslots as $timeslot) {
+	           // Submit column sfdsfsadfdsaf
+               foreach ($timeslot as $key => $value) if ($key != 'r_id' | $key != 'date') {
                // Echo each user
 echo           "<div class='divTableCell'>";
-                   if ($resource[$timeslot] == '') {
+                   if ($value != '') {
 echo               "<form action='../functions/book_timeslot.php' method='POST'>";
 echo                   "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
 echo                   "<input type='hidden' name='r_id' value='".$timeslot['catagory']."'>";
-echo                   "<input type='hidden' name='columns' value='".$columns."'>";
+echo                   "<input type='hidden' name='column' value='".$key."'>";
 echo                   "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                   "<input type='hidden' name='date' value='".$day."'>";
 echo                   "<input type='submit' value='Book It!'>";
 echo               "</form>";
                    } else {
-echo                   $resource[$timeslot];
+echo                   $value;
                    }
 echo           "</div>";
 	       }
