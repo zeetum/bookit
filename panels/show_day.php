@@ -1,33 +1,25 @@
 <?PHP
 include_once('../functions/config.php');
 
-/*
-    Takes a comma separated string of r_ids to echo
-*/
-function get_day_timeslots($day) {
-    if ($day == 1)
-        return array("t_1", "t_2", "t_3", "t_4", "t_5");
-    if ($day == 2)
-        return array("t_6", "t_7", "t_8", "t_9", "t_10");
-    if ($day == 3)
-        return array("t_11", "t_12", "t_13", "t_14", "t_15");
-    if ($day == 4)
-        return array("t_16", "t_17", "t_18", "t_19", "t_20");
-    if ($day == 5)
-        return array("t_21", "t_22", "t_23", "t_24", "t_25");
-}
+// Verify and sanatise input
+if (!isset($_POST['catagory']) || !isset($_POST['r_id']))
+	exit();
+str_replace(";","",$_POST['catagory']);
+str_replace(",","",$_POST['catagory']);
+if (isset($_POST['date']))
+	$day = $_POST['date'];
+else
+	$day = date("Y-m-d");
 
-$day = date('w');
-$week = date('m-d-Y', strtotime('-'.$day.' days'));
-$timeslots = get_day_timeslots($day);
-
-
-$stmt = $conn->prepare("SELECT * FROM timeslots WHERE week = :week");
+// Prepare and execute the query
+$stmt = $conn->prepare("SELECT * FROM ".$_POST['catagory']." WHERE date = :date AND r_id = :r_id");
 $stmt->execute(array(
-    ":week" => $week
+    ":date" => $day,
+	":r_id" => $_POST['r_id']
 ));
 $resources = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Display the results
 echo "<style>";
 include("show_week.css");
 echo "</style>";
