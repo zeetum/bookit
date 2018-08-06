@@ -15,5 +15,4 @@ foreach ($columns as $column) {
 }
 
 $query_string .= " PRIMARY KEY(date, r_id) )";
-
 ?>
