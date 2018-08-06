@@ -10,6 +10,7 @@ if (isset($_GET['date']))
 	$day = $_GET['date'];
 else
 	$day = date("Y-m-d");
+$day = "08-05-2018";
 // TODO: submit date in the correct format
 
 // Prepare and execute the query
@@ -52,10 +53,10 @@ echo               "<input type='submit' value='".$name."'>";
 echo           "</form>";
 
 	       // Submit or display timeslot for each time column
-               foreach ($timeslot as $key => $value) if ($key != 'r_id' | $key != 'date') {
+               foreach ($timeslot as $key => $value) if ($key !== 'r_id' | $key !== 'date') {
                // Echo each user
 echo           "<div class='divTableCell'>";
-                   if ($value != '') {
+                   if ($value == '') {
 echo               "<form action='../functions/book_timeslot.php' method='POST'>";
 echo                   "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
 echo                   "<input type='hidden' name='r_id' value='".$timeslot['catagory']."'>";
