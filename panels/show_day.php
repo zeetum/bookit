@@ -17,7 +17,6 @@ $stmt->execute(array(
     ":date" => $day,
 ));
 $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$columns == '';
 
 // Display the results
 echo "<style>";
@@ -26,14 +25,13 @@ echo "</style>";
 ?>
     <div class="divTable">
         <div class="divTableBody">
+
+// Echo out the colum names
 <?PHP       foreach ($timeslots as $timeslot) {
 echo            "<div class='divTableRow'>";
-				foreach ($timeslot as $key => $value) {
-					if ($key != 'r_id' | $key != 'date') {
+				foreach ($timeslot as $key => $value)
+					if ($key != 'r_id' | $key != 'date')
 echo 	        	    "<div class='divTableCell'>".$key."</div>";
-						$columns .= ",".$key;
-					}
-				}
 echo            "</div>";
             }
 
