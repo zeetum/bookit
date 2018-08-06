@@ -51,7 +51,7 @@ echo               "<input type='hidden' name='date' value='".date('Y-m-d', strt
 echo               "<input type='submit' value='".$name."'>";
 echo           "</form>";
 
-	           // Submit column sfdsfsadfdsaf
+	       // Submit or display timeslot for each time column
                foreach ($timeslot as $key => $value) if ($key != 'r_id' | $key != 'date') {
                // Echo each user
 echo           "<div class='divTableCell'>";
