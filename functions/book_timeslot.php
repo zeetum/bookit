@@ -11,7 +11,7 @@
 // WARNING: This script stomps on the t_id!
 include('config.php');
 
-if (isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id'])) {
+if (isset($_POST['catagory') &&isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['t_id'])) {
     
     // sanitising the input
     str_replace(";","",$_POST['t_id']);
