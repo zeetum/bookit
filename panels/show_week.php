@@ -61,23 +61,23 @@ echo        "</div>";
 
 
 // display each day of this week
-            $dates = get_week_dates($_GET['date']);
 echo        "<div class='divTableRow'>";
 echo        "<div class='divTableCell'>Monday</div>";
-               foreach ($dates as $date) {
-echo           "<div class='divTableCell'>";
-echo               $date;
-                   if ($timeslots['t_'.$id] == '') {
-echo               "<form action='../functions/book_timeslot.php' method='POST'>";
-echo                   "<input type='hidden' name='r_id' value='".$_POST['r_id']."'>";
-echo                   "<input type='hidden' name='t_id' value='t_".$id."'>";
-echo                   "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
-echo                   "<input type='hidden' name='date' value='".$_POST['date']."'>";
-echo                   "<input type='submit' value='Book It!'>";
-echo               "</form>";
-                   } else {
-echo                    $timeslots['t_'.$id];
-                   }
+                $dates = get_week_dates($_GET['date']);
+                foreach ($dates as $date) {
+echo            "<div class='divTableCell'>";
+echo                $date;
+                    if ($timeslots['t_'.$id] == '') {
+echo                "<form action='../functions/book_timeslot.php' method='POST'>";
+echo                    "<input type='hidden' name='r_id' value='".$_POST['r_id']."'>";
+echo                    "<input type='hidden' name='t_id' value='t_".$id."'>";
+echo                    "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
+echo                    "<input type='hidden' name='date' value='".$_POST['date']."'>";
+echo                    "<input type='submit' value='Book It!'>";
+echo                "</form>";
+                    } else {
+echo                     $timeslots['t_'.$id];
+                    }
 echo           "</div>";
                }
 echo        "</div>";
