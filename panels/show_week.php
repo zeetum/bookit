@@ -25,7 +25,7 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
     str_replace(";","",$_GET['catagory']);
     str_replace(",","",$_GET['catagory']);
 
-    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND week = :date");
+    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND date = :date");
     $stmt->execute(array(
         ":r_id" => $_GET['r_id'],
         ":date" => $_GET['date']

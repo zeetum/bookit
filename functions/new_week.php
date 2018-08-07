@@ -35,24 +35,26 @@ $_POST['date'] = $week;
 if (isset($_POST['date'])) {
     // get the days of next week
     $days = get_week_dates(date('Y-m-d',strtotime('next monday')));
-    print_r($days);
-    
-    // create a new timeslot week for each resource
-    $stmt = $conn->prepare("SELECT r_id FROM resources");
-    $stmt->execute();
-    $r_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // get current resources
     $stmt = $conn->prepare("SHOW TABLES");
     $stmt->execute();
-    $resources = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($resources as $resource) if ($resource['Tables_in_bookit'] != 'resources')
-	foreach ($r_ids as $r_id)
+    $catagories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($catagories as $catagory) if ($catagory['Tables_in_bookit'] != 'resources') {
+
+        // get resources attached to each catagory
+        $stmt = $conn->prepare("SELECT DISTINCT r_id FROM ".$catagory['Tables_in_bookit']);
+        $stmt->execute();
+        $r_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	
+	foreach ($r_ids as $r_id) {
             foreach ($days as $day) {
-                $stmt = $conn->prepare("INSERT INTO ".$resource['Tables_in_bookit']." (date,r_id) VALUES(:date, :r_id)");
+                $stmt = $conn->prepare("INSERT INTO ".$catagory['Tables_in_bookit']." (date,r_id) VALUES(:date, :r_id)");
                 $stmt->execute(array(
                     ":date" => $day,
                     ":r_id" => $r_id['r_id']
                 ));
-	     }
+	    }
+	}
+    }
 }
