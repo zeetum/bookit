@@ -5,8 +5,8 @@ include_once('../functions/config.php');
 */
 
 
-function get_week_dates($date, $format = 'Y/m/d') {
-    $day_names = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
+function get_week_dates($date, $format = 'Y-m-d') {
+    $names = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
     $dates = array();
 
     $day = date('w', strtotime($date)) - 1;
@@ -15,7 +15,7 @@ function get_week_dates($date, $format = 'Y/m/d') {
 
     $i = 0;
     while ($current <= $last) {
-        $dates[$day_names[$i++]] = $current;
+        $dates[$names[$i++]] = $current;
         $current = date($format, strtotime($current.' +1 days'));
     }
     return $dates;
@@ -25,10 +25,10 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
     str_replace(";","",$_GET['catagory']);
     str_replace(",","",$_GET['catagory']);
 
-    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND week = :week");
+    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND week = :date");
     $stmt->execute(array(
         ":r_id" => $_GET['r_id'],
-        ":week" => $_GET['date']
+        ":date" => $_GET['date']
     ));
 
     $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -52,7 +52,7 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
 echo        "<div class='divTableRow'>";
 echo 	    	"<div class='divTableCell'>Day</div>";
 	        foreach ($timeslots as $key => $value)
-                    if (!($key == 'r_id' || $key == 'date'))
+                    if (!($key == 'r_id' || $key == 'date')) 
 echo 	    	        "<div class='divTableCell'>".$key."</div>";
 echo        "</div>";
 
@@ -64,7 +64,7 @@ echo        "<div class='divTableRow'>";
                     $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND date = :date");
                     $stmt->execute(array(
                         ":r_id" => $_GET['r_id'],
-                        ":date" => $day
+                        ":date" => $date
                     ));
     
 echo                "<div class='divTableCell'>".$day."</div>";
