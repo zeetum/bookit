@@ -6,6 +6,22 @@ include_once('../functions/config.php');
 
 include_once("../panels/select_resources.php");
 
+
+function get_week_dates($date, $format = 'Y/m/d') {
+
+    $dates = array();
+    $day = date('w', strtotime($date)) - 1;
+    $current = date($format, strtotime($date.' -'.$day.' days'));
+    $last = date($format, strtotime($current.' +4 days'));
+
+    while( $current <= $last ) {
+        array_push($dates,$current);
+        $current = date($format, strtotime($current.' +1 days'));
+    }
+    return $dates;
+}
+
+
 if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
     str_replace(";","",$_GET['catagory']);
     str_replace(",","",$_GET['catagory']);
@@ -31,19 +47,24 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
 ?>
     <div class="divTable">
     <div class="divTableBody"><h1><?PHP echo $resource['name']; ?></h1>
-<?PHP
+
+
+<?PHP       // Print the column names
 echo        "<div class='divTableRow'>";
 echo 	    	"<div class='divTableCell'>Day</div>";
 	        foreach ($timeslots as $key => $value)
                     if (!($key == 'r_id' || $key == 'week'))
 echo 	    	        "<div class='divTableCell'>".$key."</div>";
 echo        "</div>";
+
+
 // display each day of this week
-?>
-            <div class="divTableRow">
-               <div class='divTableCell'>Monday</div>
-<?PHP          for ($id = 1; $id <= 5; $id++) {
+            $dates = get_week_dates($_GET['date']);
+echo        "<div class='divTableRow'>";
+echo        "<div class='divTableCell'>Monday</div>";
+               foreach ($dates as $date) {
 echo           "<div class='divTableCell'>";
+echo               $date;
                    if ($timeslots['t_'.$id] == '') {
 echo               "<form action='../functions/book_timeslot.php' method='POST'>";
 echo                   "<input type='hidden' name='r_id' value='".$_POST['r_id']."'>";
@@ -56,10 +77,9 @@ echo               "</form>";
 echo                    $timeslots['t_'.$id];
                    }
 echo           "</div>";
-               }?>
-            </div>
-    </div>
-
-<?PHP
+               }
+echo        "</div>";
+echo"</div>";
 }
+?>
 
