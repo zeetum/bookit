@@ -11,7 +11,6 @@ if (isset($_GET['date']))
 	$day = $_GET['date'];
 else
 	$day = date("Y-m-d");
-// TODO: submit date in the correct format
 
 // Prepare and execute the query
 $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE date = :date");
