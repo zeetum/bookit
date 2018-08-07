@@ -7,20 +7,22 @@ include_once('../functions/config.php');
 include_once("../panels/select_resources.php");
 
 
-function get_week_dates($date, $format = 'Y/m/d') {
 
+function get_week_dates($date, $format = 'Y/m/d') {
+    $day_names = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
     $dates = array();
+
     $day = date('w', strtotime($date)) - 1;
     $current = date($format, strtotime($date.' -'.$day.' days'));
     $last = date($format, strtotime($current.' +4 days'));
 
-    while( $current <= $last ) {
-        array_push($dates,$current);
+    $i = 0;
+    while ($current <= $last) {
+        $dates[$day_names[$i++]] = $current;
         $current = date($format, strtotime($current.' +1 days'));
     }
     return $dates;
 }
-
 
 if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
     str_replace(";","",$_GET['catagory']);
