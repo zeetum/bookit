@@ -29,6 +29,9 @@ $day = date('w');
 $week = date('Y-m-d', strtotime('-'.$day.' days'));
 $_POST['date'] = $week;
 
+// TODO: Each catagory has a resource assigned to it. Not all resources are assigned to each catagory!
+
+
 if (isset($_POST['date'])) {
     // get the days of next week
     $days = get_week_dates(date('Y-m-d',strtotime('next monday')));

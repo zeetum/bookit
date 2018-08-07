@@ -14,11 +14,12 @@ else
 // TODO: submit date in the correct format
 
 // Prepare and execute the query
-$stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE week = :date");
+$stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE date = :date");
 $stmt->execute(array(
     ":date" => $day,
 ));
 $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
+print_r($timeslots);
 
 // Display the results
 echo "<style>";
