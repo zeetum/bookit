@@ -57,10 +57,10 @@ echo 	    	        "<div class='divTableCell'>".$key."</div>";
 echo        "</div>";
 
 
-// display each day of this week
-echo        "<div class='divTableRow'>";
+                // display each day of this week
                 $dates = get_week_dates($_GET['date']);
                 foreach ($dates as $day => $date) {
+echo            "<div class='divTableRow'>";
                     $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND date = :date");
                     $stmt->execute(array(
                         ":r_id" => $_GET['r_id'],
@@ -69,8 +69,9 @@ echo        "<div class='divTableRow'>";
     
 echo                "<div class='divTableCell'>".$day."</div>";
                     $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
+		    foreach ($timeslots as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
 echo                "<div class='divTableCell'>";
-                    foreach ($timeslots as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
+                         if ($value == '') {
 echo                     "<form action='../functions/book_timeslot.php' method='POST'>";
 echo                         "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
 echo                         "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
@@ -83,8 +84,9 @@ echo                     "</form>";
 echo                         $value;
                          }
 echo                "</div>";
-                    }
+		    }
 echo           "</div>";
+               }
 echo"     </div>";
            }
 ?>
