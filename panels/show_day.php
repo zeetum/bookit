@@ -1,5 +1,6 @@
 <?PHP
 include_once('../functions/config.php');
+//localhost/bookit/panels/show_day.php?catagory=timeslots&date=07-29-2018
 
 // Verify and sanatise input
 if (!isset($_GET['catagory']))
@@ -10,7 +11,6 @@ if (isset($_GET['date']))
 	$day = $_GET['date'];
 else
 	$day = date("Y-m-d");
-$day = "08-05-2018";
 // TODO: submit date in the correct format
 
 // Prepare and execute the query
@@ -45,10 +45,10 @@ echo	    "<div class='divTableRow'>";
                $name = $stmt->fetch(PDO::FETCH_ASSOC)['name'];
 	       
 	       // Select buttons for each week for each resource
-echo           "<form action='../panels/show_week.php' method='POST'>";
+echo           "<form action='../panels/show_week.php' method='GET'>";
 echo               "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
-echo               "<input type='hidden' name='catagory' value='".$timeslot['catagory']."'>";
-echo               "<input type='hidden' name='date' value='".date('Y-m-d', strtotime('-'.date('w').' days'))."'>";
+echo               "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo               "<input type='hidden' name='date' value='".$day."'>";
 echo               "<input type='submit' value='".$name."'>";
 echo           "</form>";
 
@@ -59,7 +59,7 @@ echo           "<div class='divTableCell'>";
                    if ($value == '') {
 echo               "<form action='../functions/book_timeslot.php' method='POST'>";
 echo                   "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
-echo                   "<input type='hidden' name='r_id' value='".$timeslot['catagory']."'>";
+echo                   "<input type='hidden' name='r_id' value='".$_GET['catagory']."'>";
 echo                   "<input type='hidden' name='column' value='".$key."'>";
 echo                   "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                   "<input type='hidden' name='date' value='".$day."'>";
