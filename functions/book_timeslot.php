@@ -11,11 +11,11 @@
 // WARNING: This script stomps on the t_id!
 include('config.php');
 
-if (isset($_POST['catagory']) && isset($_POST['column']) && isset($_POST['r_id']) && isset($_POST['username'])) {
+if (isset($_POST['catagory']) && isset($_POST['column']) && isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['date'])) {
     
     // sanitising the input
-    str_replace(";","",$_POST['t_id']);
-    str_replace(",","",$_POST['t_id']);
+    str_replace(";","",$_POST['column']);
+    str_replace(",","",$_POST['column']);
     str_replace(";","",$_POST['catagory']);
     str_replace(",","",$_POST['catagory']);
 
