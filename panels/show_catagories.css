@@ -16,9 +16,10 @@
     background-color: #ccc;
 }
 
-.accordion_panel{
+.accordion_resource{
     display: none;
 }
+
 /* Style the accordion panel. Note: hidden by default */
 .panel {
     padding: 0 18px;

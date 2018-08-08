@@ -34,15 +34,16 @@ foreach ($catagories as $catagory) if ($catagory['Tables_in_bookit'] != 'resourc
 </head>
 <body>
     <div class="panel-group" id="accordion">
-<?PHP
+<?PHP   // TODO: add buttons to accordion
         foreach ($resources as $catagory => $r_ids) {
-
-echo        "<button onclick='button_toggle(\"".$catagory."_panel"."\")'>".$catagory."</button>";
+echo    "<div class='accordion_catagory'>";
+echo        "<button onclick='accordion_toggle(\"".$catagory."_panel"."\")'>".$catagory."</button>";
             foreach ($r_ids as $r_id) {
-echo           "<div class='".$catagory."_panel accordion_panel'>";
+echo           "<div class='".$catagory."_panel accordion_resource'>";
 echo               "<p>".$r_id."</p>";
 echo           "</div>";
             }
+echo    "<div>";
         }
 ?>
     </div>

@@ -1,4 +1,4 @@
-function button_toggle(class_name) {
+function accordion_toggle(class_name) {
     var panels = document.getElementsByClassName(class_name);
 
     for (var i = 0; i < panels.length; i++) {
