@@ -16,6 +16,9 @@
     background-color: #ccc;
 }
 
+.accordion_panel{
+    display: none;
+}
 /* Style the accordion panel. Note: hidden by default */
 .panel {
     padding: 0 18px;
