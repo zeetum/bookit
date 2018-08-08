@@ -15,7 +15,7 @@
     <?PHP
 	session_start();
         if (isset($_SESSION['username'])) {
-            header("Location: panels/show_today.php",true);
+            header("Location: panels/show_catagories.php",true);
         } else {
             echo "<a href='panels/login.php'>Please Login</a>";
         }
