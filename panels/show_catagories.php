@@ -23,9 +23,9 @@ foreach ($catagories as $catagory) if ($catagory['Tables_in_bookit'] != 'resourc
         array_push($resources[$catagory['Tables_in_bookit']],$r_id['r_id']);
     }
 }
-
 ?>
 
+<!-- Print $resource array into a selection accordion -->
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
