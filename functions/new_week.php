@@ -27,11 +27,11 @@ function get_week_dates($date, $format = 'Y-m-d') {
 
 
 if (isset($_GET['date'])) {
-    $day = date('w');
-    $week = date('Y-m-d', strtotime('-'.$day.' days'));
+    $week = date('Y-m-d', strtotime($_GET['date']));
 } else {
     $week = date('Y-m-d',strtotime('next monday'));
 }
+echo $week;
 
 // get the days of next week
 $days = get_week_dates($week);

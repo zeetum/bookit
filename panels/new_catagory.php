@@ -28,7 +28,11 @@ foreach ($columns as $column) {
 }
 
 $query_string .= " PRIMARY KEY(date, r_id) )";
+echo $query_string;
 
 $stmt = $conn->prepare($query_string);
 $stmt->execute();
+
+include_once("../functions/new_week.php?date=".date('Y-m-d'));
+
 ?>

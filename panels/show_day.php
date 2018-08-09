@@ -18,7 +18,6 @@ $stmt->execute(array(
     ":date" => $day,
 ));
 $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
-print_r($timeslots);
 
 // Display the results
 echo "<style>";
