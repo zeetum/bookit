@@ -1,10 +1,6 @@
 <?PHP
 /*
     Creates a new timeslots week for each resource, where $_POST['date'] = the new week primary key
-    The correct format should be
-        $day = date('w');
-        $week = date('m-d-Y', strtotime('-'.$day.' days'));
-        $next_week = $date = strtotime($day." +1 week");
 */
 include('config.php');
 
@@ -31,7 +27,6 @@ if (isset($_GET['date'])) {
 } else {
     $week = date('Y-m-d',strtotime('next monday'));
 }
-echo $week;
 
 // get the days of next week
 $days = get_week_dates($week);

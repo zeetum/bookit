@@ -22,6 +22,7 @@ $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Display the results
 echo "<style>";
 include("show_week.css");
+include("show_day.css");
 echo "</style>";
 ?>
     <div class="divTable">
@@ -44,11 +45,11 @@ echo	    "<div class='divTableRow'>";
                $name = $stmt->fetch(PDO::FETCH_ASSOC)['name'];
 	       
 	       // Select buttons for each week for each resource
-echo           "<form action='../panels/show_week.php' method='GET'>";
+echo           "<form class='catagory_form' action='../panels/show_week.php' method='GET'>";
 echo               "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
 echo               "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
 echo               "<input type='hidden' name='date' value='".$day."'>";
-echo               "<input type='submit' value='".$name."'>";
+echo               "<input class='catagory_button' type='submit' value='".$name."'>";
 echo           "</form>";
 
 	       // Submit or display timeslot for each time column

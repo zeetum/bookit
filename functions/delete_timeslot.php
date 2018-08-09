@@ -11,18 +11,18 @@
 // WARNING: This script stomps on the t_id!
 include_once('config.php');
 
-if (isset($_POST['r_id']) && isset($_POST['t_id'])) {
+if (isset($_POST['r_id']) && isset($_POST['column'])) {
     
     // sanitising the input
-    str_replace(";","",$_POST['t_id']);
-    str_replace(",","",$_POST['t_id']);
+    str_replace(";","",$_POST['column']);
+    str_replace(",","",$_POST['column']);
 
-    $string = "UPDATE timeslots SET ".$_POST['t_id']." = NULL 
-               WHERE week = :week AND r_id = :r_id";
+    $string = "UPDATE timeslots SET ".$_POST['column']." = NULL 
+               WHERE date = :date AND r_id = :r_id";
     $stmt = $conn->prepare($string);
     $stmt->execute();
     $stmt->execute(array(
-        ":week" => $_POST['date'],
+        ":date" => $_POST['date'],
         ":r_id" => $_POST['r_id']
     ));
 }
