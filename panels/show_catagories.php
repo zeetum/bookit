@@ -37,7 +37,7 @@ foreach ($catagories as $catagory) if ($catagory['Tables_in_bookit'] != 'resourc
 <?PHP   // TODO: add buttons to accordion
         foreach ($resources as $catagory => $r_ids) {
 echo    "<div class='accordion_catagory'>";
-echo        "<button onclick='accordion_toggle(\"".$catagory."_panel"."\")'>".$catagory."</button>";
+echo        "<button class='accordion_button' onclick='accordion_toggle(\"".$catagory."_panel"."\")'>".$catagory."</button>";
             foreach ($r_ids as $r_id) {
 echo           "<div class='".$catagory."_panel accordion_resource'>";
 echo               "<p>".$r_id."</p>";

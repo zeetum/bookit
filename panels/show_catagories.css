@@ -28,3 +28,6 @@
     overflow: hidden;
 }
 
+.accordion_button {
+    width: 250px;
+}
