@@ -25,33 +25,36 @@ function get_week_dates($date, $format = 'Y-m-d') {
 }
 
 
-$day = date('w');
-$week = date('Y-m-d', strtotime('-'.$day.' days'));
-$_POST['date'] = $week;
 
 if (isset($_POST['date'])) {
-    // get the days of next week
-    $days = get_week_dates(date('Y-m-d',strtotime('next monday')));
+    $day = date('w');
+    $week = date('Y-m-d', strtotime('-'.$day.' days'));
+} else {
+    $week = date('Y-m-d',strtotime('next monday'));
+}
 
-    // get current resources
-    $stmt = $conn->prepare("SHOW TABLES");
+// get the days of next week
+$days = get_week_dates($week);
+
+// get current resources
+$stmt = $conn->prepare("SHOW TABLES");
+$stmt->execute();
+$catagories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+foreach ($catagories as $catagory) if ($catagory['Tables_in_bookit'] != 'resources') {
+
+    // get resources attached to each catagory
+    $stmt = $conn->prepare("SELECT DISTINCT r_id FROM ".$catagory['Tables_in_bookit']);
     $stmt->execute();
-    $catagories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($catagories as $catagory) if ($catagory['Tables_in_bookit'] != 'resources') {
-
-        // get resources attached to each catagory
-        $stmt = $conn->prepare("SELECT DISTINCT r_id FROM ".$catagory['Tables_in_bookit']);
-        $stmt->execute();
-        $r_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	
-	foreach ($r_ids as $r_id) {
-            foreach ($days as $day) {
-                $stmt = $conn->prepare("INSERT INTO ".$catagory['Tables_in_bookit']." (date,r_id) VALUES(:date, :r_id)");
-                $stmt->execute(array(
-                    ":date" => $day,
-                    ":r_id" => $r_id['r_id']
-                ));
-	    }
-	}
+    $r_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach ($r_ids as $r_id) {
+        foreach ($days as $day) {
+            $stmt = $conn->prepare("INSERT INTO ".$catagory['Tables_in_bookit']." (date,r_id) VALUES(:date, :r_id)");
+            $stmt->execute(array(
+                ":date" => $day,
+                ":r_id" => $r_id['r_id']
+            ));
+        }
     }
 }
+

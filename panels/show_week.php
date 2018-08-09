@@ -66,9 +66,9 @@ echo            "<div class='divTableRow'>";
                         ":r_id" => $_GET['r_id'],
                         ":date" => $date
                     ));
+                    $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
     
 echo                "<div class='divTableCell'>".$day."</div>";
-                    $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
 		    foreach ($timeslots as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
 echo                "<div class='divTableCell'>";
                          if ($value == '') {
