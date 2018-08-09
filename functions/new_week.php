@@ -26,7 +26,7 @@ function get_week_dates($date, $format = 'Y-m-d') {
 
 
 
-if (isset($_POST['date'])) {
+if (isset($_GET['date'])) {
     $day = date('w');
     $week = date('Y-m-d', strtotime('-'.$day.' days'));
 } else {
