@@ -48,7 +48,7 @@ echo        "<button class='accordion_button' onclick='accordion_toggle(\"".$cat
 
             // Day view of each catagory
 echo        "<div class='".$catagory."_panel accordion_resource'>";
-echo        "<form class='accordion_form' action='show_day.php' method='GET'>";
+echo        "<form class='accordion_form' action='admin_day.php' method='GET'>";
 echo            "<input type='hidden' name='catagory' value='".$catagory."'>";
 echo            "<input type='hidden' name='date' value='".$day."'>";
 echo            "<input class='accordion_button' type='submit' value='Day View'>";
