@@ -4,7 +4,8 @@ include_once('../functions/config.php');
     takes a date and resource to print usernames which have been booked 
 */
 
-
+// Returns an array in the form:
+// date['Day'] => 'date'
 function get_week_dates($date, $format = 'Y-m-d') {
     $names = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
     $dates = array();
