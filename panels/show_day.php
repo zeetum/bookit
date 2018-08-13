@@ -5,8 +5,8 @@ include_once('../functions/config.php');
 // Verify and sanatise input
 if (!isset($_GET['catagory']))
 	exit();
-str_replace(";","",$_POST['catagory']);
-str_replace(",","",$_POST['catagory']);
+str_replace(";","",$_GET['catagory']);
+str_replace(",","",$_GET['catagory']);
 if (isset($_GET['date']))
 	$day = $_GET['date'];
 else
