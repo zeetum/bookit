@@ -4,6 +4,8 @@
 */
 include_once('config.php');
 
+// Returns an array in the form:
+// date['Day'] => 'date'
 function get_week_dates($date, $format = 'Y-m-d') {
     $names = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
     $dates = array();
