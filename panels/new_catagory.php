@@ -1,8 +1,8 @@
 <?PHP
 // Enter new details for form
 echo "<form action='new_catagory.php' method=POST>";
-    echo "<input type=text name='catagory'></input>";
-    echo "<input type=text name='columns'></input>";
+    echo "<input type=text name='catagory' placeholder='Name of catagory'></input>";
+    echo "<input type=text name='columns' placeholder='javascript csv string'></input>";
     echo "<input type=submit>Submit</input>";
 echo "</form>";
 
@@ -28,11 +28,9 @@ foreach ($columns as $column) {
 }
 
 $query_string .= " PRIMARY KEY(date, r_id) )";
-echo $query_string;
 
 $stmt = $conn->prepare($query_string);
 $stmt->execute();
 
-include_once("../functions/new_week.php?date=".date('Y-m-d'));
 
 ?>

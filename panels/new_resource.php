@@ -28,12 +28,17 @@ if (isset($_POST['name']) && isset($_POST['description'])) {
         str_replace(";","",$_POST['catagory']);
         str_replace(",","",$_POST['catagory']);
 
+        str_replace("'","\'",$_POST['catagory']);
+
         $stmt = $conn->prepare("INSERT INTO ".$_POST['catagory']." (r_id,date) VALUES(:r_id, :date)");
         $stmt->execute(array(
             ":r_id" => $r_id,
             ":date" => date("Y-m-d")
         ));
     }
+
+    // Need a better solution
+    header("Location: ../functions/new_week.php?date=".date('Y-m-d'));
 }
 
 

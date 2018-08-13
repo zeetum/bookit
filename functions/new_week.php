@@ -2,13 +2,13 @@
 /*
     Creates a new timeslots week for each resource, where $_POST['date'] = the new week primary key
 */
-include('config.php');
+include_once('config.php');
 
 function get_week_dates($date, $format = 'Y-m-d') {
     $names = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
     $dates = array();
 
-    $day = date('w', strtotime($date)) - 1;
+    $day = date('w', strtotime($date)) - 2;
     $current = date($format, strtotime($date.' -'.$day.' days'));
     $last = date($format, strtotime($current.' +4 days'));
 
