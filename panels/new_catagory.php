@@ -2,10 +2,22 @@
 // Enter new details for form
 echo "<form action='new_catagory.php' method=POST>";
     echo "<input type=text name='catagory' placeholder='Name of catagory'></input>";
-    echo "<input type=text name='columns' placeholder='javascript csv string'></input>";
+    echo "<input type=hidden name='columns' placeholder='javascript csv string'></input>";
+    echo "<button onclick=new_column() type='button'>Add Timeslot</button>";
     echo "<input type=submit>Submit</input>";
 echo "</form>";
+?>
 
+<script>
+var new_column = function(){
+  var input = document.createElement('input');
+  input.type = 'text';
+  input.className = "catagory_columns";
+  document.body.appendChild(input);
+};
+</script>
+
+<?PHP
 include("../functions/config.php");
 
 if (!isset($_POST['columns'])) {
