@@ -14,7 +14,7 @@
     <body>
         <form action="../functions/ldap_auth.php" method='POST'>
             <input type="text" name=username>Username</input>
-            <input type="text" name=password>Password</input>
+            <input type="password" name=password>Password</input>
             <input type="submit">Login</input>
         </form>
     </body>
