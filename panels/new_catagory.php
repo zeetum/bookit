@@ -1,4 +1,6 @@
 <?PHP
+include("../functions/config.php");
+
 // Enter new details for form
 echo "<form onsubmit='combine_columns()' action='new_catagory.php' method=POST>";
     echo "<input type=text name='catagory' placeholder='Name of catagory'></input>";
@@ -31,7 +33,6 @@ function combine_columns() {
 </script>
 
 <?PHP
-include("../functions/config.php");
 
 if (!isset($_POST['catagory']) || !isset($_POST['columns'])) {
     exit();
