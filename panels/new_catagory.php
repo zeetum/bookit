@@ -33,12 +33,15 @@ function combine_columns() {
 <?PHP
 include("../functions/config.php");
 
-if (!isset($_POST['columns'])) {
+if (!isset($_POST['catagory']) || !isset($_POST['columns'])) {
     exit();
 }
 
 // sanitising the input
-str_replace(";","",$_POST['catagory']);
+$_POST['catagory'] = str_replace(' ','_',$_POST['catagory']);
+$_POST['catagory'] = str_replace(";","",$_POST['catagory']);
+$_POST['columns'] = str_replace(" ","_",$_POST['columns']);
+$_POST['columns'] = str_replace(";","",$_POST['columns']);
 
 $query_string = "CREATE TABLE ".$_POST['catagory']." ( ";
 $query_string .= " r_id INT NOT NULL, ";

@@ -10,7 +10,7 @@ function get_week_dates($date, $format = 'Y-m-d') {
     $names = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
     $dates = array();
 
-    $day = date('w', strtotime($date)) - 2;
+    $day = date('w', strtotime($date)) - 1;
     $current = date($format, strtotime($date.' -'.$day.' days'));
     $last = date($format, strtotime($current.' +4 days'));
 
