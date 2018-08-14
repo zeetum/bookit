@@ -25,10 +25,8 @@ if (isset($_POST['name']) && isset($_POST['description'])) {
     $r_id = $conn->lastInsertId();
 
     if (isset($_POST['catagory'])) {
-        str_replace(";","",$_POST['catagory']);
-        str_replace(",","",$_POST['catagory']);
-
-        str_replace("'","\'",$_POST['catagory']);
+        $_POST['catagory'] = str_replace(";","",$_POST['catagory']);
+        $_POST['catagory'] = str_replace(",","",$_POST['catagory']);
 
         $stmt = $conn->prepare("INSERT INTO ".$_POST['catagory']." (r_id,date) VALUES(:r_id, :date)");
         $stmt->execute(array(

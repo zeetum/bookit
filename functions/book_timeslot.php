@@ -14,10 +14,10 @@ include('config.php');
 if (isset($_POST['catagory']) && isset($_POST['column']) && isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['date'])) {
     
     // sanitising the input
-    str_replace(";","",$_POST['column']);
-    str_replace(",","",$_POST['column']);
-    str_replace(";","",$_POST['catagory']);
-    str_replace(",","",$_POST['catagory']);
+    $_POST['column'] = str_replace(";","",$_POST['column']);
+    $_POST['column'] = str_replace(",","",$_POST['column']);
+    $_POST['catagory'] = str_replace(";","",$_POST['catagory']);
+    $_POST['catagory'] = str_replace(",","",$_POST['catagory']);
 
     $string = "UPDATE ".$_POST['catagory']." SET ".$_POST['column']." = :username
                WHERE date = :date AND r_id = :r_id";
