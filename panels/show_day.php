@@ -65,6 +65,15 @@ echo                   "<input type='hidden' name='username' value='".$_SESSION[
 echo                   "<input type='hidden' name='date' value='".$day."'>";
 echo                   "<input type='submit' value='Book It!'>";
 echo               "</form>";
+                   } else if ($value == $_SESSION['username']) {
+echo                   $value;
+echo                    "<form action='../functions/delete_timeslot.php' method='POST'>";
+echo                        "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
+echo                        "<input type='hidden' name='date' value='".$day."'>";
+echo                        "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo                        "<input type='hidden' name='column' value='".$key."'>";
+echo                        "<input type='submit' value='Delete'>";
+echo                    "</form>";
                    } else {
 echo                   $value;
                    }

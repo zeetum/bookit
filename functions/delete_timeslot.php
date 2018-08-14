@@ -12,11 +12,6 @@
 include_once('config.php');
 
 if (isset($_POST['r_id']) && isset($_POST['date']) && isset($_POST['catagory']) && isset($_POST['column'])) {
-echo "<p>".$_POST['r_id'];
-echo "<p>".$_POST['date'];
-echo "<p>".$_POST['catagory'];
-echo "<p>".$_POST['column'];
-
     // sanitising the input
     str_replace(";","",$_POST['column']);
     str_replace(",","",$_POST['column']);
