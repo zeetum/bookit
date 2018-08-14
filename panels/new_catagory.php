@@ -45,7 +45,6 @@ $query_string .= " r_id INT NOT NULL, ";
 $query_string .= " date VARCHAR(100) NOT NULL, ";
 
 $columns = explode(",",$_POST['columns']);
-print_r($columns);
 foreach ($columns as $column) {
     // sanitising the input
     str_replace(";","",$column);
