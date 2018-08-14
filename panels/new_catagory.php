@@ -1,20 +1,33 @@
 <?PHP
 // Enter new details for form
-echo "<form action='new_catagory.php' method=POST>";
+echo "<form onsubmit='combine_columns()' action='new_catagory.php' method=POST>";
     echo "<input type=text name='catagory' placeholder='Name of catagory'></input>";
-    echo "<input type=hidden name='columns' placeholder='javascript csv string'></input>";
+    echo "<input id='columns_input' type=hidden name='columns'></input>";
     echo "<button onclick=new_column() type='button'>Add Timeslot</button>";
     echo "<input type=submit>Submit</input>";
 echo "</form>";
 ?>
 
 <script>
-var new_column = function(){
+function new_column (){
   var input = document.createElement('input');
   input.type = 'text';
   input.className = "catagory_columns";
   document.body.appendChild(input);
 };
+
+function combine_columns() {
+    columns = document.getElementsByClassName("catagory_columns");
+
+    var columns_string = "";
+    for (var i = 0; i < columns.length; i++) {
+        columns_string += columns[i].value + ",";
+    }
+    columns_string = columns_string.slice(0, -1);
+    document.getElementById("columns_input").value = columns_string;
+
+    return true;
+}
 </script>
 
 <?PHP
@@ -32,6 +45,7 @@ $query_string .= " r_id INT NOT NULL, ";
 $query_string .= " date VARCHAR(100) NOT NULL, ";
 
 $columns = explode(",",$_POST['columns']);
+print_r($columns);
 foreach ($columns as $column) {
     // sanitising the input
     str_replace(";","",$column);
