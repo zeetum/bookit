@@ -6,8 +6,8 @@ include_once('../functions/config.php');
 if (!isset($_GET['catagory']))
 	exit();
 
-str_replace(";","",$_GET['catagory']);
-str_replace(",","",$_GET['catagory']);
+$_GET['catagory'] = str_replace(";","",$_GET['catagory']);
+$_GET['catagory'] = str_replace(",","",$_GET['catagory']);
 if (isset($_GET['date']))
 	$date = $_GET['date'];
 else
