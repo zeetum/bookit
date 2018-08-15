@@ -7,8 +7,8 @@ if (!isset($_GET['catagory']))
 	exit();
 
 // Sanatise data
-str_replace(";","",$_GET['catagory']);
-str_replace(",","",$_GET['catagory']);
+$_GET['catagory'] = str_replace(";","",$_GET['catagory']);
+$_GET['catagory'] = str_replace(",","",$_GET['catagory']);
 if (isset($_GET['date']))
 	$date = $_GET['date'];
 else
@@ -32,6 +32,17 @@ $stmt->execute(array(
     ":date" => $date,
 ));
 $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// If there are no timeslots, generate a new week and re-query
+if (count($timeslots) == 0) {
+    exec("php ../functions/new_week.php ".$_GET['date']);
+
+    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE date = :date");
+    $stmt->execute(array(
+        ":date" => $date,
+    ));
+    $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 // Display the results
 echo "<style>";

@@ -4,6 +4,20 @@ include_once('../functions/config.php');
     prints the week for a date of a resource in a catagory 
 */
 
+// Previous day and Next day buttons
+echo        "<form action='show_week.php' method='GET'>";
+echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
+echo            "<input type='submit' value='Last Week'>";
+echo        "</form>";
+echo        "<form action='show_week.php' method='GET'>";
+echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
+echo            "<input type='submit' value='Next Week'>";
+echo        "</form>";
+
 // Returns an array in the form:
 // date['Day'] => 'date'
 function get_week_dates($date, $format = 'Y-m-d') {
@@ -23,8 +37,8 @@ function get_week_dates($date, $format = 'Y-m-d') {
 }
 
 if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
-    str_replace(";","",$_GET['catagory']);
-    str_replace(",","",$_GET['catagory']);
+    $_GET['catagory'] = str_replace(";","",$_GET['catagory']);
+    $_GET['catagory'] = str_replace(",","",$_GET['catagory']);
 
     $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND date = :date");
     $stmt->execute(array(
@@ -33,6 +47,19 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
     ));
 
     $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // If there are no timeslots, generate a new week and re-query
+    if ($timeslots == NULL) {
+        exec("php ../functions/new_week.php ".$_GET['date']);
+
+        $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND date = :date");
+        $stmt->execute(array(
+            ":r_id" => $_GET['r_id'],
+            ":date" => $_GET['date']
+        ));
+ 
+        $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     echo "<style>";
     include("show_week.css");

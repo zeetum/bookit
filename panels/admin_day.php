@@ -34,6 +34,17 @@ $stmt->execute(array(
 ));
 $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// If there are no timeslots, generate a new week and re-query
+if (count($timeslots) == 0) {
+    exec("php ../functions/new_week.php ".$_GET['date']);
+
+    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE date = :date");
+    $stmt->execute(array(
+        ":date" => $date,
+    ));
+    $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // Display the results
 echo "<style>";
 include("show_week.css");

@@ -24,6 +24,10 @@ function get_week_dates($date, $format = 'Y-m-d') {
 
 
 
+if (isset($argv[1])) {
+   $_GET['date'] = $argv[1];
+}
+
 if (isset($_GET['date'])) {
     $week = date('Y-m-d', strtotime($_GET['date']));
 } else {
