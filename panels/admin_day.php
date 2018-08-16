@@ -16,21 +16,21 @@ else
 // previous day and next day buttons
 $yesterday = $date;
 do {
-    $yesterday = date('y-m-d', strtotime($yesterday.' -1 days'));
+    $yesterday = date('Y-m-d', strtotime($yesterday.' -1 days'));
     $day_of_week = date('w', strtotime($yesterday));
 } while ($day_of_week == 0 || $day_of_week == 6);
 $tomorrow = $date;
 do {
-    $tomorrow = date('y-m-d', strtotime($tomorrow.' +1 days'));
+    $tomorrow = date('Y-m-d', strtotime($tomorrow.' +1 days'));
     $day_of_week = date('w', strtotime($tomorrow));
 } while ($day_of_week == 0 || $day_of_week == 6);
 echo        "<form action='admin_day.php' method='get'>";
-echo            "<input type='hidden' name='catagory' value='".$_get['catagory']."'>";
+echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
 echo            "<input type='hidden' name='date' value='".$yesterday."'>";
 echo            "<input type='submit' value='yesterday'>";
 echo        "</form>";
 echo        "<form action='admin_day.php' method='get'>";
-echo            "<input type='hidden' name='catagory' value='".$_get['catagory']."'>";
+echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
 echo            "<input type='hidden' name='date' value='".$tomorrow."'>";
 echo            "<input type='submit' value='tomorrow'>";
 echo        "</form>";
