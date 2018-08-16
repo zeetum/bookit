@@ -4,6 +4,20 @@ include_once('../functions/config.php');
     takes a date and resource to print usernames which have been booked 
 */
 
+// Previous day and Next day buttons
+echo        "<form action='admin_week.php' method='GET'>";
+echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
+echo            "<input type='submit' value='Last Week'>";
+echo        "</form>";
+echo        "<form action='admin_week.php' method='GET'>";
+echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
+echo            "<input type='submit' value='Next Week'>";
+echo        "</form>";
+
 // Returns an array in the form:
 // date['Day'] => 'date'
 function get_week_dates($date, $format = 'Y-m-d') {
