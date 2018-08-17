@@ -1,13 +1,14 @@
 <?PHP
-include_once('../functions/config.php');
-//localhost/bookit/panels/show_day.php?catagory=timeslots&date=07-29-2018
+        include_once('../functions/boiler_header.html');
+        include_once('../functions/config.php');
+//localhost/bookit/panels/show_day.php?category=timeslots&date=07-29-2018
 
 // Verify and sanatise input
-if (!isset($_GET['catagory']))
+if (!isset($_GET['category']))
 	exit();
 
-$_GET['catagory'] = str_replace(";","",$_GET['catagory']);
-$_GET['catagory'] = str_replace(",","",$_GET['catagory']);
+$_GET['category'] = str_replace(";","",$_GET['category']);
+$_GET['category'] = str_replace(",","",$_GET['category']);
 if (isset($_GET['date']))
 	$date = $_GET['date'];
 else
@@ -25,18 +26,18 @@ do {
     $day_of_week = date('w', strtotime($tomorrow));
 } while ($day_of_week == 0 || $day_of_week == 6);
 echo        "<form action='admin_day.php' method='get'>";
-echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo            "<input type='hidden' name='date' value='".$yesterday."'>";
 echo            "<input type='submit' value='yesterday'>";
 echo        "</form>";
 echo        "<form action='admin_day.php' method='get'>";
-echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo            "<input type='hidden' name='date' value='".$tomorrow."'>";
 echo            "<input type='submit' value='tomorrow'>";
 echo        "</form>";
 
 // Prepare and execute the query
-$stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE date = :date");
+$stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE date = :date");
 $stmt->execute(array(
     ":date" => $date,
 ));
@@ -46,7 +47,7 @@ $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (count($timeslots) == 0) {
     exec("php ../functions/new_week.php ".$_GET['date']);
 
-    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE date = :date");
+    $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE date = :date");
     $stmt->execute(array(
         ":date" => $date,
     ));
@@ -54,10 +55,6 @@ if (count($timeslots) == 0) {
 }
 
 // Display the results
-echo "<style>";
-include("show_week.css");
-include("show_day.css");
-echo "</style>";
 ?>
     <div class="divTable">
         <div class="divTableBody">
@@ -79,11 +76,11 @@ echo	    "<div class='divTableRow'>";
                $name = $stmt->fetch(PDO::FETCH_ASSOC)['name'];
 	       
 	       // Select buttons for each week for each resource
-echo           "<form class='catagory_form' action='../panels/admin_week.php' method='GET'>";
+echo           "<form class='category_form' action='../panels/admin_week.php' method='GET'>";
 echo               "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
-echo               "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo               "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo               "<input type='hidden' name='date' value='".$date."'>";
-echo               "<input class='catagory_button' type='submit' value='".$name."'>";
+echo               "<input class='category_button' type='submit' value='".$name."'>";
 echo           "</form>";
 
 	       // Submit or display timeslot for each time column
@@ -94,7 +91,7 @@ echo           "<div class='divTableCell'>";
 echo                    "<form action='../functions/delete_timeslot.php' method='POST'>";
 echo                        "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
 echo                        "<input type='hidden' name='date' value='".$date."'>";
-echo                        "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo                        "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                        "<input type='hidden' name='column' value='".$key."'>";
 echo                        "<input type='submit' value='Delete'>";
 echo                    "</form>";
@@ -105,4 +102,4 @@ echo       "</div>";
            }?>
         </div>
     </div>
-
+<?php include_once('../functions/boiler_footer.html'); ?>

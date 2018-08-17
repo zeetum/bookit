@@ -1,9 +1,9 @@
-<?PHP
-include("../functions/config.php");
+<?PHP        include_once('../functions/boiler_header.html');
+        include_once('../functions/config.php');
 
 // Enter new details for form
-echo "<form onsubmit='combine_columns()' action='new_catagory.php' method=POST>";
-    echo "<input type=text name='catagory' placeholder='Name of catagory'></input>";
+echo "<form onsubmit='combine_columns()' action='new_category.php' method=POST>";
+    echo "<input type=text name='category' placeholder='Name of category'></input>";
     echo "<input id='columns_input' type=hidden name='columns'></input>";
     echo "<button onclick=new_column() type='button'>Add Timeslot</button>";
     echo "<input type=submit>Submit</input>";
@@ -14,12 +14,12 @@ echo "</form>";
 function new_column (){
   var input = document.createElement('input');
   input.type = 'text';
-  input.className = "catagory_columns";
+  input.className = "category_columns";
   document.body.appendChild(input);
 };
 
 function combine_columns() {
-    columns = document.getElementsByClassName("catagory_columns");
+    columns = document.getElementsByClassName("category_columns");
 
     var columns_string = "";
     for (var i = 0; i < columns.length; i++) {
@@ -34,17 +34,17 @@ function combine_columns() {
 
 <?PHP
 
-if (!isset($_POST['catagory']) || !isset($_POST['columns'])) {
+if (!isset($_POST['category']) || !isset($_POST['columns'])) {
     exit();
 }
 
 // sanitising the input
-$_POST['catagory'] = str_replace(' ','_',$_POST['catagory']);
-$_POST['catagory'] = str_replace(";","",$_POST['catagory']);
+$_POST['category'] = str_replace(' ','_',$_POST['category']);
+$_POST['category'] = str_replace(";","",$_POST['category']);
 $_POST['columns'] = str_replace(" ","_",$_POST['columns']);
 $_POST['columns'] = str_replace(";","",$_POST['columns']);
 
-$query_string = "CREATE TABLE ".$_POST['catagory']." ( ";
+$query_string = "CREATE TABLE ".$_POST['category']." ( ";
 $query_string .= " r_id INT NOT NULL, ";
 $query_string .= " date VARCHAR(100) NOT NULL, ";
 

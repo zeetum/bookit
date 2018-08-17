@@ -41,16 +41,16 @@ $days = get_week_dates($week);
 $stmt = $conn->prepare("SHOW TABLES");
 $stmt->execute();
 $catagories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-foreach ($catagories as $catagory) if ($catagory['Tables_in_bookit'] != 'resources') {
+foreach ($catagories as $category) if ($category['Tables_in_bookit'] != 'resources') {
 
-    // get resources attached to each catagory
-    $stmt = $conn->prepare("SELECT DISTINCT r_id FROM ".$catagory['Tables_in_bookit']);
+    // get resources attached to each category
+    $stmt = $conn->prepare("SELECT DISTINCT r_id FROM ".$category['Tables_in_bookit']);
     $stmt->execute();
     $r_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     foreach ($r_ids as $r_id) {
         foreach ($days as $day) {
-            $stmt = $conn->prepare("INSERT INTO ".$catagory['Tables_in_bookit']." (date,r_id) VALUES(:date, :r_id)");
+            $stmt = $conn->prepare("INSERT INTO ".$category['Tables_in_bookit']." (date,r_id) VALUES(:date, :r_id)");
             $stmt->execute(array(
                 ":date" => $day,
                 ":r_id" => $r_id['r_id']

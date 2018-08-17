@@ -1,3 +1,17 @@
+.category_button {
+    width: 200px;
+    float: right;
+
+    margin: 0;
+    padding: 0;
+    
+}
+
+.category_form {
+    width: 250px;
+    margin: 0;
+    padding: 0;
+}
 .accordion_button {
     width: 250px;
 

@@ -1,17 +1,18 @@
 <?PHP
 // Enter new details for form
-include("../functions/config.php");
+        include_once('../functions/boiler_header.html');
+        include_once('../functions/config.php');
 
 // Get an array of resources in catagories from the database in the form:
-//     $resources['catagory'] = array('resource1','resource2','resource3','etc...')
+//     $resources['category'] = array('resource1','resource2','resource3','etc...')
 function get_catagories($conn) {
     $stmt = $conn->prepare("SHOW TABLES");
     $stmt->execute();
     $catagories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $resources = array();
-    foreach ($catagories as $catagory) if ($catagory['Tables_in_bookit'] != 'resources') {
-        array_push($resources, $catagory['Tables_in_bookit']);
+    foreach ($catagories as $category) if ($category['Tables_in_bookit'] != 'resources') {
+        array_push($resources, $category['Tables_in_bookit']);
     }
     return $resources;
 }
@@ -24,11 +25,11 @@ if (isset($_POST['name']) && isset($_POST['description'])) {
     ));
     $r_id = $conn->lastInsertId();
 
-    if (isset($_POST['catagory'])) {
-        $_POST['catagory'] = str_replace(";","",$_POST['catagory']);
-        $_POST['catagory'] = str_replace(",","",$_POST['catagory']);
+    if (isset($_POST['category'])) {
+        $_POST['category'] = str_replace(";","",$_POST['category']);
+        $_POST['category'] = str_replace(",","",$_POST['category']);
 
-        $stmt = $conn->prepare("INSERT INTO ".$_POST['catagory']." (r_id,date) VALUES(:r_id, :date)");
+        $stmt = $conn->prepare("INSERT INTO ".$_POST['category']." (r_id,date) VALUES(:r_id, :date)");
         $stmt->execute(array(
             ":r_id" => $r_id,
             ":date" => date("Y-m-d")
@@ -43,10 +44,10 @@ if (isset($_POST['name']) && isset($_POST['description'])) {
 echo "<form action='new_resource.php' method=POST>";
 echo     "<input type=text name='name' placeholder='Name of resource'></input>";
 echo     "<input type=text name='description' placeholder='Description of resource'></input>";
-echo     "<select name='catagory'>";
+echo     "<select name='category'>";
              $catagories = get_catagories($conn);
-             foreach ($catagories as $catagory) {
-                 echo "<option value='".$catagory."'>".$catagory."</option>";
+             foreach ($catagories as $category) {
+                 echo "<option value='".$category."'>".$category."</option>";
              }
 echo     "</select>";
 echo     "<input type=submit>Submit</input>";

@@ -11,15 +11,15 @@
 // WARNING: This script stomps on the t_id!
 include('config.php');
 
-if (isset($_POST['catagory']) && isset($_POST['column']) && isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['date'])) {
+if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']) && isset($_POST['username']) && isset($_POST['date'])) {
     
     // sanitising the input
     $_POST['column'] = str_replace(";","",$_POST['column']);
     $_POST['column'] = str_replace(",","",$_POST['column']);
-    $_POST['catagory'] = str_replace(";","",$_POST['catagory']);
-    $_POST['catagory'] = str_replace(",","",$_POST['catagory']);
+    $_POST['category'] = str_replace(";","",$_POST['category']);
+    $_POST['category'] = str_replace(",","",$_POST['category']);
 
-    $string = "UPDATE ".$_POST['catagory']." SET ".$_POST['column']." = :username
+    $string = "UPDATE ".$_POST['category']." SET ".$_POST['column']." = :username
                WHERE date = :date AND r_id = :r_id";
     $stmt = $conn->prepare($string);
     $stmt->execute();

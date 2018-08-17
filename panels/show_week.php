@@ -1,18 +1,19 @@
 <?PHP
-include_once('../functions/config.php');
+ include_once('../functions/boiler_header.html');
+        include_once('../functions/config.php');
 /*
-    prints the week for a date of a resource in a catagory 
+    prints the week for a date of a resource in a category 
 */
 
 // Previous day and Next day buttons
 echo        "<form action='show_week.php' method='GET'>";
-echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
 echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
 echo            "<input type='submit' value='Last Week'>";
 echo        "</form>";
 echo        "<form action='show_week.php' method='GET'>";
-echo            "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
 echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
 echo            "<input type='submit' value='Next Week'>";
@@ -36,11 +37,11 @@ function get_week_dates($date, $format = 'Y-m-d') {
     return $dates;
 }
 
-if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
-    $_GET['catagory'] = str_replace(";","",$_GET['catagory']);
-    $_GET['catagory'] = str_replace(",","",$_GET['catagory']);
+if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
+    $_GET['category'] = str_replace(";","",$_GET['category']);
+    $_GET['category'] = str_replace(",","",$_GET['category']);
 
-    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND date = :date");
+    $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
     $stmt->execute(array(
         ":r_id" => $_GET['r_id'],
         ":date" => $_GET['date']
@@ -52,7 +53,7 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
     if ($timeslots == NULL) {
         exec("php ../functions/new_week.php ".$_GET['date']);
 
-        $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND date = :date");
+        $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
         $stmt->execute(array(
             ":r_id" => $_GET['r_id'],
             ":date" => $_GET['date']
@@ -61,9 +62,6 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['catagory'])) {
         $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    echo "<style>";
-    include("show_week.css");
-    echo "</style>";
 
     $stmt = $conn->prepare("SELECT name FROM resources WHERE r_id = :r_id");
     $stmt->execute(array(
@@ -89,7 +87,7 @@ echo        "</div>";
                 $dates = get_week_dates($_GET['date']);
                 foreach ($dates as $day => $date) {
 echo            "<div class='divTableRow'>";
-                    $stmt = $conn->prepare("SELECT * FROM ".$_GET['catagory']." WHERE r_id = :r_id AND date = :date");
+                    $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
                     $stmt->execute(array(
                         ":r_id" => $_GET['r_id'],
                         ":date" => $date
@@ -102,7 +100,7 @@ echo                "<div class='divTableCell'>";
                          if ($value == '') {
 echo                     "<form action='../functions/book_timeslot.php' method='POST'>";
 echo                         "<input type='hidden' name='r_id' value='".$timeslots['r_id']."'>";
-echo                         "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                         "<input type='hidden' name='column' value='".$key."'>";
 echo                         "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                         "<input type='hidden' name='date' value='".$date."'>";
@@ -113,7 +111,7 @@ echo                     $value;
 echo                     "<form action='../functions/delete_timeslot.php' method='POST'>";
 echo                         "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
 echo                         "<input type='hidden' name='date' value='".$date."'>";
-echo                         "<input type='hidden' name='catagory' value='".$_GET['catagory']."'>";
+echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                         "<input type='hidden' name='column' value='".$key."'>";
 echo                         "<input type='submit' value='Delete'>";
 echo                     "</form>";
