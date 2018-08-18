@@ -116,8 +116,9 @@ echo                         "<input type='hidden' name='column' value='".$key."
 echo                         "<input type='submit' value='Cancel'>";
 echo                     "</form>";
                          } else {
-echo                         $value;
-                         }
+echo                     "<div class=timeslot_taken>";
+echo                         "<p>".$value."</p>";
+echo                     "</div>";
 echo                "</div>";
 		    }
 echo           "</div>";
