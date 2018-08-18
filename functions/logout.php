@@ -2,6 +2,6 @@
 session_start();
 
 $_SESSION['username'] = NULL;
-header('Location: ../');
+header("Location: /bookit");
 
 ?>

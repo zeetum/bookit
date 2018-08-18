@@ -1,6 +1,6 @@
 <?PHP
-        include_once('../functions/boiler_header.html');
-        include_once('../functions/config.php');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
 if (isset($_GET['date']))
 	$day = $_GET['date'];
@@ -74,6 +74,6 @@ echo    "<div>";
 ?>
     </div>
   <script src="show_catagories.js" type="text/javascript"></script>
-<?php include_once('../functions/boiler_footer.html'); ?>
 
+<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html'); ?>
 

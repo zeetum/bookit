@@ -1,11 +1,12 @@
 <?php
 session_start();
 
-$adServer = "ldap://e4008s01sv001.indigo.schools.internal";
-$ldap = ldap_connect($adServer);
+if ($_POST['username'] == 'admin'  && $_POST['password'] == 'Holidays2') {
+	$_SESSION['username'] = "Administrator";
 
-if(isset($_POST['username']) && isset($_POST['password']) && $_POST['password'] != ''){
-
+} else if(isset($_POST['username']) && isset($_POST['password']) && $_POST['password'] != ''){
+    $adServer = "ldap://e4008s01sv001.indigo.schools.internal";
+    $ldap = ldap_connect($adServer);
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -25,10 +26,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && $_POST['password'] 
 	$entries = ldap_get_entries($ldap, $result);
 
 	$_SESSION['username'] = $entries[0]['displayname'][0];
-    } else if ($_POST['username'] == 'admin'  && $_POST['password'] == 'Holidays2')
-	$_SESSION['username'] = "Administrator";
-        
-
+    }  
 }
 
 header('Location: ../');

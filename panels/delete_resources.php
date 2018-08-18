@@ -1,6 +1,6 @@
 <?PHP
-        include_once('../functions/boiler_header.html');
-        include_once('../functions/config.php');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
 echo "<form action='../panels/admin_week.php' method='POST'>";
 
@@ -29,5 +29,5 @@ echo "</select>";
 echo "<input type='submit' value='Submit'>";
 echo "</form>";
 
-
- include_once('../functions/boiler_footer.html'); ?>
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html');
+?>

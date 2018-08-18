@@ -1,5 +1,6 @@
-<?PHP        include_once('../functions/boiler_header.html');
-        include_once('../functions/config.php');
+<?PHP
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
 // Enter new details for form
 echo "<form onsubmit='combine_columns()' action='new_category.php' method=POST>";
@@ -61,5 +62,6 @@ $query_string .= " PRIMARY KEY(date, r_id) )";
 $stmt = $conn->prepare($query_string);
 $stmt->execute();
 
-
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html');
 ?>
+

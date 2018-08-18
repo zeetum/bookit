@@ -1,7 +1,6 @@
 <?PHP
- include_once('../functions/boiler_header.html');
-        include_once('../functions/config.php');
-//localhost/bookit/panels/show_day.php?category=timeslots&date=07-29-2018
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
 // Verify and sanatise input
 if (!isset($_GET['category']))
@@ -62,7 +61,7 @@ if (count($timeslots) == 0) {
         <div class="divTableBody">
 
 <?PHP       $timeslot = $timeslots[0];
-echo        "<div class='divTableRow'>";
+echo        "<div class='divTableColumn'>";
 echo 	    "<div class='divTableCell'>".date('l', strtotime($date))."</div>";
 	        foreach ($timeslot as $key => $value) if (!($key == 'r_id' || $key == 'date'))
 echo 	    	    "<div class='divTableCell'>".$key."</div>";
@@ -70,7 +69,7 @@ echo        "</div>";
 
             foreach ($timeslots as $timeslot) {
             // Echo the resource column names
-echo	    "<div class='divTableRow'>";
+echo	    "<div class='divTableColumn'>";
                $stmt = $conn->prepare("SELECT name FROM resources WHERE r_id = :r_id");
                $stmt->execute(array(
                    ":r_id" => $timeslot['r_id']
@@ -82,7 +81,7 @@ echo           "<form class='category_form' action='../panels/show_week.php' met
 echo               "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
 echo               "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo               "<input type='hidden' name='date' value='".$date."'>";
-echo               "<input class='category_button' type='submit' value='".$name."'>";
+echo               "<input class='resource_button' type='submit' value='".$name."'>";
 echo           "</form>";
 
 	       // Submit or display timeslot for each time column
@@ -99,8 +98,7 @@ echo                   "<input type='hidden' name='date' value='".$date."'>";
 echo                   "<input type='submit' value='Book It!'>";
 echo               "</form>";
                    } else if ($value == $_SESSION['username']) {
-echo                   $value;
-echo                    "<form action='../functions/delete_timeslot.php' method='POST'>";
+echo                    "<form action='../functions/delete_timeslot.php' class='delete_timeslot' method='POST'>";
 echo                        "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
 echo                        "<input type='hidden' name='date' value='".$date."'>";
 echo                        "<input type='hidden' name='category' value='".$_GET['category']."'>";
@@ -116,4 +114,4 @@ echo       "</div>";
            }?>
         </div>
     </div>
-<?php include_once('../functions/boiler_footer.html'); ?>
+<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html'); ?>

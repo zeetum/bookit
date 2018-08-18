@@ -1,7 +1,6 @@
 <?PHP
-        include_once('../functions/boiler_header.html');
-        include_once('../functions/config.php');
-//localhost/bookit/panels/show_day.php?category=timeslots&date=07-29-2018
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
 // Verify and sanatise input
 if (!isset($_GET['category']))
@@ -102,4 +101,4 @@ echo       "</div>";
            }?>
         </div>
     </div>
-<?php include_once('../functions/boiler_footer.html'); ?>
+<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html'); ?>

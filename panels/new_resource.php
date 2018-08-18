@@ -1,7 +1,6 @@
 <?PHP
-// Enter new details for form
-        include_once('../functions/boiler_header.html');
-        include_once('../functions/config.php');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
 // Get an array of resources in catagories from the database in the form:
 //     $resources['category'] = array('resource1','resource2','resource3','etc...')
@@ -52,4 +51,5 @@ echo     "<select name='category'>";
 echo     "</select>";
 echo     "<input type=submit>Submit</input>";
 echo "</form>";
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html');
 ?>

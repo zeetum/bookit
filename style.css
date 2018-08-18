@@ -4,7 +4,6 @@
 
     margin: 0;
     padding: 0;
-    
 }
 
 .category_form {
@@ -22,7 +21,6 @@
 .accordion_resource{
     display: none;
     width: 250px;
-    background-color: grey;
 
     margin: 0;
     padding: 0;
@@ -41,4 +39,54 @@
     margin: 0;
     padding: 0;
     
+}
+
+.divTableColumn{
+	display: block;
+	float: left;
+}
+
+.divTableColumn input[type=submit] {
+    padding: 1px;
+    margin: 0px;
+    font-family: initial;
+    width: 100%;
+    height: 39px;
+    line-height: 39px;
+    background: #08c;
+    color: #fff;
+    border: 0px;
+    font-size: 18px;
+    font-family: Helvetica;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+.divTableColumn input[type=submit]:hover {
+
+    background:blue;
+}
+
+.delete_timeslot input[type=submit] {
+    background: red;
+}
+.delete_timeslot input[type=submit]:hover {
+    background: darkred;
+}
+
+.divTableCell, .divTableHead {
+	padding: 1px;
+	height: 35px;
+	width: 250px;
+	display: block;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
 }

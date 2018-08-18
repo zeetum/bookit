@@ -1,6 +1,7 @@
 <?PHP
- include_once('../functions/boiler_header.html');
-        include_once('../functions/config.php');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
+
 /*
     prints the week for a date of a resource in a category 
 */
@@ -75,7 +76,7 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
 
 
 <?PHP       // Print the column names
-echo        "<div class='divTableRow'>";
+echo        "<div class='divTableColumn'>";
 echo 	    	"<div class='divTableCell'>Day</div>";
 	        foreach ($timeslots as $key => $value)
                     if (!($key == 'r_id' || $key == 'date')) 
@@ -86,7 +87,7 @@ echo        "</div>";
                 // display each day of this week
                 $dates = get_week_dates($_GET['date']);
                 foreach ($dates as $day => $date) {
-echo            "<div class='divTableRow'>";
+echo            "<div class='divTableColumn'>";
                     $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
                     $stmt->execute(array(
                         ":r_id" => $_GET['r_id'],
@@ -107,13 +108,12 @@ echo                         "<input type='hidden' name='date' value='".$date."'
 echo                         "<input type='submit' value='Book It!'>";
 echo                     "</form>";
                          } else if ($value == $_SESSION['username']) {
-echo                     $value;
-echo                     "<form action='../functions/delete_timeslot.php' method='POST'>";
+echo                     "<form action='../functions/delete_timeslot.php' class='delete_timeslot' method='POST'>";
 echo                         "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
 echo                         "<input type='hidden' name='date' value='".$date."'>";
 echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                         "<input type='hidden' name='column' value='".$key."'>";
-echo                         "<input type='submit' value='Delete'>";
+echo                         "<input type='submit' value='Cancel'>";
 echo                     "</form>";
                          } else {
 echo                         $value;
@@ -124,5 +124,6 @@ echo           "</div>";
                }
 echo"     </div>";
            }
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html');
 ?>
 
