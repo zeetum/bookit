@@ -98,15 +98,18 @@ echo                   "<input type='hidden' name='date' value='".$date."'>";
 echo                   "<input type='submit' value='Book It!'>";
 echo               "</form>";
                    } else if ($value == $_SESSION['username']) {
-echo                    "<form action='../functions/delete_timeslot.php' class='delete_timeslot' method='POST'>";
-echo                        "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
-echo                        "<input type='hidden' name='date' value='".$date."'>";
-echo                        "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo                        "<input type='hidden' name='column' value='".$key."'>";
-echo                        "<input type='submit' value='Delete'>";
-echo                    "</form>";
+echo               "<form action='../functions/delete_timeslot.php' class='delete_timeslot' method='POST'>";
+echo                   "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
+echo                   "<input type='hidden' name='date' value='".$date."'>";
+echo                   "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo                   "<input type='hidden' name='column' value='".$key."'>";
+echo                   "<input type='submit' value='Delete'>";
+echo               "</form>";
                    } else {
-echo                   $value;
+                   // TODO: make this timeslot turn green
+echo               "<div class=timeslot_taken>";
+echo                   "<p>".$value."</p>";
+echo               "</div>";
                    }
 echo           "</div>";
 	       }

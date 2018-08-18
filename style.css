@@ -41,12 +41,16 @@
     
 }
 
+.divTableBody {
+	width: 1500px
+}
+
 .divTableColumn{
 	display: block;
 	float: left;
 }
 
-.divTableColumn input[type=submit] {
+.divTableColumn input[type=submit]:not(.resource_button), .timeslot_taken{
     padding: 1px;
     margin: 0px;
     font-family: initial;
@@ -62,22 +66,22 @@
     cursor: pointer;
 }
 
-.divTableColumn input[type=submit]:hover {
+.divTableColumn input[type=submit]:hover:not(.resource_button){
 
     background:blue;
 }
 
-.delete_timeslot input[type=submit] {
+.delete_timeslot input[type=submit]:not(.resource_button) {
     background: red;
 }
-.delete_timeslot input[type=submit]:hover {
+.delete_timeslot input[type=submit]:hover:not(.resource_button) {
     background: darkred;
 }
 
 .divTableCell, .divTableHead {
 	padding: 1px;
 	height: 35px;
-	width: 250px;
+	width: 200px;
 	display: block;
 }
 .divTableHeading {
