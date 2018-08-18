@@ -6,19 +6,6 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
     prints the week for a date of a resource in a category 
 */
 
-// Previous day and Next day buttons
-echo        "<form action='show_week.php' method='GET'>";
-echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
-echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
-echo            "<input type='submit' value='Last Week'>";
-echo        "</form>";
-echo        "<form action='show_week.php' method='GET'>";
-echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
-echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
-echo            "<input type='submit' value='Next Week'>";
-echo        "</form>";
 
 // Returns an array in the form:
 // date['Day'] => 'date'
@@ -72,10 +59,24 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
     $resource = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
     <div class="divTable">
-    <div class="divTableBody"><h1><?PHP echo $resource['name']; ?></h1>
+<?PHP
+            // Previous day and Next day buttons
+echo        "<div class='divTableBody'><h1>".$resource['name']."</h1>";
+echo        "<form action='show_week.php' method='GET'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
+echo            "<input type='submit' value='Last Week'>";
+echo        "</form>";
+echo        "<form action='show_week.php' method='GET'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
+echo            "<input type='submit' value='Next Week'>";
+echo        "</form>";
 
 
-<?PHP       // Print the column names
+            // Print the column names
 echo        "<div class='divTableColumn'>";
 echo 	    	"<div class='divTableCell'>Day</div>";
 	        foreach ($timeslots as $key => $value)

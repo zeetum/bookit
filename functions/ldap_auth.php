@@ -29,8 +29,6 @@ if ($_POST['username'] == 'admin'  && $_POST['password'] == 'Holidays2') {
     }  
 }
 
-header('Location: ../');
+header('Location: /bookit/panels/show_categories.php');
 @ldap_close($ldap);
-
-
 ?>

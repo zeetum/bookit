@@ -1,5 +1,12 @@
+form {
+    padding: 0 px;
+    margin: 0 px;
+    height: 39 px;
+}
+
+
 .category_button {
-    width: 200px;
+    width: 100%;
     float: right;
 
     margin: 0;
@@ -7,7 +14,7 @@
 }
 
 .category_form {
-    width: 250px;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -41,17 +48,27 @@
     
 }
 
-.divTableBody {
-	width: 1500px
+
+.divTable {
+    margin: 20px auto 0;
+    max-width: 900px;
+    text-align: center;
+    font-family: Helvetica;
+    width: 100%;
 }
 
-.divTableColumn{
+.divTableColumn:first-of-type {
+	width: 180px;
+}
+.divTableColumn {
 	display: block;
 	float: left;
+	width: 13%;
 }
 
 .divTableColumn input[type=submit]:not(.resource_button), .timeslot_taken{
-    padding: 1px;
+    border: 1px solid #fff;
+    padding: 0px;
     margin: 0px;
     font-family: initial;
     width: 100%;
@@ -59,7 +76,6 @@
     line-height: 39px;
     background: #08c;
     color: #fff;
-    border: 0px;
     font-size: 18px;
     font-family: Helvetica;
     font-weight: 200;
@@ -81,7 +97,7 @@
 .divTableCell, .divTableHead {
 	padding: 1px;
 	height: 35px;
-	width: 200px;
+	width: 100%;
 	display: block;
 }
 .divTableHeading {
