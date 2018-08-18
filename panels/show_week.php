@@ -82,7 +82,7 @@ echo        "</div>";
 echo        "<div class=divTableColumnWrapper>";
             // Print the column names
 echo        "<div class='divTableColumn'>";
-echo 	    	"<div class='divTableCell'>Day</div>";
+echo 	    	"<div class='divTableCell'></div>";
 	        foreach ($timeslots as $key => $value)
                     if (!($key == 'r_id' || $key == 'date')) 
 echo 	    	        "<div class='divTableCell'>".$key."</div>";

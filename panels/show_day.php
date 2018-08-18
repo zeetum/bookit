@@ -25,17 +25,6 @@ do {
     $tomorrow = date('Y-m-d', strtotime($tomorrow.' +1 days'));
     $day_of_week = date('w', strtotime($tomorrow));
 } while ($day_of_week == 0 || $day_of_week == 6);
-echo        "<form action='show_day.php' method='get'>";
-echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo            "<input type='hidden' name='date' value='".$yesterday."'>";
-echo            "<input type='submit' value='yesterday'>";
-echo        "</form>";
-echo        "<form action='show_day.php' method='get'>";
-echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo            "<input type='hidden' name='date' value='".$tomorrow."'>";
-echo            "<input type='submit' value='tomorrow'>";
-echo        "</form>";
-
 // Prepare and execute the query
 $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE date = :date");
 $stmt->execute(array(
@@ -59,8 +48,22 @@ if (count($timeslots) == 0) {
 ?>
     <div class="divTable">
         <div class="divTableBody">
+<?PHP
+echo        "<div class='buttonWrapper'>";
+echo        "<form class=time_button action='show_day.php' method='get'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo            "<input type='hidden' name='date' value='".$yesterday."'>";
+echo            "<input type='submit' value='yesterday'>";
+echo        "</form>";
+echo        "<form class=time_button action='show_day.php' method='get'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo            "<input type='hidden' name='date' value='".$tomorrow."'>";
+echo            "<input type='submit' value='tomorrow'>";
+echo        "</form>";
+echo        "</div>";
 
-<?PHP       $timeslot = $timeslots[0];
+            $timeslot = $timeslots[0];
+echo        "<div class=divTableColumnWrapper>";
 echo        "<div class='divTableColumn'>";
 echo 	    "<div class='divTableCell'>".date('l', strtotime($date))."</div>";
 	        foreach ($timeslot as $key => $value) if (!($key == 'r_id' || $key == 'date'))
@@ -95,6 +98,7 @@ echo                   "<input type='hidden' name='category' value='".$_GET['cat
 echo                   "<input type='hidden' name='column' value='".$key."'>";
 echo                   "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                   "<input type='hidden' name='date' value='".$date."'>";
+echo                   "<input type='hidden' name='panel' value='show_day'>";
 echo                   "<input type='submit' value='Book It!'>";
 echo               "</form>";
                    } else if ($value == $_SESSION['username']) {
@@ -103,6 +107,7 @@ echo                   "<input type='hidden' name='r_id' value='".$timeslot['r_i
 echo                   "<input type='hidden' name='date' value='".$date."'>";
 echo                   "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                   "<input type='hidden' name='column' value='".$key."'>";
+echo                   "<input type='hidden' name='panel' value='show_day'>";
 echo                   "<input type='submit' value='Delete'>";
 echo               "</form>";
                    } else {
