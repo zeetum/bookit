@@ -9,4 +9,4 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
             <input type="submit">Login</input>
         </form>
 
-<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html'); ?>
+<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>

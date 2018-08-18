@@ -51,5 +51,5 @@ echo     "<select name='category'>";
 echo     "</select>";
 echo     "<input type=submit>Submit</input>";
 echo "</form>";
-include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>

@@ -101,4 +101,4 @@ echo       "</div>";
            }?>
         </div>
     </div>
-<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html'); ?>
+<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>

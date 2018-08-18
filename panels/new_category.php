@@ -62,6 +62,6 @@ $query_string .= " PRIMARY KEY(date, r_id) )";
 $stmt = $conn->prepare($query_string);
 $stmt->execute();
 
-include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/boiler_footer.html');
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>
 
