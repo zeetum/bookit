@@ -6,7 +6,7 @@ session_start();
 
 if(!isset($_SESSION['username'])) {
 ?>
-        <form action="../functions/ldap_auth.php" method='POST'>
+        <form action="/bookit/functions/ldap_auth.php" method='POST'>
             <p>Please login</p>
             <input type="text" name=username>Username</input>
             <input type="password" name=password>Password</input>

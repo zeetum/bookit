@@ -125,6 +125,7 @@ echo           "</div>";
                }
 echo"     </div>";
            }
+}
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>
 
