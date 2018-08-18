@@ -67,12 +67,14 @@ echo        "<form class=time_button action='show_week.php' method='GET'>";
 echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
 echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
+echo            "<input type='hidden' name='panel' value='show_week'>";
 echo            "<input type='submit' value='Last Week'>";
 echo        "</form>";
 echo        "<form class=time_button action='show_week.php' method='GET'>";
 echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
 echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
+echo            "<input type='hidden' name='panel' value='show_week'>";
 echo            "<input type='submit' value='Next Week'>";
 echo        "</form>";
 echo        "</div>";
@@ -108,6 +110,7 @@ echo                         "<input type='hidden' name='category' value='".$_GE
 echo                         "<input type='hidden' name='column' value='".$key."'>";
 echo                         "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                         "<input type='hidden' name='date' value='".$date."'>";
+echo                         "<input type='hidden' name='panel' value='show_week'>";
 echo                         "<input type='submit' value='Book It!'>";
 echo                     "</form>";
                          } else if ($value == $_SESSION['username']) {
@@ -116,6 +119,7 @@ echo                         "<input type='hidden' name='r_id' value='".$_GET['r
 echo                         "<input type='hidden' name='date' value='".$date."'>";
 echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                         "<input type='hidden' name='column' value='".$key."'>";
+echo                         "<input type='hidden' name='panel' value='show_week'>";
 echo                         "<input type='submit' value='Cancel'>";
 echo                     "</form>";
                          } else {

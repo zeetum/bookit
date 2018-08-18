@@ -28,6 +28,7 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
         ":date" => $_POST['date'],
         ":r_id" => $_POST['r_id']
     ));
+    include_once("panel_navigation.php");
 }
 
 include("../panels/show_today.php");
