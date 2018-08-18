@@ -1,9 +1,12 @@
+body * {
+	box-sizing: border-box;
+}
+
 form {
     padding: 0 px;
     margin: 0 px;
     height: 39 px;
 }
-
 
 .category_button {
     width: 100%;
@@ -48,22 +51,53 @@ form {
     
 }
 
+#logout_link {
+	float: right;
+}
+
+#categories_link {
+	float: left;
+}
+
+.buttonWrapper {
+	max-width: 560px;
+	margin: 0 auto;
+}
+
+.time_button:first-of-type {
+	text-align: left;
+}
+
+.time_button {
+	width: 50%;
+	float: left;
+	left: 20%;
+	padding-bottom: 20px;
+	text-align: right;
+	display: block;
+}
 
 .divTable {
     margin: 20px auto 0;
     max-width: 900px;
+    min-width: 660px;
     text-align: center;
     font-family: Helvetica;
     width: 100%;
 }
 
+.divTableColumnWrapper {
+	position: relative;
+	width: 100%;
+}
 .divTableColumn:first-of-type {
-	width: 180px;
+	overflow-x: auto;
+	width: 20%;
 }
 .divTableColumn {
 	display: block;
 	float: left;
-	width: 13%;
+	width: 15%;
 }
 
 .divTableColumn input[type=submit]:not(.resource_button), .timeslot_taken{

@@ -62,20 +62,22 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
 <?PHP
             // Previous day and Next day buttons
 echo        "<div class='divTableBody'><h1>".$resource['name']."</h1>";
-echo        "<form action='show_week.php' method='GET'>";
+echo        "<div class='buttonWrapper'>";
+echo        "<form class=time_button action='show_week.php' method='GET'>";
 echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
 echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
 echo            "<input type='submit' value='Last Week'>";
 echo        "</form>";
-echo        "<form action='show_week.php' method='GET'>";
+echo        "<form class=time_button action='show_week.php' method='GET'>";
 echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
 echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
 echo            "<input type='submit' value='Next Week'>";
 echo        "</form>";
+echo        "</div>";
 
-
+echo        "<div class=divTableColumnWrapper>";
             // Print the column names
 echo        "<div class='divTableColumn'>";
 echo 	    	"<div class='divTableCell'>Day</div>";
@@ -120,6 +122,7 @@ echo                     "</form>";
 echo                     "<div class=timeslot_taken>";
 echo                         "<p>".$value."</p>";
 echo                     "</div>";
+echo                "</div>";
 echo                "</div>";
 		    }
 echo           "</div>";
