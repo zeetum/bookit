@@ -3,22 +3,9 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
 /*
-    takes a date and resource to print usernames which have been booked 
+    prints the week for a date of a resource in a category 
 */
 
-// Previous day and Next day buttons
-echo        "<form action='admin_week.php' method='GET'>";
-echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
-echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
-echo            "<input type='submit' value='Last Week'>";
-echo        "</form>";
-echo        "<form action='admin_week.php' method='GET'>";
-echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
-echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
-echo            "<input type='submit' value='Next Week'>";
-echo        "</form>";
 
 // Returns an array in the form:
 // date['Day'] => 'date'
@@ -39,8 +26,8 @@ function get_week_dates($date, $format = 'Y-m-d') {
 }
 
 if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
-    str_replace(";","",$_GET['category']);
-    str_replace(",","",$_GET['category']);
+    $_GET['category'] = str_replace(";","",$_GET['category']);
+    $_GET['category'] = str_replace(",","",$_GET['category']);
 
     $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
     $stmt->execute(array(
@@ -52,7 +39,9 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
 
     // If there are no timeslots, generate a new week and re-query
     if ($timeslots == NULL) {
-        exec("php ../functions/new_week.php ".$_GET['date']);
+        $exec_string = "php ".$_SERVER["DOCUMENT_ROOT"].'/bookit/functions/new_week.php '.$_GET['date'];
+        exec($exec_string);
+        echo $exec_string;
 
         $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
         $stmt->execute(array(
@@ -72,12 +61,30 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
     $resource = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
     <div class="divTable">
-    <div class="divTableBody"><h1><?PHP echo $resource['name']; ?></h1>
+<?PHP
+            // Previous day and Next day buttons
+echo        "<div class='divTableBody'><h1>".$resource['name']."</h1>";
+echo        "<div class='buttonWrapper'>";
+echo        "<form class=time_button action='admin_week.php' method='GET'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' -7 days'))."'>";
+echo            "<input type='hidden' name='panel' value='admin_week'>";
+echo            "<input type='submit' value='Last Week'>";
+echo        "</form>";
+echo        "<form class=time_button action='admin_week.php' method='GET'>";
+echo            "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo            "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo            "<input type='hidden' name='date' value='".date('Y-m-d', strtotime($_GET['date'].' +7 days'))."'>";
+echo            "<input type='hidden' name='panel' value='admin_week'>";
+echo            "<input type='submit' value='Next Week'>";
+echo        "</form>";
+echo        "</div>";
 
-
-<?PHP       // Print the column names
-echo        "<div class='divTableRow'>";
-echo 	    	"<div class='divTableCell'>Day</div>";
+echo        "<div class=divTableColumnWrapper>";
+            // Print the column names
+echo        "<div class='divTableColumn'>";
+echo 	    	"<div class='divTableCell'></div>";
 	        foreach ($timeslots as $key => $value)
                     if (!($key == 'r_id' || $key == 'date')) 
 echo 	    	        "<div class='divTableCell'>".$key."</div>";
@@ -87,7 +94,7 @@ echo        "</div>";
                 // display each day of this week
                 $dates = get_week_dates($_GET['date']);
                 foreach ($dates as $day => $date) {
-echo            "<div class='divTableRow'>";
+echo            "<div class='divTableColumn'>";
                     $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
                     $stmt->execute(array(
                         ":r_id" => $_GET['r_id'],
@@ -98,21 +105,32 @@ echo            "<div class='divTableRow'>";
 echo                "<div class='divTableCell'>".$day."</div>";
 		    foreach ($timeslots as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
 echo                "<div class='divTableCell'>";
-                         if ($value != '') {
-echo                    "<form action='../functions/delete_timeslot.php' method='POST'>";
-echo                        "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
-echo                        "<input type='hidden' name='date' value='".$date."'>";
-echo                        "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo                        "<input type='hidden' name='column' value='".$key."'>";
-echo                        "<input type='submit' value='Delete'>";
-echo                    "</form>";
-                         }
+                         if ($value == '') {
+echo                     "<form action='../functions/book_timeslot.php' class='book_timeslot' method='POST'>";
+echo                         "<input type='hidden' name='r_id' value='".$timeslots['r_id']."'>";
+echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo                         "<input type='hidden' name='column' value='".$key."'>";
+echo                         "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
+echo                         "<input type='hidden' name='date' value='".$date."'>";
+echo                         "<input type='hidden' name='panel' value='admin_week'>";
+echo                         "<input type='submit' value='Book It!'>";
+echo                     "</form>";
+                         } else {
+echo                     "<form action='../functions/delete_timeslot.php' class='timeslot_taken' method='POST'>";
+echo                         "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
+echo                         "<input type='hidden' name='date' value='".$date."'>";
+echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo                         "<input type='hidden' name='column' value='".$key."'>";
+echo                         "<input type='hidden' name='panel' value='admin_week'>";
+echo                         "<input type='submit' value='Cancel ".$value."'>";
+		    	}
 echo                "</div>";
 		    }
 echo           "</div>";
                }
-echo"     </div>";
-           }
+echo	"</div>";
+}
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>
-<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>
+
 

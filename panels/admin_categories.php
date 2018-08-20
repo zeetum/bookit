@@ -33,7 +33,6 @@ function get_catagories($conn) {
 ?>
 
 <!-- Print $resource array into a selection accordion -->
-
     <div class="panel-group" id="accordion">
 <?PHP
         $resources = get_catagories($conn);
@@ -73,7 +72,6 @@ echo    "<div>";
         }
 ?>
     </div>
-  <script src="show_catagories.js" type="text/javascript"></script>
-
+<script src="show_categories.js" type="text/javascript"></script>
 <?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>
 

@@ -15,9 +15,11 @@ if(!isset($_SESSION['username'])) {
 <?PHP
 	exit();
 } else {
-    echo "<div id=nav_links>";
-    echo     "<a id='categories_link' href='/bookit/panels/show_categories.php'>Show Categories</a>";
-    echo     "<a id='logout_link' href='/bookit/functions/logout.php'>Logout</a>";
-    echo "</div>";
+echo   "<div id=nav_links>";
+echo      "<a id='categories_link' href='/bookit/panels/show_categories.php'>Show Categories</a>";
+          if ($_SESSION['username'] == 'Administrator')
+echo          "<div id='admin_link'><a href='/bookit/panels/admin_categories.php'>Admin</a></div>";
+echo      "<a id='logout_link' href='/bookit/functions/logout.php'>Logout</a>";
+echo  "</div>";
 }
 ?>
