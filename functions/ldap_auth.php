@@ -3,6 +3,7 @@ session_start();
 
 if ($_POST['username'] == 'admin'  && $_POST['password'] == 'Holidays2') {
 	$_SESSION['username'] = "Administrator";
+    header('Location: /bookit/panels/show_categories.php');
 
 } else if(isset($_POST['username']) && isset($_POST['password']) && $_POST['password'] != ''){
     $adServer = "ldap://e4008s01sv001.indigo.schools.internal";
@@ -27,8 +28,10 @@ if ($_POST['username'] == 'admin'  && $_POST['password'] == 'Holidays2') {
 
 	$_SESSION['username'] = $entries[0]['displayname'][0];
     }  
+    header('Location: /bookit/panels/show_categories.php');
+} else {
+    header('Location: /bookit/index.php');
 }
 
-header('Location: /bookit/panels/show_categories.php');
 @ldap_close($ldap);
 ?>
