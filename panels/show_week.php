@@ -39,7 +39,9 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
 
     // If there are no timeslots, generate a new week and re-query
     if ($timeslots == NULL) {
-        exec("php ../functions/new_week.php ".$_GET['date']);
+        $exec_string = "php ".$_SERVER["DOCUMENT_ROOT"].'/bookit/functions/new_week.php '.$_GET['date'];
+        exec($exec_string);
+        echo $exec_string;
 
         $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
         $stmt->execute(array(

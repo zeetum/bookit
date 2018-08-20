@@ -2,7 +2,9 @@
 /*
     Creates a new timeslots week for each resource, where $_POST['date'] = the new week primary key
 */
-include_once('config.php');
+$user = 'bookit';
+$pass = 'Holidays2';
+$conn = new PDO('mysql:host=localhost;dbname=bookit', $user, $pass);
 
 // Returns an array in the form:
 // date['Day'] => 'date'
