@@ -15,7 +15,9 @@ if(!isset($_SESSION['username'])) {
 <?PHP
 	exit();
 } else {
-    echo "<a id='categories_link' href='/bookit/panels/show_categories.php'>Show Categories</a>";
-    echo "<a id='logout_link' href='/bookit/functions/logout.php'>Logout</a>";
+    echo "<div id=nav_links>";
+    echo     "<a id='categories_link' href='/bookit/panels/show_categories.php'>Show Categories</a>";
+    echo     "<a id='logout_link' href='/bookit/functions/logout.php'>Logout</a>";
+    echo "</div>";
 }
 ?>

@@ -2,10 +2,16 @@ body * {
 	box-sizing: border-box;
 }
 
+
 form {
     padding: 0 px;
     margin: 0 px;
     height: 39 px;
+}
+
+#nav_links {
+    width: 100%;
+    height: 30px;
 }
 
 .category_button {
