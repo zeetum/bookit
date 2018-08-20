@@ -126,13 +126,12 @@ echo                     "</form>";
 echo                     "<div class=timeslot_taken>";
 echo                         "<p>".$value."</p>";
 echo                     "</div>";
-echo                "</div>";
+		    	}
 echo                "</div>";
 		    }
 echo           "</div>";
                }
 echo"     </div>";
-           }
 }
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>
