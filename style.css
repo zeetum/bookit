@@ -148,6 +148,13 @@ form {
     background:blue;
 }
 
+.timeslot_taken input[type=submit]:not(.resource_button) {
+    background: red;
+}
+.timeslot_taken input[type=submit]:hover:not(.resource_button) {
+    background: darkred;
+}
+
 .delete_timeslot input[type=submit]:not(.resource_button) {
     background: green;
 }
