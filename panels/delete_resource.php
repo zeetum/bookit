@@ -23,7 +23,7 @@ echo "    <select name='r_id'>";
       foreach ($resources as $resource)
 echo "    <option value='".$resource['r_id']."'>".$resource['name']."</option>";
 echo "    </select>";
-echo "    <input type='submit' value='Submit'>";
+echo "    <input type='submit' value='Delete'>";
 echo "</form>";
 
 // Purge resource from the database.
@@ -47,6 +47,7 @@ if (isset($_POST['r_id'])) {
 		":r_id" => $_POST['r_id']
 	));
     }
+    header("Location: delete_resource.php");
 }
 
 

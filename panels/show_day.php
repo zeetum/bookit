@@ -40,7 +40,7 @@ if (count($timeslots) == 0) {
     $stmt->execute(array(
         ":date" => $date,
     ));
-    $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
+    $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // Display the results
@@ -62,12 +62,14 @@ echo            "<input type='submit' value='tomorrow'>";
 echo        "</form>";
 echo        "</div>";
 
-            $timeslot = $timeslots;
 echo        "<div class=divTableColumnWrapper>";
+            // Print the column names
+            $timeslot = $timeslots[0];
 echo        "<div class='divTableColumn'>";
-echo 	    "<div class='divTableCell'>".date('l', strtotime($date))."</div>";
-	        foreach ($timeslot as $key => $value) if (!($key == 'r_id' || $key == 'date'))
-echo 	    	    "<div class='divTableCell'>".$key."</div>";
+echo 	    	"<div class='divTableCell'></div>";
+	        foreach ($timeslot as $key => $value)
+                    if (!($key == 'r_id' || $key == 'date')) 
+echo 	    	        "<div class='divTableCell'>".$key."</div>";
 echo        "</div>";
 
             foreach ($timeslots as $timeslot) {

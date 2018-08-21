@@ -23,7 +23,7 @@ echo "    <select name='table'>";
           foreach ($categories as $category) if ($category['Tables_in_bookit'] != 'resources')
 echo "    <option value='".$category['Tables_in_bookit']."'>".$category['Tables_in_bookit']."</option>";
 echo "    </select>";
-echo "    <input type='submit' value='Submit'>";
+echo "    <input type='submit' value='Delete'>";
 echo "</form>";
 
 // Purge resource from the database.
