@@ -149,6 +149,7 @@ form {
 }
 
 .timeslot_taken input[type=submit]:not(.resource_button) {
+    white-space: pre-wrap;
     background: red;
 }
 .timeslot_taken input[type=submit]:hover:not(.resource_button) {

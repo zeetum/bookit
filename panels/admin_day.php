@@ -107,7 +107,7 @@ echo                   "<input type='hidden' name='date' value='".$date."'>";
 echo                   "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                   "<input type='hidden' name='column' value='".$key."'>";
 echo                   "<input type='hidden' name='panel' value='admin_day'>";
-echo                   "<input type='submit' value='Delete ".$value."'>";
+echo                   "<input type='submit' value='".$value."'>";
 echo               "</form>";
 		   }
 echo           "</div>";
