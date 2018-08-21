@@ -2,6 +2,16 @@
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
+// Navigation Bar
+?>
+<div class='nav_bar'>
+    <a class='active' href='admin_categories.php'>Manage Categories</a>
+    <a href='new_category.php'>New Category</a>
+    <a href='new_resource.php'>New Resource</a>
+</div>
+<?PHP
+
+
 // Get an array of resources in catagories from the database in the form:
 //     $resources['category'] = array('resource1','resource2','resource3','etc...')
 function get_catagories($conn) {

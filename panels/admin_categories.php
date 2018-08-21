@@ -2,6 +2,16 @@
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
+// Navigation Bar
+?>
+<div class='nav_bar'>
+    <a class='active' href='admin_categories.php'>Manage Categories</a>
+    <a href='new_category.php'>New Category</a>
+    <a href='new_resource.php'>New Resource</a>
+</div>
+<?PHP
+
+// Set current day
 if (isset($_GET['date']))
 	$day = $_GET['date'];
 else

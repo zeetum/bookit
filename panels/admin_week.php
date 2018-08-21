@@ -2,6 +2,15 @@
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
+// Navigation Bar
+?>
+<div class='nav_bar'>
+    <a href='admin_categories.php'>Manage Categories</a>
+    <a href='new_category.php'>New Category</a>
+    <a href='new_resource.php'>New Resource</a>
+</div>
+<?PHP
+
 /*
     prints the week for a date of a resource in a category 
 */

@@ -40,7 +40,7 @@ if (count($timeslots) == 0) {
     $stmt->execute(array(
         ":date" => $date,
     ));
-    $timeslots = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 // Display the results
@@ -62,7 +62,7 @@ echo            "<input type='submit' value='tomorrow'>";
 echo        "</form>";
 echo        "</div>";
 
-            $timeslot = $timeslots[0];
+            $timeslot = $timeslots;
 echo        "<div class=divTableColumnWrapper>";
 echo        "<div class='divTableColumn'>";
 echo 	    "<div class='divTableCell'>".date('l', strtotime($date))."</div>";

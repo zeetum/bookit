@@ -1,4 +1,5 @@
 body * {
+    font-family: Helvetica;
 	box-sizing: border-box;
 }
 
@@ -8,6 +9,25 @@ form {
     margin: 0 px;
     height: 39 px;
 }
+
+.nav_bar {
+	font-weight: bold;
+	background-color: red;
+	overflow: hidden;
+}
+.nav_bar a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.nav_bar a:hover {
+    background-color: black;
+    color: white;
+}
+
 
 #nav_links {
     width: 100%;
