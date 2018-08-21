@@ -112,7 +112,7 @@ echo                         "<input type='hidden' name='category' value='".$_GE
 echo                         "<input type='hidden' name='column' value='".$key."'>";
 echo                         "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                         "<input type='hidden' name='date' value='".$date."'>";
-echo                         "<input type='hidden' name='panel' value='show_week'>";
+echo                         "<input type='hidden' name='panel' value='admin_week'>";
 echo                         "<input type='submit' value='Book It!'>";
 echo                     "</form>";
                          } else {
@@ -121,7 +121,7 @@ echo                         "<input type='hidden' name='r_id' value='".$_GET['r
 echo                         "<input type='hidden' name='date' value='".$date."'>";
 echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                         "<input type='hidden' name='column' value='".$key."'>";
-echo                         "<input type='hidden' name='panel' value='show_week'>";
+echo                         "<input type='hidden' name='panel' value='admin_week'>";
 echo                         "<input type='submit' value='Cancel ".$value."'>";
 echo                     "</form>";
 			 }
