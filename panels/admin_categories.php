@@ -5,7 +5,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 // Navigation Bar
 ?>
 <div class='nav_bar'>
-    <a class='active' href='admin_categories.php'>Manage Location</a>
+    <a class='active' id='home_button' href='admin_categories.php'>Manage Location</a>
     <a href='new_category.php'>New Category</a>
     <a href='new_resource.php'>New Resource</a>
     <a href='delete_category.php'>Delete Category</a>
@@ -57,7 +57,7 @@ echo        "<div class='".$category."_panel accordion_resource'>";
 echo        "<form class='accordion_form' action='admin_day.php' method='GET'>";
 echo            "<input type='hidden' name='category' value='".$category."'>";
 echo            "<input type='hidden' name='date' value='".$day."'>";
-echo            "<input class='accordion_button' type='submit' value='Day View'>";
+echo            "<input class='accordion_button' type='submit' value='View Items'>";
 echo        "</form>";
 echo        "</div>";
 

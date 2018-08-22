@@ -46,7 +46,7 @@ echo        "<div class='".$category."_panel accordion_resource'>";
 echo        "<form class='accordion_form' action='show_day.php' method='GET'>";
 echo            "<input type='hidden' name='category' value='".$category."'>";
 echo            "<input type='hidden' name='date' value='".$day."'>";
-echo            "<input class='accordion_button' type='submit' value='Day View'>";
+echo            "<input class='accordion_button' type='submit' value='View Items'>";
 echo        "</form>";
 echo        "</div>";
 

@@ -31,6 +31,9 @@ form {
     background-color: black;
     color: white;
 }
+.nav_bar #home_button {
+    width: 250px;
+}
 
 #nav_links {
     width: 100%;

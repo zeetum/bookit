@@ -17,10 +17,10 @@ if(!isset($_SESSION['username'])) {
 } else {
     echo "<div class='nav_bar'>";
               if ($_SESSION['username'] == 'Administrator')
-    echo "    <a href='/bookit/panels/admin_categories.php'>Admin Homepage</a>";
+    echo "    <a class='active' id='home_button' href='/bookit/panels/admin_categories.php'>Homepage</a>";
 	      else
-    echo "    <a class='active' href='show_categories.php'>Locations</a>";
-    echo "    <a href='/bookit/functions/logout.php'>Logout</a>";
+    echo "    <a class='active' id='home_button' href='show_categories.php'>Homepage</a>";
+    echo "    <a id='logout_link' href='/bookit/functions/logout.php'>Logout</a>";
     echo "</div>";
 }
 ?>
