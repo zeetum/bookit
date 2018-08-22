@@ -115,7 +115,7 @@ echo               "</form>";
                    } else {
                    // TODO: make this timeslot turn green
 echo               "<div class=timeslot_taken>";
-echo                   "<p>".$value."</p>";
+echo                   $value;
 echo               "</div>";
                    }
 echo           "</div>";

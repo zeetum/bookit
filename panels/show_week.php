@@ -101,7 +101,7 @@ echo            "<div class='divTableColumn'>";
                     ));
                     $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
     
-echo                "<div class='divTableCell'>".$day."</div>";
+echo                "<div class='divTableCell day_column'>".$day."</div>";
 		    foreach ($timeslots as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
 echo                "<div class='divTableCell'>";
                          if ($value == '') {
@@ -123,12 +123,9 @@ echo                         "<input type='hidden' name='column' value='".$key."
 echo                         "<input type='hidden' name='panel' value='show_week'>";
 echo                         "<input type='submit' value='Cancel'>";
 echo                     "</form>";
-echo                     "<div class=delete_timeslot>";
-echo                         "<p>Cancel</p>";
-echo                     "</div>";
                          } else {
 echo                     "<div class=timeslot_taken>";
-echo                         "<p>".$value."</p>";
+echo                         $value;
 echo                     "</div>";
 		    	}
 echo                "</div>";

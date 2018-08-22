@@ -34,7 +34,7 @@ function get_catagories($conn) {
 
 <!-- Print $resource array into a selection accordion -->
 
-    <div class="panel-group" id="accordion">
+    <div class="panel-group accordion">
 <?PHP
         $resources = get_catagories($conn);
         foreach ($resources as $category => $r_ids) {

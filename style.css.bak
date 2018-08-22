@@ -166,28 +166,20 @@ form {
 .divTableColumn input[type=submit]:hover:not(.resource_button){
     background:blue;
 }
+
+
+.timeslot_taken input[type=submit]:not(.resource_button) {
+    background: red;
+}
+.timeslot_taken input[type=submit]:hover:not(.resource_button) {
+    background: darkred;
+}
+
 .delete_timeslot input[type=submit]:not(.resource_button) {
     background: green;
 }
 .delete_timeslot input[type=submit]:hover:not(.resource_button) {
     background: darkgreen;
-}
-.timeslot_taken:not(.resource_button) {
-    border: 1px solid #fff;
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-    height: 39px;
-    line-height: 39px;
-    background: #08c;
-    color: #fff;
-    font-size: 10px;
-    font-family: Helvetica;
-    font-weight: 200;
-    background: red;
-}
-.timeslot_taken:hover input[type=submit]:not(.resource_button) {
-    background: darkred;
 }
 
 .divTableCell, .divTableHead {
