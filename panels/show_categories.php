@@ -1,7 +1,4 @@
 <?PHP 
-include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
-include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
-
 if (isset($_GET['date']))
 	$day = $_GET['date'];
 else
@@ -74,4 +71,3 @@ echo    "<div>";
 ?>
     </div>
 <script src="show_categories.js" type="text/javascript"></script>
-<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>

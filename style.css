@@ -122,6 +122,10 @@ form {
 }
 
 .divTable {
+    position: absolute;
+    left: 300px;
+    top: 7%;
+
     margin: 20px auto 0;
     max-width: 900px;
     min-width: 660px;
