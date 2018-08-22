@@ -47,7 +47,7 @@ if (count($timeslots) == 0) {
 
 ?>
     <div class="divTable">
-        <div class="divTableBody">
+    <div class='divTableBody'><h1><?PHP echo date('l', $day); ?></h1>
 <?PHP
 echo        "<div class='buttonWrapper'>";
 echo        "<form class=time_button action='show_day.php' method='get'>";
