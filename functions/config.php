@@ -16,9 +16,10 @@ if(!isset($_SESSION['username'])) {
 	exit();
 } else {
     echo "<div class='nav_bar'>";
-    echo "    <a class='active' href='show_categories.php'>Locations</a>";
               if ($_SESSION['username'] == 'Administrator')
     echo "    <a href='/bookit/panels/admin_categories.php'>Admin Homepage</a>";
+	      else
+    echo "    <a class='active' href='show_categories.php'>Locations</a>";
     echo "    <a href='/bookit/functions/logout.php'>Logout</a>";
     echo "</div>";
 }
