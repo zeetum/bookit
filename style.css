@@ -12,7 +12,7 @@ form {
 
 .nav_bar {
 	font-weight: bold;
-	background-color: red;
+   background-color: #BB1D1A;
 	overflow: hidden;
 }
 .nav_bar a {
@@ -53,6 +53,15 @@ form {
     margin: 0;
     padding: 0;
 }
+
+.accordion{
+    position: absolute;
+   display: block;
+   width: 250px;
+   height: 100%;
+   background-color: #BB1D1A;
+}
+
 .accordion_button {
     width: 250px;
 
