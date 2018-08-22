@@ -47,8 +47,8 @@ if (isset($_POST['name']) && isset($_POST['description'])) {
         ));
     }
 
-    // Need a better solution
-    header("Location: ../functions/new_week.php?date=".date('Y-m-d'));
+    $exec_string = "php ".$_SERVER["DOCUMENT_ROOT"].'/bookit/functions/new_week.php '.date('Y-m-d');
+    exec($exec_string);
 }
 
 

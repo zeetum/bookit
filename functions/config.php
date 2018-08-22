@@ -15,11 +15,11 @@ if(!isset($_SESSION['username'])) {
 <?PHP
 	exit();
 } else {
-echo   "<div id=nav_links>";
-echo      "<a id='categories_link' href='/bookit/panels/show_categories.php'>Show Categories</a>";
-          if ($_SESSION['username'] == 'Administrator')
-echo          "<div id='admin_link'><a href='/bookit/panels/admin_categories.php'>Admin</a></div>";
-echo      "<a id='logout_link' href='/bookit/functions/logout.php'>Logout</a>";
-echo  "</div>";
+    echo "<div class='nav_bar'>";
+    echo "    <a class='active' href='show_categories.php'>Locations</a>";
+              if ($_SESSION['username'] == 'Administrator')
+    echo "    <a href='/bookit/panels/admin_categories.php'>Admin Homepage</a>";
+    echo "    <a href='/bookit/functions/logout.php'>Logout</a>";
+    echo "</div>";
 }
 ?>
