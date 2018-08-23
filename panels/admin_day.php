@@ -77,7 +77,7 @@ echo        "</div>";
             $timeslot = $timeslots[0];
 echo        "<div class=divTableColumnWrapper>";
 echo        "<div class='divTableColumn'>";
-echo 	    "<div class='divTableCell'>".date('l', strtotime($date))."</div>";
+echo 	    "<div class='divTableCell'></div>";
 	        foreach ($timeslot as $key => $value) if (!($key == 'r_id' || $key == 'date'))
 echo 	    	    "<div class='divTableCell'>".$key."</div>";
 echo        "</div>";

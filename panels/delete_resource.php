@@ -14,18 +14,27 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 <?PHP
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
-// Select the specific resource
+
+// Select details for all resources
 $stmt = $conn->prepare("SELECT * FROM resources");
 $stmt->execute();
-$resources = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$details = array_map('reset', $stmt->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_ASSOC));
 
+
+// Dropdown selector for which item to delete
+$categories = get_catagories($conn);
 echo "<div class='main_panel'>";
 echo "<form action='delete_resource.php' method='POST'>";
-echo "    <select name='r_id'>";
-      foreach ($resources as $resource)
-echo "    <option value='".$resource['r_id']."'>".$resource['name']."</option>";
-echo "    </select>";
-echo "    <input type='submit' value='Delete'>";
+echo "<select name='r_id' >";
+      foreach ($resources as $category => $resources) {
+echo "    <optgroup label='".$category."'>";
+	  foreach ($resources as $resource) {
+echo "        <option value='".$resource."'>".$details[$resource]['name']."</option>";
+	  }
+echo "    </optgroup>";
+      }
+echo "</select>";
+echo "<input type='submit' value='Delete'>";
 echo "</form>";
 echo "</div>";
 

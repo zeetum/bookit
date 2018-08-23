@@ -127,7 +127,7 @@ echo                         "<input type='submit' value='Cancel'>";
 echo                     "</form>";
                          } else {
 echo                     "<div class=timeslot_taken>";
-echo                         $value;
+echo                         "<span>".str_replace(" "," ",$value)."</span>";
 echo                     "</div>";
 		    	}
 echo                "</div>";
