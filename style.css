@@ -9,6 +9,10 @@ form {
     margin: 0 px;
     height: 39 px;
 }
+
+input[type=submit], button {
+    height: 30px;
+}
 .main_panel {
 	position: absolute;
 	left: 300px;

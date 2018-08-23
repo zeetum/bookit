@@ -14,7 +14,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 <?PHP
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
-// Select the specific resource
+// Select the category
 $stmt = $conn->prepare("SHOW TABLES");
 $stmt->execute();
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
