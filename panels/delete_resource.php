@@ -25,16 +25,16 @@ $details = array_map('reset', $stmt->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_ASSOC)
 $categories = get_catagories($conn);
 echo "<div class='main_panel'>";
 echo "<form action='delete_resource.php' method='POST'>";
-echo "<select name='r_id' >";
-      foreach ($resources as $category => $resources) {
-echo "    <optgroup label='".$category."'>";
-	  foreach ($resources as $resource) {
-echo "        <option value='".$resource."'>".$details[$resource]['name']."</option>";
-	  }
-echo "    </optgroup>";
-      }
-echo "</select>";
-echo "<input type='submit' value='Delete'>";
+echo "    <select name='r_id' >";
+          foreach ($resources as $category => $resources) {
+echo "        <optgroup label='".$category."'>";
+              foreach ($resources as $r_id) {
+echo "            <option value='".$r_id."'>".$details[$r_id]['name']."</option>";
+	      }
+echo "        </optgroup>";
+          }
+echo "    </select>";
+echo "    <input type='submit' value='Delete'>";
 echo "</form>";
 echo "</div>";
 
