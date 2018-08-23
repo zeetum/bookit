@@ -2,6 +2,18 @@
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
+
+// Purge resource from the database.
+if (isset($_POST['table'])) {
+
+    // delete from the resource table
+    $stmt = $conn->prepare("DROP TABLE ".$_POST['table']);
+    $stmt->execute();
+
+    header("Location: delete_category.php");
+}
+
+
 // Navigation Bar
 ?>
 <div class='nav_bar'>
@@ -13,6 +25,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 </div>
 <?PHP
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
+
 
 // Select the category
 $stmt = $conn->prepare("SHOW TABLES");
@@ -29,15 +42,6 @@ echo "    <input type='submit' value='Delete'>";
 echo "</form>";
 echo "</div>";
 
-// Purge resource from the database.
-if (isset($_POST['table'])) {
-
-    // delete from the resource table
-    $stmt = $conn->prepare("DROP TABLE ".$_POST['table']);
-    $stmt->execute();
-
-    header("Location: delete_category.php");
-}
 
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>
