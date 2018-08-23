@@ -124,7 +124,7 @@ form {
 .divTable {
     position: absolute;
     left: 300px;
-    top: 5%;
+    top: 80px;
 
     margin: 20px auto 0;
     max-width: 900px;
@@ -176,7 +176,7 @@ form {
 .delete_timeslot input[type=submit]:hover:not(.resource_button) {
     background: darkgreen;
 }
-.timeslot_taken:not(.resource_button) {
+.timeslot_taken, .timeslot_taken input[type=submit]:not(.resource_button) {
     border: 1px solid #fff;
     padding: 0px;
     margin: 0px;
