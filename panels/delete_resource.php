@@ -12,12 +12,14 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
     <a class='active' href='delete_resource.php'>Delete Resource</a>
 </div>
 <?PHP
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
 // Select the specific resource
 $stmt = $conn->prepare("SELECT * FROM resources");
 $stmt->execute();
 $resources = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+echo "<div class='main_panel'>";
 echo "<form action='delete_resource.php' method='POST'>";
 echo "    <select name='r_id'>";
       foreach ($resources as $resource)
@@ -25,6 +27,7 @@ echo "    <option value='".$resource['r_id']."'>".$resource['name']."</option>";
 echo "    </select>";
 echo "    <input type='submit' value='Delete'>";
 echo "</form>";
+echo "</div>";
 
 // Purge resource from the database.
 if (isset($_POST['r_id'])) {

@@ -12,21 +12,8 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
     <a href='delete_resource.php'>Delete Resource</a>
 </div>
 <?PHP
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
-
-// Get an array of resources in catagories from the database in the form:
-//     $resources['category'] = array('resource1','resource2','resource3','etc...')
-function get_catagories($conn) {
-    $stmt = $conn->prepare("SHOW TABLES");
-    $stmt->execute();
-    $catagories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $resources = array();
-    foreach ($catagories as $category) if ($category['Tables_in_bookit'] != 'resources') {
-        array_push($resources, $category['Tables_in_bookit']);
-    }
-    return $resources;
-}
 
 if (isset($_POST['name']) && isset($_POST['description'])) {
     $stmt = $conn->prepare("INSERT INTO resources (name,description) VALUES(:name, :description)");
@@ -52,16 +39,19 @@ if (isset($_POST['name']) && isset($_POST['description'])) {
 }
 
 
+echo "<div class='main_panel'>";
 echo "<form action='new_resource.php' method=POST>";
 echo     "<input type=text name='name' placeholder='Name of resource'></input>";
 echo     "<input type=text name='description' placeholder='Description of resource'></input>";
 echo     "<select name='category'>";
              $catagories = get_catagories($conn);
-             foreach ($catagories as $category) {
+             foreach ($catagories as $category => $resources) {
                  echo "<option value='".$category."'>".$category."</option>";
              }
 echo     "</select>";
-echo     "<input type=submit>Submit</input>";
+echo     "<input type=submit value='Create'></input>";
 echo "</form>";
+echo "</div>";
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
+
 ?>

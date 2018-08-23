@@ -12,12 +12,14 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
     <a href='delete_resource.php'>Delete Resource</a>
 </div>
 <?PHP
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
 // Select the specific resource
 $stmt = $conn->prepare("SHOW TABLES");
 $stmt->execute();
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+echo "<div class='main_panel'>";
 echo "<form action='delete_category.php' method='POST'>";
 echo "    <select name='table'>";
           foreach ($categories as $category) if ($category['Tables_in_bookit'] != 'resources')
@@ -25,6 +27,7 @@ echo "    <option value='".$category['Tables_in_bookit']."'>".$category['Tables_
 echo "    </select>";
 echo "    <input type='submit' value='Delete'>";
 echo "</form>";
+echo "</div>";
 
 // Purge resource from the database.
 if (isset($_POST['table'])) {

@@ -12,14 +12,17 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
     <a href='delete_resource.php'>Delete Resource</a>
 </div>
 <?PHP
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
 // Enter new details for form
+echo "<div class='main_panel'>";
 echo "<form onsubmit='combine_columns()' action='new_category.php' method=POST>";
     echo "<input type=text name='category' placeholder='Name of category'></input>";
     echo "<input id='columns_input' type=hidden name='columns'></input>";
     echo "<button onclick=new_column() type='button'>Add Timeslot</button>";
-    echo "<input type=submit>Submit</input>";
+    echo "<input type=submit value='Create'></input>";
 echo "</form>";
+echo "</div>";
 ?>
 
 <script>

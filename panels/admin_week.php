@@ -12,6 +12,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
     <a href='delete_resource.php'>Delete Resource</a>
 </div>
 <?PHP
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
 /*
     prints the week for a date of a resource in a category 
@@ -71,6 +72,7 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
 
     $resource = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
+<div class='main_panel'>
     <div class="divTable">
 <?PHP
             // Previous day and Next day buttons
@@ -141,7 +143,9 @@ echo                "</div>";
 echo           "</div>";
                }
 echo"     </div>";
+echo" </div>";
 }
+
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>
 
