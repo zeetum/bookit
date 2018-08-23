@@ -5,7 +5,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 // Navigation Bar
 ?>
 <div class='nav_bar'>
-    <a id='home_button' href='admin_categories.php'>Manage Locations</a>
+    <a class='active' id='home_button'><br></a>
     <a href='new_category.php'>New Category</a>
     <a href='new_resource.php'>New Resource</a>
     <a class='active' href='delete_category.php'>Delete Category</a>
