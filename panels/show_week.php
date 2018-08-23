@@ -60,6 +60,7 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
 
     $resource = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
+<div class="main_panel">
     <div class="divTable">
 <?PHP
             // Previous day and Next day buttons
@@ -134,6 +135,7 @@ echo                "</div>";
 echo           "</div>";
                }
 echo"     </div>";
+echo" </div>";
 }
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>

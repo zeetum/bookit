@@ -9,7 +9,11 @@ form {
     margin: 0 px;
     height: 39 px;
 }
-
+.main_panel {
+	position: absolute;
+	left: 300px;
+	top: 50px;
+}
 .nav_bar {
 	font-weight: bold;
    background-color: #BB1D1A;
@@ -122,10 +126,6 @@ form {
 }
 
 .divTable {
-    position: absolute;
-    left: 300px;
-    top: 80px;
-
     margin: 20px auto 0;
     max-width: 900px;
     min-width: 660px;

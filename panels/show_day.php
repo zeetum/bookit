@@ -47,6 +47,7 @@ if (count($timeslots) == 0) {
 // Display the results
 
 ?>
+<div class='main_panel'>
     <div class="divTable">
         <div class='divTableBody'><h1><?PHP echo date('l', strtotime($day)); ?></h1>
 <?PHP
@@ -125,4 +126,5 @@ echo       "</div>";
            }?>
         </div>
     </div>
+</div>
 <?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>
