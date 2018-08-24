@@ -16,11 +16,11 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
 // Enter new details for form
 echo "<div id='main_panel'>";
-echo "<form onsubmit='combine_columns()' action='new_category.php' method=POST>";
-    echo "<input type=text name='category' placeholder='Name of category'></input>";
-    echo "<input id='columns_input' type=hidden name='columns'></input>";
-    echo "<button onclick=new_column() type='button'>Add Timeslot</button>";
-    echo "<input type=submit value='Create'></input>";
+echo "<form id='new_catagory_form' onsubmit='combine_columns()' action='new_category.php' method=POST>";
+echo     "<input type=text name='category' placeholder='Name of category'></input>";
+echo     "<input type=hidden name='columns'></input>";
+echo     "<button id='timeslot_button' onclick=new_column() type='button'>Add Timeslot</button>";
+echo     "<input type=submit value='Create'></input>";
 echo "</form>";
 echo "</div>";
 ?>
@@ -29,8 +29,9 @@ echo "</div>";
 function new_column (){
   var input = document.createElement('input');
   input.type = 'text';
+  input.placeholder = "Timeslot Name";
   input.className = "category_columns";
-  document.getElementById("main_panel").appendChild(input);
+  document.getElementById("new_catagory_form").insertBefore(input, document.getElementById('timeslot_button'));
   //document.body.appendChild(input);
 };
 
