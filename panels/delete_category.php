@@ -32,7 +32,7 @@ $stmt = $conn->prepare("SHOW TABLES");
 $stmt->execute();
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo "<div class='main_panel'>";
+echo "<div id='main_panel'>";
 echo "<form action='delete_category.php' method='POST'>";
 echo "    <select name='table'>";
           foreach ($categories as $category) if ($category['Tables_in_bookit'] != 'resources')

@@ -47,7 +47,7 @@ if (count($timeslots) == 0) {
 // Display the results
 
 ?>
-<div class='main_panel'>
+<div id='main_panel'>
     <div class="divTable">
         <div class='divTableBody'><h1><?PHP echo date('l', strtotime($day)); ?></h1>
 <?PHP

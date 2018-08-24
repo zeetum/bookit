@@ -60,7 +60,7 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
 
     $resource = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
-<div class="main_panel">
+<div id="main_panel">
     <div class="divTable">
 <?PHP
             // Previous day and Next day buttons

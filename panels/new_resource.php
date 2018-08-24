@@ -39,7 +39,7 @@ if (isset($_POST['name']) && isset($_POST['description'])) {
 }
 
 
-echo "<div class='main_panel'>";
+echo "<div id='main_panel'>";
 echo "<form action='new_resource.php' method=POST>";
 echo     "<input type=text name='name' placeholder='Name of resource'></input>";
 echo     "<input type=text name='description' placeholder='Description of resource'></input>";

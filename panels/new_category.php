@@ -15,7 +15,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
 // Enter new details for form
-echo "<div class='main_panel'>";
+echo "<div id='main_panel'>";
 echo "<form onsubmit='combine_columns()' action='new_category.php' method=POST>";
     echo "<input type=text name='category' placeholder='Name of category'></input>";
     echo "<input id='columns_input' type=hidden name='columns'></input>";
@@ -30,7 +30,8 @@ function new_column (){
   var input = document.createElement('input');
   input.type = 'text';
   input.className = "category_columns";
-  document.body.appendChild(input);
+  document.getElementById("main_panel").appendChild(input);
+  //document.body.appendChild(input);
 };
 
 function combine_columns() {
