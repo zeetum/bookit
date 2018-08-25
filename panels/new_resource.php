@@ -15,6 +15,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
 
+// Insert details into the resource table
 if (isset($_POST['name']) && isset($_POST['description'])) {
     $stmt = $conn->prepare("INSERT INTO resources (name,description) VALUES(:name, :description)");
     $stmt->execute(array(
@@ -23,15 +24,23 @@ if (isset($_POST['name']) && isset($_POST['description'])) {
     ));
     $r_id = $conn->lastInsertId();
 
+
+    // Add the timeslots for the new category into it's table
     if (isset($_POST['category'])) {
         $_POST['category'] = str_replace(";","",$_POST['category']);
         $_POST['category'] = str_replace(",","",$_POST['category']);
 
-        $stmt = $conn->prepare("INSERT INTO ".$_POST['category']." (r_id,date) VALUES(:r_id, :date)");
-        $stmt->execute(array(
-            ":r_id" => $r_id,
-            ":date" => date("Y-m-d")
-        ));
+        $stmt = $conn->prepare("SELECT DISTINCT date FROM ".$_POST['category']);
+        $stmt->execute();
+	$dates = $stmt->fetchAll();
+
+	foreach ($dates as $date) {
+            $stmt = $conn->prepare("INSERT INTO ".$_POST['category']." (r_id,date) VALUES(:r_id, :date)");
+            $stmt->execute(array(
+                ":r_id" => $r_id,
+                ":date" => $date['date']
+            ));
+	}
     }
 
     $exec_string = "php ".$_SERVER["DOCUMENT_ROOT"].'/bookit/functions/new_week.php '.date('Y-m-d');

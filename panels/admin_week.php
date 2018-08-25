@@ -53,7 +53,6 @@ if (isset($_GET['date']) && isset($_GET['r_id']) && isset($_GET['category'])) {
     if ($timeslots == NULL) {
         $exec_string = "php ".$_SERVER["DOCUMENT_ROOT"].'/bookit/functions/new_week.php '.$_GET['date'];
         exec($exec_string);
-        echo $exec_string;
 
         $stmt = $conn->prepare("SELECT * FROM ".$_GET['category']." WHERE r_id = :r_id AND date = :date");
         $stmt->execute(array(

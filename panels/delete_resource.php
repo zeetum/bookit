@@ -52,9 +52,9 @@ $categories = get_catagories($conn);
 echo "<div id='main_panel'>";
 echo "<form action='delete_resource.php' method='POST'>";
 echo "    <select name='r_id' >";
-          foreach ($resources as $category => $resources) {
+          foreach ($resources as $category => $r_ids) {
 echo "        <optgroup label='".$category."'>";
-              foreach ($resources as $r_id) {
+              foreach ($r_ids as $r_id) {
 echo "            <option value='".$r_id."'>".$details[$r_id]['name']."</option>";
 	      }
 echo "        </optgroup>";
