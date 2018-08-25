@@ -8,9 +8,9 @@ if(!isset($_SESSION['username'])) {
 ?>
         <form action="/bookit/functions/ldap_auth.php" method='POST'>
             <p>Please login</p>
-            <input type="text" name=username>Username</input>
-            <input type="password" name=password>Password</input>
-            <input type="submit">Login</input>
+            <input type="text" name=username placeholder='Username'></input>
+            <input type="password" name=password placeholder='Password'></input>
+            <input type="submit" value='Login'></input>
         </form>
 <?PHP
 	exit();
