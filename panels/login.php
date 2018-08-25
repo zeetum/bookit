@@ -1,3 +1,4 @@
+<h1 id='login_heading'>Booking Resources</h1>
 <div id='login_panel'>
     <div id='login_background'>
         <form id='login_form' action="/bookit/functions/ldap_auth.php" method='POST'>
