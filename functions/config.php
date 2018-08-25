@@ -5,14 +5,7 @@ $conn = new PDO('mysql:host=localhost;dbname=bookit', $user, $pass);
 session_start();
 
 if(!isset($_SESSION['username'])) {
-?>
-        <form action="/bookit/functions/ldap_auth.php" method='POST'>
-            <p>Please login</p>
-            <input type="text" name=username placeholder='Username'></input>
-            <input type="password" name=password placeholder='Password'></input>
-            <input type="submit" value='Login'></input>
-        </form>
-<?PHP
+        include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/login.php');
 	exit();
 } else {
     echo "<div class='nav_bar'>";
