@@ -12,7 +12,6 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
     <a href='delete_resource.php'>Delete Resource</a>
 </div>
 <?PHP
-include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 
 
 // Insert details into the resource table
@@ -53,6 +52,8 @@ if (isset($_POST['name']) && isset($_POST['description']) && isset($_POST['categ
 }
 
 
+// Display delete options
+include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 echo "<div id='main_panel'>";
 echo "<form action='new_resource.php' method=POST>";
 echo     "<input type=text name='name' placeholder='Name of resource'></input>";
