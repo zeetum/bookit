@@ -2,6 +2,32 @@
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 
+// Create the new category
+if (isset($_POST['category']) && isset($_POST['columns'])) {
+    // sanitising the input
+    $_POST['category'] = str_replace(' ','_',$_POST['category']);
+    $_POST['category'] = str_replace(";","",$_POST['category']);
+    $_POST['columns'] = str_replace(" ","_",$_POST['columns']);
+    $_POST['columns'] = str_replace(";","",$_POST['columns']);
+    
+    $query_string = "CREATE TABLE ".$_POST['category']." ( ";
+    $query_string .= " r_id INT NOT NULL, ";
+    $query_string .= " date VARCHAR(100) NOT NULL, ";
+    
+    $columns = explode(",",$_POST['columns']);
+    foreach ($columns as $column) {
+        // sanitising the input
+        str_replace(";","",$column);
+    
+        $query_string .= $column." VARCHAR(255), ";
+    }
+    
+    $query_string .= " PRIMARY KEY(date, r_id) )";
+    
+    $stmt = $conn->prepare($query_string);
+    $stmt->execute();
+}
+
 // Navigation Bar
 ?>
 <div class='nav_bar'>
@@ -18,7 +44,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
 echo "<div id='main_panel'>";
 echo "<form id='new_catagory_form' onsubmit='combine_columns()' action='new_category.php' method=POST>";
 echo     "<input type=text name='category' placeholder='Name of category'></input>";
-echo     "<input type=hidden name='columns'></input>";
+echo     "<input type=hidden name='columns' id='columns_input'></input>";
 echo     "<button id='timeslot_button' onclick=new_column() type='button'>Add Timeslot</button>";
 echo     "<input type=submit value='Create'></input>";
 echo "</form>";
@@ -50,34 +76,6 @@ function combine_columns() {
 </script>
 
 <?PHP
-
-if (!isset($_POST['category']) || !isset($_POST['columns'])) {
-    exit();
-}
-
-// sanitising the input
-$_POST['category'] = str_replace(' ','_',$_POST['category']);
-$_POST['category'] = str_replace(";","",$_POST['category']);
-$_POST['columns'] = str_replace(" ","_",$_POST['columns']);
-$_POST['columns'] = str_replace(";","",$_POST['columns']);
-
-$query_string = "CREATE TABLE ".$_POST['category']." ( ";
-$query_string .= " r_id INT NOT NULL, ";
-$query_string .= " date VARCHAR(100) NOT NULL, ";
-
-$columns = explode(",",$_POST['columns']);
-foreach ($columns as $column) {
-    // sanitising the input
-    str_replace(";","",$column);
-
-    $query_string .= $column." VARCHAR(255), ";
-}
-
-$query_string .= " PRIMARY KEY(date, r_id) )";
-
-$stmt = $conn->prepare($query_string);
-$stmt->execute();
-
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html');
 ?>
 
