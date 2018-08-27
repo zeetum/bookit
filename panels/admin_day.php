@@ -105,7 +105,7 @@ echo           "</form>";
 echo           "<div class='divTableCell'>";
                    if ($value == '') {
                    // TODO: hide on second click
-echo               "<button class='add_user_button' onclick='hide_class_display(\"add_user_popup\");show_id_display(\"".$timeslot['r_id']."_".$key."_cell\");'></button>";
+echo               "<button class='add_user_button' onclick='hide_class_display(\"add_user_popup\");show_id_display(\"".$timeslot['r_id']."_".$key."_cell\");'>Book It</button>";
 echo               "<div class='add_user_popup' id='".$timeslot['r_id']."_".$key."_cell'>";
 echo                   "<form class='add_user_form' action='../functions/book_timeslot.php' method='POST'>";
 echo                       "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
