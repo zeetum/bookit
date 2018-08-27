@@ -104,7 +104,7 @@ echo            "<div class='divTableColumn'>";
                     ));
                     $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
     
-echo                "<div class='divTableCell day_column_date'>".date('m-d', strtotime($date))."</div>";
+echo                "<div class='divTableCell day_column_date'>".date('d-m', strtotime($date))."</div>";
 echo                "<div class='divTableCell'>".$day."</div>";
 		    foreach ($timeslots as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
 echo                "<div class='divTableCell'>";
