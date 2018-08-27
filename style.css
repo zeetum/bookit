@@ -278,7 +278,7 @@ input[type=submit], button {
 	background: white;
 }
 .add_user_popup{
-	position: absolute;
+	position: relative;
 	box-shadow: 5px 10px;
 	border: 1px solid black;
 	z-index:1000;
@@ -293,6 +293,12 @@ input[type=submit], button {
 	position: absolute;
 	top: 0;
 	left: 10px;
+}
+.close_user_popup {
+	position: absolute;
+	top: 5px;
+        left: 175px;
+	float: right;
 }
 .divTableHeading {
 	background-color: #EEE;

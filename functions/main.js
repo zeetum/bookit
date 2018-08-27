@@ -28,3 +28,10 @@ function show_id_display(id_name) {
     sibling.style.background = "blue";
 }
 
+function hide_id_display(id_name) {
+    var panel = document.getElementById(id_name);
+    var sibling = panel.previousElementSibling;
+    panel.style.display = "block";
+    sibling.style.background = "blue";
+}
+
