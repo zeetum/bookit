@@ -177,7 +177,11 @@ input[type=submit], button {
     font-family: Helvetica;
     width: 100%;
 }
-
+ 
+.day_column_date {
+    font-size: 12px;
+    font-weight: bold;
+}
 .divTableColumnWrapper {
 	display: flex;
 	flex-direction: row;
@@ -247,6 +251,7 @@ input[type=submit], button {
     background: darkred;
 }
 .divTableCell, .divTableHead {
+	position: relative;
 	padding: 1px;
 	height: 35px;
 	width: 100%;
