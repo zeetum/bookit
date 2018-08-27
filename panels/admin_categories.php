@@ -39,7 +39,7 @@ function get_catagories($conn) {
         $resources = get_catagories($conn);
         foreach ($resources as $category => $r_ids) {
 echo    "<div class='accordion_category'>";
-echo        "<button class='accordion_button' onclick='accordion_toggle(\"".$category."_panel"."\")'>".$category."</button>";
+echo        "<button class='accordion_button' onclick='toggle_class_display(\"".$category."_panel"."\")'>".$category."</button>";
 
             // Day view of each category
 echo        "<div class='".$category."_panel accordion_resource'>";
@@ -73,6 +73,6 @@ echo    "<div>";
         }
 ?>
     </div>
-<script src="show_categories.js" type="text/javascript"></script>
+<script src="../functions/main.js" type="text/javascript"></script>
 <?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>
 

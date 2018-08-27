@@ -224,13 +224,12 @@ input[type=submit], button {
 .delete_timeslot input[type=submit]:hover:not(.resource_button) {
     background: darkgreen;
 }
-
-.timeslot_taken p {
-	display: inline-block;
-	vertical-align: middle;
-	margin: 0 0 0 0;
-	width: 100%;
-	height: 100%;
+.book_user_popup {
+	position: absolute;
+    height: 30px;
+	background: white;
+	left: 0px;
+	top: 0px;
 }
 
 .timeslot_taken, .timeslot_taken input[type=submit]:not(.resource_button) {
@@ -250,12 +249,50 @@ input[type=submit], button {
 .timeslot_taken:hover input[type=submit]:not(.resource_button) {
     background: darkred;
 }
+
 .divTableCell, .divTableHead {
 	position: relative;
 	padding: 1px;
 	height: 35px;
 	width: 100%;
 	display: block;
+}
+.add_user_button {
+    border: 2px solid #fff;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 39px;
+    line-height: 39px;
+    background: #08c;
+    color: #fff;
+    font-size: 10px;
+    font-family: Helvetica;
+    font-weight: 200;
+    cursor: pointer;
+}
+.add_user_button:hover {
+	background: blue;
+}
+.add_user_panel {
+	background: white;
+}
+.add_user_popup{
+	position: absolute;
+	box-shadow: 5px 10px;
+	border: 1px solid black;
+	z-index:1000;
+	display: none;
+	height: 86px;
+	width: 210px;
+	top: 35px;
+	left: 0px;
+	background: white;
+}
+.add_user_form {
+	position: absolute;
+	top: 0;
+	left: 10px;
 }
 .divTableHeading {
 	background-color: #EEE;

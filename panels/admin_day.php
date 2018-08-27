@@ -104,15 +104,19 @@ echo           "</form>";
                // Echo each user
 echo           "<div class='divTableCell'>";
                    if ($value == '') {
-echo               "<form action='../functions/book_timeslot.php' method='POST'>";
-echo                   "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
-echo                   "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo                   "<input type='hidden' name='column' value='".$key."'>";
-echo                   "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
-echo                   "<input type='hidden' name='date' value='".$date."'>";
-echo                   "<input type='hidden' name='panel' value='admin_day'>";
-echo                   "<input type='submit' value='Book It!'>";
-echo               "</form>";
+                   // TODO: hide on second click
+echo               "<button class='add_user_button' onclick='hide_class_display(\"add_user_popup\");show_id_display(\"".$timeslot['r_id']."_".$key."_cell\");'></button>";
+echo               "<div class='add_user_popup' id='".$timeslot['r_id']."_".$key."_cell'>";
+echo                   "<form class='add_user_form' action='../functions/book_timeslot.php' method='POST'>";
+echo                       "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
+echo                       "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo                       "<input type='hidden' name='column' value='".$key."'>";
+echo                       "<input type='text' name='username' value='".$_SESSION['username']."'>";
+echo                       "<input type='hidden' name='date' value='".$date."'>";
+echo                       "<input type='hidden' name='panel' value='admin_day'>";
+echo                       "<input type='submit' value='Book It!'>";
+echo                   "</form>";
+echo               "</div>";
                    } else {
 echo               "<form action='../functions/delete_timeslot.php' class='timeslot_taken' method='POST'>";
 echo                   "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
@@ -130,4 +134,5 @@ echo       "</div>";
         </div>
     </div>
 </div>
+<script src="../functions/main.js" type="text/javascript"></script>
 <?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>
