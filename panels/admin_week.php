@@ -121,18 +121,19 @@ echo                "<div class='divTableCell'>".$day."</div>";
 echo                "<div class='divTableCell'>";
                          if ($value == '') {
                          // TODO: hide on second click
-echo                     "<button class='add_user_button' onclick='hide_class_display(\"add_user_popup\");show_id_display(\"".$timeslot['r_id']."_".$key."_cell\");'>Book It</button>";
-echo                     "<div class='add_user_popup' id='".$timeslot['r_id']."_".$key."_cell'>";
-echo                         "<form class='add_user_form' action='../functions/book_timeslot.php' method='POST'>";
-echo                             "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
-echo                             "<input type='hidden' name='category' value='".$_GET['category']."'>";
-echo                             "<input type='hidden' name='column' value='".$key."'>";
-echo                             "<input type='text' name='username' value='".$_SESSION['username']."'>";
-echo                             "<input type='hidden' name='date' value='".$date."'>";
-echo                             "<input type='hidden' name='panel' value='admin_day'>";
-echo                             "<input type='submit' value='Book It!'>";
-echo                         "</form>";
-echo                     "</div>";
+echo                    "<button class='add_user_button' onclick='hide_class_display(\"add_user_popup\");show_id_display(\"".$day."_".$key."_cell\");'>Book It</button>";
+echo                    "<div class='add_user_popup' id='".$day."_".$key."_cell'>";
+echo                        "<button class='close_user_popup' onclick='hide_id_display(\"".$timeslot['r_id']."_".$key."_cell\");'>X</button>";
+echo                        "<form class='add_user_form' action='../functions/book_timeslot.php' method='POST'>";
+echo                            "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
+echo                            "<input type='hidden' name='category' value='".$_GET['category']."'>";
+echo                            "<input type='hidden' name='column' value='".$key."'>";
+echo                            "<input type='text' name='username' value='".$_SESSION['username']."'>";
+echo                            "<input type='hidden' name='date' value='".$date."'>";
+echo                            "<input type='hidden' name='panel' value='admin_day'>";
+echo                            "<input type='submit' value='Book It!'>";
+echo                        "</form>";
+echo                    "</div>";
                          } else {
 echo                     "<form action='../functions/delete_timeslot.php' class='timeslot_taken' method='POST'>";
 echo                         "<input type='hidden' name='r_id' value='".$_GET['r_id']."'>";
