@@ -236,7 +236,7 @@ input[type=submit], button {
 	top: 0px;
 }
 
-.timeslot_taken input[type=submit] {
+.timeslot_taken, .timeslot_taken input[type=submit] {
     border: 1px solid #fff;
     position: absolute;
     top: 2px;
