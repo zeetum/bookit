@@ -129,7 +129,7 @@ echo                         "<input class='add_user_button' type='submit' value
 echo                     "</form>";
                          } else {
 echo                     "<div class=timeslot_taken>";
-echo                         "<span>".str_replace(" "," ",$value)."</span>";
+echo                         str_replace(" ", "<br>",$value);
 echo                     "</div>";
 		    	}
 echo                "</div>";
