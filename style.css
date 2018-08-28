@@ -200,7 +200,7 @@ input[type=submit], button {
 	width: 20%;
 }
 
-.divTableColumn input[type=submit]:not(.resource_button) { 
+.divTableColumn > input[type=submit]:not(.resource_button) { 
     border: 1px solid #fff;
     padding: 0px;
     margin: 0px;
@@ -215,7 +215,7 @@ input[type=submit], button {
     cursor: pointer;
 }
 
-.divTableColumn input[type=submit]:hover:not(.resource_button){
+.divTableColumn > input[type=submit]:hover:not(.resource_button){
     background:blue;
 }
 .delete_timeslot input[type=submit]:not(.resource_button) {
@@ -279,7 +279,8 @@ input[type=submit], button {
 }
 .add_user_popup{
 	position: relative;
-	box-shadow: 5px 10px;
+	box-shadow: 5px 5px;
+	padding: 5px;
 	border: 1px solid black;
 	z-index:1000;
 	display: none;
@@ -290,14 +291,32 @@ input[type=submit], button {
 	background: white;
 }
 .add_user_form {
-	position: absolute;
+	position: relative;
+	float: left;
 	top: 0;
 	left: 10px;
+	width: 190px;
+}
+.add_user_form input[type=text] {
+	position: absolute;
+	left: 2px;
+	top: 5px;
+	height: 30px;
+	width: 146px;
+}
+.add_user_form input[type=submit] {
+	position: absolute;
+	left: 2px;
+	top: 38px;
+	height: 30px;
+	width: 180px;
 }
 .close_user_popup {
 	position: absolute;
-	top: 5px;
-        left: 175px;
+	top: 10px;
+        left: 167px;
+	height: 30px;
+	width: 30px;
 	float: right;
 }
 .divTableHeading {
