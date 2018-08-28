@@ -116,7 +116,7 @@ echo                         "<input type='hidden' name='column' value='".$key."
 echo                         "<input type='hidden' name='username' value='".$_SESSION['username']."'>";
 echo                         "<input type='hidden' name='date' value='".$date."'>";
 echo                         "<input type='hidden' name='panel' value='show_week'>";
-echo                         "<input type='submit' value='Book It!'>";
+echo                         "<input class='add_user_button' type='submit' value='Book It!'>";
 echo                     "</form>";
                          } else if ($value == $_SESSION['username']) {
 echo                     "<form action='../functions/delete_timeslot.php' class='delete_timeslot' method='POST'>";
@@ -125,7 +125,7 @@ echo                         "<input type='hidden' name='date' value='".$date."'
 echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                         "<input type='hidden' name='column' value='".$key."'>";
 echo                         "<input type='hidden' name='panel' value='show_week'>";
-echo                         "<input type='submit' value='Cancel'>";
+echo                         "<input class='add_user_button' type='submit' value='Cancel'>";
 echo                     "</form>";
                          } else {
 echo                     "<div class=timeslot_taken>";

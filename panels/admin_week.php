@@ -113,11 +113,11 @@ echo            "<div class='divTableColumn'>";
                         ":r_id" => $_GET['r_id'],
                         ":date" => $date
                     ));
-                    $timeslots = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $timeslot = $stmt->fetch(PDO::FETCH_ASSOC);
     
 echo                "<div class='divTableCell day_column_date'>".date('d-m', strtotime($date))."</div>";
 echo                "<div class='divTableCell'>".$day."</div>";
-		    foreach ($timeslots as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
+		    foreach ($timeslot as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
 echo                "<div class='divTableCell'>";
                          if ($value == '') {
                          // TODO: hide on second click
@@ -130,7 +130,7 @@ echo                            "<input type='hidden' name='category' value='".$
 echo                            "<input type='hidden' name='column' value='".$key."'>";
 echo                            "<input type='text' name='username' value='".$_SESSION['username']."'>";
 echo                            "<input type='hidden' name='date' value='".$date."'>";
-echo                            "<input type='hidden' name='panel' value='admin_day'>";
+echo                            "<input type='hidden' name='panel' value='admin_week'>";
 echo                            "<input type='submit' value='Book It!'>";
 echo                        "</form>";
 echo                    "</div>";
