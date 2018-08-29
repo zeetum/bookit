@@ -26,5 +26,6 @@ if (isset($_POST['r_id']) && isset($_POST['date']) && isset($_POST['category']) 
         ":date" => $_POST['date'],
         ":r_id" => $_POST['r_id']
     ));
-    include_once("panel_navigation.php");
 }
+
+include_once("panel_navigation.php");

@@ -2,7 +2,7 @@
 session_start();
 
 if ($_POST['username'] == 'admin'  && $_POST['password'] == 'Holidays2') {
-	$_SESSION['username'] = "Administrator";
+    $_SESSION['username'] = "Administrator";
     header('Location: /bookit/panels/admin_day.php');
 
 } else if(isset($_POST['username']) && isset($_POST['password']) && $_POST['password'] != ''){
