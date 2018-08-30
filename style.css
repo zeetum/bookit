@@ -229,6 +229,14 @@ input[type=submit], button {
     background:blue;
 }
 .delete_timeslot input[type=submit]:not(.resource_button) {
+    position: absolute;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    display: block;
+    top: 1px;
+    left: 0px;
+    line-height: 17px;
+    white-space: normal;
     background: green;
 }
 .delete_timeslot input[type=submit]:hover:not(.resource_button) {
@@ -257,7 +265,7 @@ input[type=submit], button {
     font-weight: 200;
     background: red;
     line-height: 17px;
-white-space: normal;
+    white-space: normal;
 }
 .timeslot_taken:hover input[type=submit] {
     background: darkred;

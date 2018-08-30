@@ -2,7 +2,6 @@
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/show_categories.php');
-
 /*
     prints the week for a date of a resource in a category 
 */
@@ -125,7 +124,7 @@ echo                         "<input type='hidden' name='date' value='".$date."'
 echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                         "<input type='hidden' name='column' value='".$key."'>";
 echo                         "<input type='hidden' name='panel' value='show_week'>";
-echo                         "<input class='add_user_button' type='submit' value='Cancel'>";
+echo                         "<input wrap='soft' class='add_user_button' type='submit' value='".$value."'>";
 echo                     "</form>";
                          } else {
 echo                     "<div class=timeslot_taken>";

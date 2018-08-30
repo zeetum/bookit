@@ -1,3 +1,19 @@
+$(document).ready(function() { 
+
+    console.log("ready");
+    $(".delete_timeslot .add_user_button").hover(
+	    function() {
+		    var $this = $(this);
+		    $this.data('initialText', $this.val());
+		    $this.prop('value',"Cancel");
+	    },
+	    function() {
+		    var $this = $(this);
+		    $this.prop('value',$this.data('initialText'));
+	    }
+    );
+});
+
 function toggle_class_display(class_name) {
     var panels = document.getElementsByClassName(class_name);
 
