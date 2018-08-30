@@ -125,7 +125,7 @@ echo                   "<input type='hidden' name='date' value='".$date."'>";
 echo                   "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                   "<input type='hidden' name='column' value='".$key."'>";
 echo                   "<input type='hidden' name='panel' value='admin_day'>";
-echo                   "<input type='submit' value='".$value."'>";
+echo                   "<input type='submit' wrap='soft' value='".$value."'>";
 echo               "</form>";
 		   }
 echo           "</div>";
@@ -135,5 +135,4 @@ echo       "</div>";
         </div>
     </div>
 </div>
-<script src="../functions/main.js" type="text/javascript"></script>
 <?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>

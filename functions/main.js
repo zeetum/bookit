@@ -1,7 +1,6 @@
 $(document).ready(function() { 
 
-    console.log("ready");
-    $(".delete_timeslot .add_user_button").hover(
+    $(".delete_timeslot .add_user_button, .timeslot_taken > input[type=submit]").hover(
 	    function() {
 		    var $this = $(this);
 		    $this.data('initialText', $this.val());
