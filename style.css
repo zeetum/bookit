@@ -62,9 +62,10 @@ input[type=submit], button {
 	top: 50px;
 }
 .nav_bar {
-	font-weight: bold;
+    min-width: 1000px;
+   font-weight: bold;
    background-color: #BB1D1A;
-	overflow: hidden;
+    overflow: hidden;
 }
 .nav_bar a {
     float: left;
