@@ -16,7 +16,7 @@ function get_catagories($conn) {
     $catagories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $resources = array();
-    foreach ($catagories as $category) if ($category['Tables_in_bookit'] != 'resources') {
+    foreach ($catagories as $category) if (!($category['Tables_in_bookit'] == 'resources' || $category['Tables_in_bookit'] == 'recurring_booking')) {
     
         // get resources attached to each category
         $stmt = $conn->prepare("SELECT DISTINCT r_id FROM ".$category['Tables_in_bookit']);
