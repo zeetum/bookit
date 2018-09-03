@@ -4,5 +4,5 @@ CREATE TABLE recurring_booking (
 	resource_table VARCHAR(255) NOT NULL,
 	column_name VARCHAR(255) NOT NULL,
 	day VARCHAR(255) NOT NULL,
-	jump INT NOT NULL
+	jump VARCHAR(255) NOT NULL
 );
