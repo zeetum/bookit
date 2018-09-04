@@ -328,10 +328,11 @@ input[type=submit], button {
 	width: 180px;
 }
 .close_user_popup {
+	padding: 0px;
 	position: absolute;
-	line-height: 30px;
-	top: 10px;
-        left: 167px;
+	margin: auto;
+	top: 11px;
+        left: 165px;
 	height: 30px;
 	width: 30px;
 	float: right;
