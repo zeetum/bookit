@@ -28,6 +28,20 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
         ":date" => $_POST['date'],
         ":r_id" => $_POST['r_id']
     ));
+
+    echo $_POST['recurring'];
+    // Enter recurring details
+    if ($_POST['recurring'] == 'on')
+        $stmt = $conn->prepare("INSERT INTO recurring_booking (resource_table, column_name, username, start_day, jump)
+	                        VALUES (:resource_table, :column_name, :username, :start_day, :jump)");
+    $stmt->execute(array(
+	    ":resource_table" => $_POST['category'],
+	    ":column_name" => $_POST['column'],
+	    ":username" => $_POST['username'],
+	    ":start_day" => $_POST['date'],
+	    ":jump" => $_POST['jump']
+    ));
+        
 }
 
 include_once("panel_navigation.php");
