@@ -61,3 +61,4 @@ foreach ($catagories as $category) if (!($category['Tables_in_bookit'] == 'resou
         }
     }
 }
+include_once("generate_recurring.php");
