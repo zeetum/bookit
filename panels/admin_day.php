@@ -115,6 +115,12 @@ echo                       "<input type='hidden' name='column' value='".$key."'>
 echo                       "<input type='text' name='username' value='".$_SESSION['username']."'>";
 echo                       "<input type='hidden' name='date' value='".$date."'>";
 echo                       "<input type='hidden' name='panel' value='admin_day'>";
+echo                       "<input type='checkbox' name='recurring'>";
+echo                       "<select name='jump'>";
+echo                           "<option value='1 week'>Every 1 Week</option>";
+echo                           "<option value='2 week'>Every 2 Weeks</option>";
+echo                           "<option value='1 month'>Every 1 Month</option>";
+echo                       "</select>";
 echo                       "<input type='submit' value='Book It!'>";
 echo                   "</form>";
 echo               "</div>";
@@ -127,8 +133,7 @@ echo                   "<input type='hidden' name='column' value='".$key."'>";
 echo                   "<input type='hidden' name='panel' value='admin_day'>";
 echo                   "<input type='submit' wrap='soft' value='".$value."'>";
 echo               "</form>";
-		   }
-echo           "</div>";
+		   } echo           "</div>";
 	       }
 echo       "</div>";
            }?>
