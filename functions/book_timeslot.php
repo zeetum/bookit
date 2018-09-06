@@ -22,14 +22,12 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
     $string = "UPDATE ".$_POST['category']." SET ".$_POST['column']." = :username
                WHERE date = :date AND r_id = :r_id";
     $stmt = $conn->prepare($string);
-    $stmt->execute();
     $stmt->execute(array(
         ":username" => $_POST['username'],
         ":date" => $_POST['date'],
         ":r_id" => $_POST['r_id']
     ));
 
-    echo $_POST['recurring'];
     // Enter recurring details
     if ($_POST['recurring'] == 'on')
         $stmt = $conn->prepare("INSERT INTO recurring_booking (resource_table, column_name, username, start_day, jump)

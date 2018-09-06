@@ -29,6 +29,7 @@ function get_week_dates($date, $format = 'Y-m-d') {
 if (isset($argv[1])) {
    $_GET['date'] = $argv[1];
 }
+echo $_GET['date'];
 
 if (isset($_GET['date'])) {
     $week = date('Y-m-d', strtotime($_GET['date']));
@@ -43,7 +44,7 @@ $days = get_week_dates($week);
 $stmt = $conn->prepare("SHOW TABLES");
 $stmt->execute();
 $catagories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-foreach ($catagories as $category) if (!($category['Tables_in_bookit'] == 'resources' || $category['Tables_in_bookit'] == 'recurring_booking') {
+foreach ($catagories as $category) if (!($category['Tables_in_bookit'] == 'resources' || $category['Tables_in_bookit'] == 'recurring_booking')) {
 
     // get resources attached to each category
     $stmt = $conn->prepare("SELECT DISTINCT r_id FROM ".$category['Tables_in_bookit']);

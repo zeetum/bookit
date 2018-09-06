@@ -27,9 +27,15 @@ foreach ($bookings as $booking) {
 
     // Get the maximum date for the table
     $stmt = $conn->prepare("SELECT DISTINCT date FROM ".$booking['resource_table']." ORDER BY date DESC");
-    $stmt->execute();
-    $last_date = $stmt->fetch()['date'];
-    $dates = get_dates(date('Y-m-d'), $booking['jump'], $last_date);
+    $stmt->execute(); $last_date = $stmt->fetch()['date'];
+    $dates = get_dates($booking['start_day'], $booking['jump'], $last_date);
+
+    foreach($dates as $date) {
+        $query = "UPDATE ".$booking['resource_table']." SET ".$booking['column_name']." = '".$booking['username']."' WHERE date = '".$date."'";
+	echo $query."<br>";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+    }
 }
 
 
