@@ -36,6 +36,7 @@ foreach ($bookings as $booking) {
         $stmt = $conn->prepare($query);
         $stmt->execute();
     }
+    include_once("generate_recurring.php");
 }
 
 
