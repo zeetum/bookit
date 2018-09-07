@@ -26,17 +26,20 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($bookings as $booking) {
 
     // Get the maximum date for the table
-    $stmt = $conn->prepare("SELECT DISTINCT date FROM ".$booking['resource_table']." ORDER BY date DESC");
+    $stmt = $conn->prepare("SELECT DISTINCT date FROM ".$booking['category']." ORDER BY date DESC");
     $stmt->execute(); $last_date = $stmt->fetch()['date'];
     $dates = get_dates($booking['start_day'], $booking['jump'], $last_date);
+    
+    /* Uncomment this line if making new weeks becomes slow
+    $stmt = $conn->prepare("UPDATE recurring_booking SET start_day = ".$last_date);
+    $stmt->execute();
+    */
+    
 
     foreach($dates as $date) {
-        $query = "UPDATE ".$booking['resource_table']." SET ".$booking['column_name']." = '".$booking['username']."' WHERE date = '".$date."'";
-	echo $query."<br>";
+        $query = "UPDATE ".$booking['category']." SET ".$booking['column_name']." = '".$booking['username']."' WHERE date = '".$date."' AND r_id = ".$booking['r_id'];
         $stmt = $conn->prepare($query);
+	echo $query;
         $stmt->execute();
     }
-    include_once("generate_recurring.php");
 }
-
-
