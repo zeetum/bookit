@@ -58,6 +58,18 @@ if (isset($_POST['r_id']) && isset($_POST['date']) && isset($_POST['category']) 
             $stmt = $conn->prepare($query);
             $stmt->execute();
         }
+
+	// Delete from recurring booking
+        $stmt = $conn->prepare("DELETE FROM recurring_booking WHERE category = :category AND r_id = :r_id AND column_name = :column_name AND username = :username AND start_date = :start_date AND jump = :jump");
+	$stmt->execute(array(
+	    ":category"    => $_POST['category'],
+	    ":r_id"        => $_POST['r_id'],
+	    ":column_name" => $_POST['column'],
+	    ":username"    => $_POST['username'],
+	    ":start_date"  => $_POST['date'],
+	    ":jump"        => $_POST['jump'],
+	));
+
     }
 }
 

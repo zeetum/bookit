@@ -36,6 +36,7 @@ if (isset($_POST['category']) && isset($_POST['columns'])) {
     <a href='new_resource.php'>New Resource</a>
     <a href='delete_category.php'>Delete Category</a>
     <a href='delete_resource.php'>Delete Resource</a>
+    <a href='delete_recurring.php'>Delete Recurring</a>
 </div>
 <?PHP
 include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/admin_categories.php');
