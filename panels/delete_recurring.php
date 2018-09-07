@@ -14,7 +14,6 @@ function get_dates($lower_bound, $jump, $upper_bound) {
 }
 
 ?>
-// Navigation Bar
 <div class='nav_bar'>
     <a class='active' id='home_button'><br></a>
     <a href='new_category.php'>New Category</a>
@@ -32,7 +31,8 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo "<div id='main_panel'>";
          foreach ($bookings as $booking) {
-echo     "<form action='delete_resource.php' method='POST'>";
+echo     "<form action='../functions/delete_timeslot.php' method='POST'>";
+echo         "<input type='hidden' name='recurring' value='on'>";
              foreach($booking as $key => $value) 
 echo             "<input type='text' name='".$key."' value='".$value."' readonly>";
 echo         "<input type='submit' value='Delete'>";

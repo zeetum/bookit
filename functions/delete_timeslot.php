@@ -11,6 +11,24 @@
 // WARNING: This script stomps on the t_id!
 include_once('config.php');
 
+// Get an array of all dates between lower and upper bound
+function get_dates($lower_bound, $jump, $upper_bound) {
+    $current = $lower_bound;
+    $dates = array();
+
+    while ($current < $upper_bound) {
+        array_push($dates, $current);
+        $current = date('Y-m-d', strtotime($current." +".$jump));
+    }
+    return $dates;
+}
+
+// Stomping on data if we're deleting recurring data
+if (isset($_POST['column_name']) && isset($_POST['start_date'])) {
+	$_POST['column'] = $_POST['column_name'];
+	$_POST['date'] = $_POST['start_date'];
+}
+
 if (isset($_POST['r_id']) && isset($_POST['date']) && isset($_POST['category']) && isset($_POST['column'])) {
     // sanitising the input
     str_replace(";","",$_POST['column']);
@@ -26,6 +44,21 @@ if (isset($_POST['r_id']) && isset($_POST['date']) && isset($_POST['category']) 
         ":date" => $_POST['date'],
         ":r_id" => $_POST['r_id']
     ));
+    
+    // Delete recurring details
+    if ($_POST['recurring'] == 'on') {
+
+        // Get the maximum date for the table
+        $stmt = $conn->prepare("SELECT DISTINCT date FROM ".$_POST['category']." ORDER BY date DESC");
+        $stmt->execute(); $last_date = $stmt->fetch()['date'];
+        $dates = get_dates($_POST['date'], $_POST['jump'], $last_date);
+ 
+        foreach($dates as $date) {
+            $query = "UPDATE ".$_POST['category']." SET ".$_POST['column_name']." = NULL WHERE date = '".$date."' AND r_id = ".$_POST['r_id'];
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+        }
+    }
 }
 
 include_once("panel_navigation.php");
