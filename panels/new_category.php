@@ -19,7 +19,7 @@ if (isset($_POST['category']) && isset($_POST['columns'])) {
         // sanitising the input
         str_replace(";","",$column);
     
-        $query_string .= $column." VARCHAR(255), ";
+        $query_string .= "`".$column."` VARCHAR(255), ";
     }
     
     $query_string .= " PRIMARY KEY(date, r_id) )";
