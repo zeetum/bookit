@@ -37,7 +37,7 @@ foreach ($bookings as $booking) {
     
 
     foreach($dates as $date) {
-        $query = "UPDATE ".$booking['category']." SET ".$booking['column_name']." = '".$booking['username']."' WHERE date = '".$date."' AND r_id = ".$booking['r_id'];
+        $query = "UPDATE ".$booking['category']." SET `".$booking['column_name']."` = '".$booking['username']."' WHERE date = '".$date."' AND r_id = ".$booking['r_id'];
         $stmt = $conn->prepare($query);
 	echo $query;
         $stmt->execute();

@@ -36,17 +36,16 @@ if (isset($_POST['r_id']) && isset($_POST['date']) && isset($_POST['category']) 
     str_replace(";","",$_POST['category']);
     str_replace(",","",$_POST['category']);
 
-    $string = "UPDATE ".$_POST['category']." SET ".$_POST['column']." = NULL 
+    $string = "UPDATE ".$_POST['category']." SET `".$_POST['column']."` = NULL 
                WHERE date = :date AND r_id = :r_id";
     $stmt = $conn->prepare($string);
-    $stmt->execute();
     $stmt->execute(array(
         ":date" => $_POST['date'],
         ":r_id" => $_POST['r_id']
     ));
     
     // Delete recurring details
-    if ($_POST['recurring'] == 'on') {
+    if (isset($_POST['recurring']) && $_POST['recurring'] == 'on') {
 
         // Get the maximum date for the table
         $stmt = $conn->prepare("SELECT DISTINCT date FROM ".$_POST['category']." ORDER BY date DESC");
@@ -54,7 +53,7 @@ if (isset($_POST['r_id']) && isset($_POST['date']) && isset($_POST['category']) 
         $dates = get_dates($_POST['date'], $_POST['jump'], $last_date);
  
         foreach($dates as $date) {
-            $query = "UPDATE ".$_POST['category']." SET ".$_POST['column_name']." = NULL WHERE date = '".$date."' AND r_id = ".$_POST['r_id'];
+            $query = "UPDATE ".$_POST['category']." SET `".$_POST['column']."` = NULL WHERE date = '".$date."' AND r_id = ".$_POST['r_id'];
             $stmt = $conn->prepare($query);
             $stmt->execute();
         }

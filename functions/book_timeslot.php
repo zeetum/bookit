@@ -17,7 +17,7 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
     $_POST['category'] = str_replace(";","",$_POST['category']);
     $_POST['category'] = str_replace(",","",$_POST['category']);
 
-    $string = "UPDATE ".$_POST['category']." SET ".$_POST['column']." = :username
+    $string = "UPDATE ".$_POST['category']." SET `".$_POST['column']."` = :username
                WHERE date = :date AND r_id = :r_id";
     $stmt = $conn->prepare($string);
     $stmt->execute(array(
@@ -27,7 +27,8 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
     ));
 
     // Enter recurring details
-    if ($_POST['recurring'] == 'on') {
+    if (isset($_POST['recurring']) &&  $_POST['recurring']== 'on') {
+	    echo "hello world";
         $stmt = $conn->prepare("INSERT INTO recurring_booking (category, r_id, column_name, username, start_date, jump)
 	                        VALUES (:category, :r_id, :column_name, :username, :start_date, :jump)");
         $stmt->execute(array(

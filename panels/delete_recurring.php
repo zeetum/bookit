@@ -46,7 +46,7 @@ echo         "<input type='hidden' name='recurring' value='on'>";
                      $stmt->execute(array(
                          ":r_id" => $value
                      ));
-echo                 "<input type='text' name='".$key."' value='".$stmt->fetch(PDO::FETCH_ASSOC)['name']."' readonly>";
+echo                 "<input type='text' name='".$key."' value='".$value."' readonly>";
 
 		 } else {
 echo                 "<input type='text' name='".$key."' value='".$value."' readonly>";
