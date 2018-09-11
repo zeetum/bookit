@@ -30,14 +30,8 @@ foreach ($bookings as $booking) {
     $stmt->execute(); $last_date = $stmt->fetch()['date'];
     $dates = get_dates($booking['start_date'], $booking['jump'], $booking['end_date']);
     
-    /* Uncomment this line if making new weeks becomes slow
-    $stmt = $conn->prepare("UPDATE recurring_booking SET start_day = ".$last_date);
-    $stmt->execute();
-    */
-    
-
     foreach($dates as $date) {
-        $query = "UPDATE ".$booking['category']." SET `".$booking['column_name']."` = '".$booking['username']."' WHERE date = '".$date."' AND r_id = ".$booking['r_id'];
+        $query = "UPDATE ".$booking['category']." SET `".$booking['column_name']."` = \"".$booking['username']."\" WHERE date = '".$date."' AND r_id = ".$booking['r_id'];
         $stmt = $conn->prepare($query);
 	echo $query;
         $stmt->execute();

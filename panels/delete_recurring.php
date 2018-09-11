@@ -50,7 +50,7 @@ echo                 "<input type='hidden' name='r_id' value = ".$value." readon
 echo                 "<input type='text' value='".$stmt->fetch(PDO::FETCH_ASSOC)['name']."' readonly>";
 
 		 } else {
-echo                 "<input type='text' name='".$key."' value='".$value."' readonly>";
+echo                 "<input type='text' name='".$key."' value=\"".$value."\" readonly>";
 		 }
 	     }
 echo         "<input type='submit' value='Delete'>";

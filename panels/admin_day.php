@@ -139,7 +139,7 @@ echo                   "<input type='hidden' name='date' value='".$date."'>";
 echo                   "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                   "<input type='hidden' name='column' value='".$key."'>";
 echo                   "<input type='hidden' name='panel' value='admin_day'>";
-echo                   "<input type='submit' wrap='soft' value='".$value."'>";
+echo                   "<input type='submit' wrap='soft' value=\"".$value."\">";
 echo               "</form>";
 		   } echo           "</div>";
 	       }

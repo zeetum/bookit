@@ -27,9 +27,6 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
     ));
 
     // Enter recurring details
-    echo "hello world";
-    echo $_POST['start_date']."<br>";
-    echo $_POST['end_date']."<br>";
     if (isset($_POST['recurring']) &&  $_POST['recurring']== 'on' && $_POST['start_date'] != $_POST['end_date']) {
         $stmt = $conn->prepare("INSERT INTO recurring_booking (category, r_id, column_name, username, start_date, end_date, jump)
 	                        VALUES (:category, :r_id, :column_name, :username, :start_date, :end_date, :jump)");
@@ -47,5 +44,5 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
         
 }
 
-include_once("panel_navigation.php");
+//include_once("panel_navigation.php");
 
