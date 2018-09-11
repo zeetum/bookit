@@ -27,16 +27,19 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
     ));
 
     // Enter recurring details
-    if (isset($_POST['recurring']) &&  $_POST['recurring']== 'on') {
-	    echo "hello world";
-        $stmt = $conn->prepare("INSERT INTO recurring_booking (category, r_id, column_name, username, start_date, jump)
-	                        VALUES (:category, :r_id, :column_name, :username, :start_date, :jump)");
+    echo "hello world";
+    echo $_POST['start_date']."<br>";
+    echo $_POST['end_date']."<br>";
+    if (isset($_POST['recurring']) &&  $_POST['recurring']== 'on' && $_POST['start_date'] != $_POST['end_date']) {
+        $stmt = $conn->prepare("INSERT INTO recurring_booking (category, r_id, column_name, username, start_date, end_date, jump)
+	                        VALUES (:category, :r_id, :column_name, :username, :start_date, :end_date, :jump)");
         $stmt->execute(array(
                 ":category" => $_POST['category'],
                 ":r_id" => $_POST['r_id'],
                 ":column_name" => $_POST['column'],
                 ":username" => $_POST['username'],
-                ":start_date" => $_POST['date'],
+                ":start_date" => $_POST['start_date'],
+                ":end_date" => $_POST['end_date'],
                 ":jump" => $_POST['jump']
         ));
 	include_once("generate_recurring.php");
