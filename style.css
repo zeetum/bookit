@@ -300,17 +300,30 @@ input[type=submit], button {
 	border: 1px solid black;
 	z-index:1000;
 	display: none;
-	height: 116px;
-	width: 210px;
-	top: 35px;
+	height: 146px;
+	width: 310px;
+	top: 0px;
 	left: 0px;
 	background: white;
+}
+.add_user_form_labels {
+	position: absolute;
+	padding: 0px;
+	top: 2px;
+}
+.add_user_form_labels span {
+	padding: 0px;
+	margin: 0px;
+	top: 0px;
+	height: 10px;
+	max-height: 10px;
+	float: left;
 }
 .add_user_form {
 	position: relative;
 	float: left;
 	top: 0;
-	left: 10px;
+	left: 100px;
 	width: 190px;
 }
 .add_user_form input[type=checkbox]{
@@ -335,18 +348,27 @@ input[type=submit], button {
 	height: 30px;
 	width: 146px;
 }
+.add_user_form input[type=date] {
+	position: absolute;
+	left: 2px;
+	top: 73px;
+	width: 90px;
+}
+.add_user_form input[type=date] + input[type=date] {
+	left: 92px;
+}
 .add_user_form input[type=submit] {
 	position: absolute;
 	left: 2px;
-	top: 72px;
+	top: 102px;
 	height: 30px;
 	width: 180px;
 }
 .close_user_popup {
 	padding: 0px;
 	position: absolute;
-	top: 11px;
-        left: 165px;
+	top: 10px;
+        left: 257px;
 	height: 30px;
 	width: 30px;
 	float: right;
