@@ -124,7 +124,7 @@ echo                         "<input type='hidden' name='date' value='".$date."'
 echo                         "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo                         "<input type='hidden' name='column' value='".$key."'>";
 echo                         "<input type='hidden' name='panel' value='show_week'>";
-echo                         "<input wrap='soft' class='add_user_button' type='submit' value='".$value."'>";
+echo                         "<input wrap='soft' class='add_user_button' type='submit' value=\"".$value."\">";
 echo                     "</form>";
                          } else {
 echo                     "<div class=timeslot_taken>";
