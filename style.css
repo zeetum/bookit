@@ -212,6 +212,10 @@ input[type=submit], button {
 	width: 20%;
 }
 
+.resource_button {
+	width: 100%;
+
+}
 .divTableColumn > input[type=submit]:not(.resource_button) { 
     border: 1px solid #fff;
     padding: 0px;
