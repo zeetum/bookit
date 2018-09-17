@@ -30,11 +30,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($bookings as $booking) {
 
-    // Get the maximum date for the table
-    $stmt = $conn->prepare("SELECT DISTINCT date FROM ".$booking['category']." ORDER BY date DESC");
-    $stmt->execute(); $last_date = $stmt->fetch()['date'];
     $dates = get_dates($booking['start_date'], $booking['jump'], $booking['end_date']);
-    
     foreach($dates as $date) {
         $query = "UPDATE ".$booking['category']." SET `".$booking['column_name']."` = \"".$booking['username']."\" WHERE date = '".$date."' AND r_id = ".$booking['r_id'];
         $stmt = $conn->prepare($query);
