@@ -53,7 +53,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo "<div id='main_panel'>";
 echo "<form action='delete_category.php' method='POST'>";
 echo "    <select name='table'>";
-          foreach ($categories as $category) if ($category['Tables_in_bookit'] != 'resources')
+          foreach ($categories as $category) if (!($category['Tables_in_bookit'] == 'resources' || $category['Tables_in_bookit'] == 'recurring_booking'))
 echo "    <option value='".$category['Tables_in_bookit']."'>".$category['Tables_in_bookit']."</option>";
 echo "    </select>";
 echo "    <input type='submit' value='Delete'>";
