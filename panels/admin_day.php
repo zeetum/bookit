@@ -110,9 +110,9 @@ echo               "<button class='add_user_button' onclick='hide_class_display(
 echo               "<div class='add_user_popup' id='".$timeslot['r_id']."_".$key."_cell'>";
 echo                   "<button class='close_user_popup' onclick='hide_id_display(\"".$timeslot['r_id']."_".$key."_cell\");'>X</button>";
 echo                   "<div class=add_user_form_labels>";
-echo                       "<span>Username</span></br>";
-echo                       "<span>Recurring</span></br>";
-echo                       "<span>Start and End</span>";
+echo                        "<div>Username</div>";
+echo                        "<div>Recurring</div>";
+echo                        "<div>Start and End</div>";
 echo                   "</div>";
 echo                   "<form class='add_user_form' action='../functions/book_timeslot.php' method='POST'>";
 echo                       "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
