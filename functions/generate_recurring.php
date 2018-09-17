@@ -18,6 +18,11 @@ function get_dates($lower_bound, $jump, $upper_bound) {
     return $dates;
 }
 
+// remove stale recurring bookings
+$stmt = $conn->prepare("DELETE FROM recurring_booking
+                        WHERE end_date < CURDATE()");
+$stmt->execute();
+
 // get recurring bookings
 $stmt = $conn->prepare("SELECT * FROM recurring_booking");
 $stmt->execute();
