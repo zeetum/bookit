@@ -1,7 +1,4 @@
 <?PHP
-include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_header.html');
-include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/functions/config.php');
-
 // Set current day
 if (isset($_GET['date']))
 	$day = $_GET['date'];
@@ -74,5 +71,4 @@ echo    "<div>";
 ?>
     </div>
 <script src="../functions/main.js" type="text/javascript"></script>
-<?php include_once($_SERVER["DOCUMENT_ROOT"].'/bookit/panels/boiler_footer.html'); ?>
 
