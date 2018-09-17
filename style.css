@@ -390,3 +390,18 @@ input[type=submit], button {
 	display: table-footer-group;
 	font-weight: bold;
 }
+.delete_recurring {
+	position: relative;
+}
+.delete_recurring input {
+	position: absolute;
+	display: block;
+	height: 30px;
+	left: 110px;
+}
+.delete_recurring label {
+	display: block;
+	height: 30px;
+	width: 100px;
+	text-align: right;
+}

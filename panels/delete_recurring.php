@@ -34,7 +34,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo "<div id='main_panel'>";
          foreach ($bookings as $booking) {
-echo     "<form action='../functions/delete_timeslot.php' method='POST'>";
+echo     "<form class='delete_recurring' action='../functions/delete_timeslot.php' method='POST'>";
 echo         "<input type='hidden' name='panel' value='admin_day'>";
 echo         "<input type='hidden' name='recurring' value='on'>";
 
@@ -48,9 +48,10 @@ echo         "<input type='hidden' name='recurring' value='on'>";
                      ));
 echo                 "<input type='hidden' name='r_id' value = ".$value." readonly>";
 echo                 "<input type='text' value='".$stmt->fetch(PDO::FETCH_ASSOC)['name']."' readonly>";
-
+echo                 "<label>Resource</label>";
 		 } else {
 echo                 "<input type='text' name='".$key."' value=\"".$value."\" readonly>";
+echo                 "<label>".$key."</label>";
 		 }
 	     }
 echo         "<input type='submit' value='Delete'>";
