@@ -181,7 +181,6 @@ input[type=submit], button {
     position: absolute;
     left: 0px;
     margin: 20px auto 0;
-    max-width: 1000px;
     min-width: 660px;
     text-align: center;
     font-family: Helvetica;
@@ -213,6 +212,7 @@ input[type=submit], button {
 	vertical-align: middle;
         line-height: 39px;
 	word-wrap:break-word;
+	min-width: 6em;
 }
 .divTableColumn:first-of-type {
 	left: 0px;
