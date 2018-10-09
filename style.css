@@ -59,13 +59,13 @@ input[type=submit], button {
 #main_panel {
 	position: absolute;
 	left: 300px;
-	top: 150px;
+	top: 100px;
 	width: 80%;
 }
 .nav_bar {
     min-width: 1000px;
-   font-weight: bold;
-   background-color: #BB1D1A;
+    font-weight: bold;
+    background-color: #BB1D1A;
     overflow: hidden;
 }
 .nav_bar a {
