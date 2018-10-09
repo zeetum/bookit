@@ -39,7 +39,7 @@ if (isset($_POST['category']) && isset($_POST['column']) && isset($_POST['r_id']
                 ":end_date" => $_POST['end_date'],
                 ":jump" => $_POST['jump']
         ));
-	include_once("generate_recurring.php");
+        include_once("generate_recurring.php");
     }
         
 }
