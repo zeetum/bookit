@@ -101,6 +101,7 @@ input[type=submit], button {
 }
 
 .category_form {
+    position: relative;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -213,8 +214,14 @@ input[type=submit], button {
 }
 
 .resource_button {
+	top: 0px;
+	left: 0px;
+	position: absolute;
 	width: 100%;
-
+	margin: 0px;
+	padding: 0px;
+	line-height: 15px;
+	height: 35px;
 }
 .divTableColumn > input[type=submit]:not(.resource_button) { 
     border: 1px solid #fff;

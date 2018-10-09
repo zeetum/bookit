@@ -94,12 +94,14 @@ echo	    "<div class='divTableColumn'>";
                $name = $stmt->fetch(PDO::FETCH_ASSOC)['name'];
 	       
 	       // Select buttons for each week for each resource
+echo           "<div class='divTableCell'>";
 echo           "<form class='category_form' action='../panels/admin_week.php' method='GET'>";
 echo               "<input type='hidden' name='r_id' value='".$timeslot['r_id']."'>";
 echo               "<input type='hidden' name='category' value='".$_GET['category']."'>";
 echo               "<input type='hidden' name='date' value='".$date."'>";
-echo               "<input class='resource_button' type='submit' value='".$name."'>";
+echo               "<button class='resource_button' type='submit' value='".$name."'>".$name."</button>";
 echo           "</form>";
+echo           "</div>";
 
 	       // Submit or display timeslot for each time column
                foreach ($timeslot as $key => $value) if (!($key == 'r_id' || $key == 'date')) {
