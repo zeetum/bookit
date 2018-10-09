@@ -60,10 +60,11 @@ input[type=submit], button {
 	position: absolute;
 	left: 300px;
 	top: 100px;
-	width: 80%;
+	width: 70%;
 }
 .nav_bar {
     min-width: 1000px;
+    width: 100%;
     font-weight: bold;
     background-color: #BB1D1A;
     overflow: hidden;
@@ -180,7 +181,7 @@ input[type=submit], button {
     position: absolute;
     left: 0px;
     margin: 20px auto 0;
-    max-width: 1500px;
+    max-width: 1000px;
     min-width: 660px;
     text-align: center;
     font-family: Helvetica;
