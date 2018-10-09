@@ -67,7 +67,7 @@ echo               "<input class='accordion_form_button' type='submit' value='".
 echo           "</form>";
 echo           "</div>";
             }
-echo    "<div>";
+echo    "</div>";
         }
 ?>
     </div>

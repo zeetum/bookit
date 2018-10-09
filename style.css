@@ -59,7 +59,8 @@ input[type=submit], button {
 #main_panel {
 	position: absolute;
 	left: 300px;
-	top: 50px;
+	top: 150px;
+	width: 80%;
 }
 .nav_bar {
     min-width: 1000px;
@@ -176,8 +177,10 @@ input[type=submit], button {
 }
 
 .divTable {
+    position: absolute;
+    left: 0px;
     margin: 20px auto 0;
-    max-width: 900px;
+    max-width: 1500px;
     min-width: 660px;
     text-align: center;
     font-family: Helvetica;
@@ -201,6 +204,7 @@ input[type=submit], button {
 	display: block;
 }
 .divTableColumn {
+	position: relative;
 	display: block;
 	float: left;
 	width: 15%;
@@ -210,6 +214,7 @@ input[type=submit], button {
 	word-wrap:break-word;
 }
 .divTableColumn:first-of-type {
+	left: 0px;
 	width: 20%;
 }
 

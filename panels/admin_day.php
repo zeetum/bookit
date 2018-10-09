@@ -60,8 +60,9 @@ if (count($timeslots) == 0) {
 ?>
 <div id='main_panel'>
     <div class="divTable">
-        <div class='divTableBody'><h3><?PHP echo date('d-m', strtotime($day)); ?></h3>
-        <div class='divTableBody'><h1><?PHP echo date('l', strtotime($day)); ?></h1>
+	<div class='divTableBody'>
+            <h3><?PHP echo date('d-m', strtotime($day)); ?></h3>
+            <h1><?PHP echo date('l', strtotime($day)); ?></h1>
 <?PHP
 echo        "<div class='buttonWrapper'>";
 echo        "<form class=time_button action='admin_day.php' method='get'>";
@@ -144,7 +145,8 @@ echo                   "<input type='hidden' name='column' value='".$key."'>";
 echo                   "<input type='hidden' name='panel' value='admin_day'>";
 echo                   "<input type='submit' wrap='soft' value=\"".$value."\">";
 echo               "</form>";
-		   } echo           "</div>";
+		   }
+echo           "</div>";
 	       }
 echo       "</div>";
            }?>
