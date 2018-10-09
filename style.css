@@ -215,6 +215,8 @@ input[type=submit], button {
 }
 .divTableColumn:first-of-type {
 	left: 0px;
+	padding-right: 10px;
+	text-align: right;
 	width: 20%;
 }
 
